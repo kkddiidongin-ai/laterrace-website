@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>laterrace Resort Group | Yeosu's Premier Oceanfront Resort Collection</title>
+  <meta name="description" content="Discover laterrace Resort Group in Yeosu, South Korea — home to Calacatta Hotel & Resort and laterrace Boutique Resort & Spa. Experience Summerland, luxury suites, and oceanfront living." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       SECTION 1: NAVIGATION BAR
+  ============================================================ -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <!-- Logo (desktop) -->
+      <a href="#" class="navbar__logo">
+        <span class="navbar__logo-main">laterrace</span>
+        <span class="navbar__logo-sub">Resort Group</span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="navbar__nav" id="navMenu">
+        <a href="#calacatta" class="navbar__link">CALACATTA</a>
+        <a href="#laterrace" class="navbar__link">LATERRACE</a>
+        <a href="#summerland" class="navbar__link">SUMMERLAND</a>
+        <a href="#rooms" class="navbar__link">ROOMS</a>
+        <a href="#dining" class="navbar__link">DINING</a>
+        <a href="#facilities" class="navbar__link">FACILITIES</a>
+        <a href="#offers" class="navbar__link">OFFERS</a>
+        <a href="#contact" class="navbar__link">CONTACT</a>
+      </nav>
+
+      <!-- Right Controls -->
+      <div class="navbar__controls">
+        <div class="navbar__lang">
+          <button class="navbar__lang-btn active" data-lang="en">EN</button>
+          <span class="navbar__lang-sep">|</span>
+          <button class="navbar__lang-btn" data-lang="ko">KO</button>
+        </div>
+        <a href="#booking" class="btn btn--book">BOOK NOW</a>
+        <button class="navbar__hamburger" id="hamburgerBtn" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+  </header>
+
+  <!-- Mobile Menu Overlay (Sun Siyam style) — placed outside header to avoid display:none inheritance -->
+  <div class="navbar__mobile-menu" id="mobileMenu">
+      <!-- Header: decorative logo center + X right -->
+      <div class="mobile-menu__header">
+        <!-- Decorative ornament (Sun Siyam style) -->
+        <div class="mobile-menu__ornament" aria-hidden="true">
+          <svg viewBox="0 0 80 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Decorative circular ornament like Sun Siyam -->
+            <g transform="translate(40,25)">
+              <circle cx="0" cy="0" r="18" stroke="currentColor" stroke-width="1" fill="none"/>
+              <circle cx="0" cy="-18" r="3" fill="currentColor"/>
+              <circle cx="0" cy="18" r="3" fill="currentColor"/>
+              <circle cx="18" cy="0" r="3" fill="currentColor"/>
+              <circle cx="-18" cy="0" r="3" fill="currentColor"/>
+              <circle cx="12.7" cy="-12.7" r="2.5" fill="currentColor"/>
+              <circle cx="-12.7" cy="-12.7" r="2.5" fill="currentColor"/>
+              <circle cx="12.7" cy="12.7" r="2.5" fill="currentColor"/>
+              <circle cx="-12.7" cy="12.7" r="2.5" fill="currentColor"/>
+              <!-- Inner swirl lines -->
+              <path d="M-8 -8 Q0 -14 8 -8 Q14 0 8 8 Q0 14 -8 8 Q-14 0 -8 -8Z" stroke="currentColor" stroke-width="1" fill="none"/>
+            </g>
+          </svg>
+        </div>
+        <button class="mobile-menu__close" id="mobileClose" aria-label="Close menu">&times;</button>
+      </div>
+
+      <!-- Divider -->
+      <div class="mobile-menu__divider"></div>
+
+      <!-- Nav links: large serif, title case -->
+      <nav class="mobile-menu__nav">
+        <a href="#" class="mobile-menu__link mobile-menu__link--active">
+          <span class="mobile-menu__arrow">&#9654;</span>Home
+        </a>
+        <a href="#calacatta" class="mobile-menu__link">Calacatta</a>
+        <a href="#laterrace" class="mobile-menu__link">laterrace</a>
+        <a href="#summerland" class="mobile-menu__link">Summerland</a>
+        <a href="#offers" class="mobile-menu__link">Offers</a>
+        <a href="#dining" class="mobile-menu__link">Dining</a>
+        <a href="#facilities" class="mobile-menu__link">Facilities</a>
+        <a href="#contact" class="mobile-menu__link">Contact</a>
+      </nav>
+
+      <!-- JOIN MEMBERSHIP button -->
+      <a href="#rewards" class="mobile-menu__join">JOIN OUR MEMBERSHIP</a>
+
+      <!-- Language switcher -->
+      <div class="mobile-menu__lang">
+        <button class="mobile-menu__lang-btn active" data-lang="en">EN</button>
+        <span class="mobile-menu__lang-sep">|</span>
+        <button class="mobile-menu__lang-btn" data-lang="ko">KO</button>
+      </div>
+    </div>
+  </div><!-- /mobileMenu -->
+
+  <!-- ============================================================
+       SECTION 2: HERO — Sun Siyam style
+       Mobile: EN + hamburger only in nav
+       Giant wordmark overlaps video
+       Video contains welcome text + heading
+  ============================================================ -->
+  <section class="hero" id="hero">
+
+    <!-- Mobile-only top bar: EN + hamburger -->
+    <div class="hero__mobile-bar">
+      <div class="hero__mobile-lang">
+        <button class="navbar__lang-btn active" data-lang="en">EN</button>
+        <svg class="hero__mobile-lang-arrow" viewBox="0 0 10 6" fill="none">
+          <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <button class="hero__mobile-hamburger" id="heroHamburgerBtn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Brand label (small, above wordmark) -->
+    <p class="hero__brand-label">laterrace</p>
+
+    <!-- Hero stage: video + wordmark overlaid -->
+    <div class="hero__stage">
+
+      <!-- Video layer (behind text) -->
+      <div class="hero__video-wrap">
+        <!-- Photo slideshow (always visible as fallback) -->
+        <div class="hero__slideshow" id="heroSlideshow">
+          <div class="hero__slide active" style="background-image:url('hero_bg3.jpg')"></div>
+          <div class="hero__slide" style="background-image:url('hero_bg1.jpg')"></div>
+          <div class="hero__slide" style="background-image:url('hero_bg2.jpg')"></div>
+        </div>
+        <!-- YouTube video will be added when hosted on actual domain -->
+
+        <!-- Welcome text inside video (Sun Siyam style) -->
+        <div class="hero__video-text">
+          <p class="hero__welcome-label">WELCOME TO LATERRACE</p>
+          <h1 class="hero__video-heading">The Spirit of<br />Yeosu, Always</h1>
+        </div>
+
+        <!-- Volume button (bottom-left, inside video) -->
+        <button class="hero__volume" id="volumeBtn" aria-label="Toggle sound">
+          <svg class="hero__volume-icon" id="volIconOff" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+            <line x1="23" y1="9" x2="17" y2="15"/>
+            <line x1="17" y1="9" x2="23" y2="15"/>
+          </svg>
+          <svg class="hero__volume-icon hidden" id="volIconOn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Wordmark layer (absolute, on top of video) -->
+      <div class="hero__wordmark-wrap" aria-hidden="true">
+        <span class="hero__wordmark">laterrace</span>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ============================================================
+       SECTION 3: BOOKING WIDGET BAR
+  ============================================================ -->
+  <section class="booking" id="booking">
+    <div class="booking__bar">
+      <div class="booking__field">
+        <label class="booking__label">BRAND</label>
+        <select class="booking__select">
+          <option value="">Select Brand</option>
+          <option value="calacatta">CALACATTA Hotel &amp; Resort</option>
+          <option value="laterrace">LATERRACE Boutique Resort</option>
+        </select>
+      </div>
+      <div class="booking__divider"></div>
+      <div class="booking__field">
+        <label class="booking__label">CHECK-IN</label>
+        <input type="date" class="booking__input" placeholder="Select date" />
+      </div>
+      <div class="booking__divider"></div>
+      <div class="booking__field">
+        <label class="booking__label">CHECK-OUT</label>
+        <input type="date" class="booking__input" placeholder="Select date" />
+      </div>
+      <div class="booking__divider"></div>
+      <div class="booking__field">
+        <label class="booking__label">NIGHTS</label>
+        <input type="number" class="booking__input" value="1" min="1" max="30" />
+      </div>
+      <div class="booking__divider"></div>
+      <div class="booking__field">
+        <label class="booking__label">GUESTS</label>
+        <select class="booking__select">
+          <option>1 Guest</option>
+          <option>2 Guests</option>
+          <option>3 Guests</option>
+          <option>4 Guests</option>
+          <option>5+ Guests</option>
+        </select>
+      </div>
+      <button class="booking__btn">SEARCH ROOMS</button>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 4: BRAND INTRODUCTION — Split layout
+  ============================================================ -->
+  <section class="intro" id="about">
+    <div class="intro__inner container">
+      <div class="intro__left reveal">
+        <p class="section-label">Welcome to laterrace</p>
+        <h2 class="intro__heading">
+          With the Sea as Its Soul,<br />
+          laterrace Shares the Spirit<br />
+          of Yeosu with the World.
+        </h2>
+        <p class="intro__body">
+          Perched on the cliffs of Yeosu's pristine coastline, laterrace Resort Group invites guests to discover two remarkable worlds. Whether you seek the refined elegance of Calacatta's adult infinity pool or the vibrant joy of laterrace's Summerland water park — every stay is a story worth telling.
+        </p>
+        <div class="intro__motif" aria-hidden="true">
+          <svg viewBox="0 0 120 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 40 Q15 10 30 40 Q45 70 60 40 Q75 10 90 40 Q105 70 120 40" stroke="#9a8060" stroke-width="1.5" fill="none" opacity="0.6"/>
+            <path d="M0 50 Q15 20 30 50 Q45 80 60 50 Q75 20 90 50 Q105 80 120 50" stroke="#9a8060" stroke-width="1" fill="none" opacity="0.4"/>
+            <circle cx="60" cy="15" r="3" fill="#9a8060" opacity="0.5"/>
+            <path d="M55 15 Q60 5 65 15" stroke="#9a8060" stroke-width="1" fill="none" opacity="0.5"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="intro__right reveal delay-1">
+        <div class="intro__pillar">
+          <div class="intro__pillar-icon">
+            <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
+              <circle cx="20" cy="20" r="16"/>
+              <path d="M12 20 Q16 12 20 20 Q24 28 28 20"/>
+            </svg>
+          </div>
+          <div class="intro__pillar-text">
+            <h3 class="intro__pillar-title">Never Boring</h3>
+            <p class="intro__pillar-desc">Every season, a new village. Summerland to Winter Village, there's always something to discover.</p>
+          </div>
+        </div>
+        <div class="intro__pillar">
+          <div class="intro__pillar-icon">
+            <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
+              <rect x="8" y="14" width="24" height="16" rx="2"/>
+              <path d="M14 14V10a6 6 0 0 1 12 0v4"/>
+              <circle cx="20" cy="22" r="2"/>
+            </svg>
+          </div>
+          <div class="intro__pillar-text">
+            <h3 class="intro__pillar-title">Effortlessly Yours</h3>
+            <p class="intro__pillar-desc">Seamless online booking, warm concierge service, and QR room ordering at your fingertips.</p>
+          </div>
+        </div>
+        <div class="intro__pillar">
+          <div class="intro__pillar-icon">
+            <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
+              <path d="M4 28 Q10 16 20 20 Q30 24 36 12"/>
+              <path d="M4 34 Q10 22 20 26 Q30 30 36 18"/>
+              <circle cx="20" cy="8" r="4"/>
+            </svg>
+          </div>
+          <div class="intro__pillar-text">
+            <h3 class="intro__pillar-title">Ocean, Always</h3>
+            <p class="intro__pillar-desc">Every room, every terrace, every breath — the sea of Yeosu is forever with you.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 5: MEMBERSHIP / REWARDS TEASER
+  ============================================================ -->
+  <section class="rewards" id="rewards">
+    <div class="rewards__inner container">
+      <div class="rewards__content reveal">
+        <p class="section-label section-label--light">Be Rewarded</p>
+        <h2 class="rewards__heading">Get More From Your Stay</h2>
+        <ul class="rewards__list">
+          <li class="rewards__item"><span class="rewards__check">&#10003;</span>Lowest rates guaranteed</li>
+          <li class="rewards__item"><span class="rewards__check">&#10003;</span>Priority early check-in</li>
+          <li class="rewards__item"><span class="rewards__check">&#10003;</span>Complimentary room upgrade (subject to availability)</li>
+          <li class="rewards__item"><span class="rewards__check">&#10003;</span>Exclusive seasonal village access benefits</li>
+          <li class="rewards__item"><span class="rewards__check">&#10003;</span>Member-only dining offers</li>
+          <li class="rewards__item"><span class="rewards__check">&#10003;</span>Free to join</li>
+        </ul>
+        <a href="#" class="btn btn--outline-light">JOIN NOW — IT'S FREE</a>
+      </div>
+      <div class="rewards__visual reveal delay-1">
+        <div class="photo-placeholder photo-placeholder--rewards">
+          <span>[PHOTO PLACEHOLDER — RESORT LIFESTYLE]</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 6: SEASONAL VILLAGE — SUMMERLAND HERO
+  ============================================================ -->
+  <section class="summerland" id="summerland">
+    <div class="summerland__inner">
+      <div class="summerland__visual reveal">
+        <div class="photo-placeholder photo-placeholder--summerland">
+          <div class="photo-placeholder__badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="28" height="28">
+              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+              <circle cx="12" cy="13" r="4"/>
+            </svg>
+            New Summerland photography arriving soon
+          </div>
+          <span>[PHOTO PLACEHOLDER — SUMMERLAND SHOOT COMING SOON]</span>
+        </div>
+      </div>
+
+      <div class="summerland__content reveal delay-1">
+        <p class="section-label section-label--summer">Summer Season</p>
+        <h2 class="summerland__heading">SUMMERLAND 2026</h2>
+        <p class="summerland__sub">The Rules of Water Play Have Changed</p>
+        <p class="summerland__body">
+          An expanded scale, a completely new kind of fun. Summerland at laterrace brings together Korea's largest outdoor water facilities — slides, splash zones, Jacuzzi spas, family pools, and beachside BBQ — all with the East Sea as your backdrop.
+        </p>
+        <div class="summerland__features">
+          <div class="summerland__feature">
+            <div class="summerland__feature-icon">
+              <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3">
+                <ellipse cx="20" cy="28" rx="14" ry="6"/>
+                <path d="M6 28 Q10 18 20 22 Q30 26 34 16"/>
+                <circle cx="20" cy="12" r="4"/>
+              </svg>
+            </div>
+            <span>Pool</span>
+          </div>
+          <div class="summerland__feature">
+            <div class="summerland__feature-icon">
+              <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3">
+                <path d="M8 32 Q12 20 20 24 Q28 28 32 16"/>
+                <circle cx="14" cy="14" r="3"/>
+                <circle cx="26" cy="10" r="2"/>
+                <path d="M14 17 Q16 22 20 24"/>
+              </svg>
+            </div>
+            <span>Kids Water Park</span>
+          </div>
+          <div class="summerland__feature">
+            <div class="summerland__feature-icon">
+              <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3">
+                <rect x="8" y="20" width="24" height="12" rx="3"/>
+                <path d="M12 20 Q14 10 20 12 Q26 14 28 20"/>
+                <path d="M16 26 Q18 22 20 26 Q22 30 24 26"/>
+              </svg>
+            </div>
+            <span>Jacuzzi Spa</span>
+          </div>
+          <div class="summerland__feature">
+            <div class="summerland__feature-icon">
+              <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3">
+                <rect x="6" y="26" width="28" height="6" rx="1"/>
+                <path d="M10 26 L12 16 L28 16 L30 26"/>
+                <path d="M16 16 L16 10 M24 16 L24 10"/>
+                <path d="M13 10 L27 10"/>
+                <circle cx="20" cy="8" r="2"/>
+              </svg>
+            </div>
+            <span>BBQ Zone</span>
+          </div>
+        </div>
+        <a href="#" class="btn btn--summer">EXPLORE SUMMERLAND &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 7: LATEST OFFERS
+  ============================================================ -->
+  <section class="offers" id="offers">
+    <div class="offers__inner container">
+      <div class="offers__header reveal">
+        <p class="section-label">Latest Offers</p>
+        <h2 class="offers__heading">More for Less</h2>
+      </div>
+
+      <div class="offers__grid reveal delay-1">
+        <div class="offer-card">
+          <div class="offer-card__image photo-placeholder photo-placeholder--calacatta-offer">
+            <span>[PHOTO PLACEHOLDER — CALACATTA SUITE]</span>
+          </div>
+          <div class="offer-card__body">
+            <p class="offer-card__brand">CALACATTA</p>
+            <h3 class="offer-card__title">Premium Ocean Escape</h3>
+            <p class="offer-card__desc">Indulge in Calacatta's exclusive adult-only infinity pool suites. Complimentary upgrade and early check-in for direct bookings.</p>
+            <div class="offer-card__actions">
+              <a href="#" class="btn btn--outline-dark">VIEW OFFER</a>
+              <a href="#booking" class="btn btn--dark">BOOK NOW</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="offer-card">
+          <div class="offer-card__image photo-placeholder photo-placeholder--summerland-offer">
+            <span>[PHOTO PLACEHOLDER — SUMMERLAND WATER PARK]</span>
+          </div>
+          <div class="offer-card__body">
+            <p class="offer-card__brand offer-card__brand--summer">LATERRACE / SUMMERLAND</p>
+            <h3 class="offer-card__title">Summerland Season Pass</h3>
+            <p class="offer-card__desc">Unlimited access to Summerland water park, family pool, and kids zone. Bundle with a resort stay for the ultimate summer package.</p>
+            <div class="offer-card__actions">
+              <a href="#" class="btn btn--outline-dark">VIEW OFFER</a>
+              <a href="#booking" class="btn btn--dark">BOOK NOW</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="offers__more reveal delay-2">
+        <a href="#" class="offers__more-link">VIEW ALL OFFERS &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 8: DUAL BRAND SHOWCASE
+  ============================================================ -->
+  <section class="brands" id="brands">
+    <div class="brands__inner container">
+      <div class="brands__header reveal">
+        <p class="section-label">Choose Your World</p>
+        <h2 class="brands__heading">Two Brands. One Extraordinary Location.</h2>
+      </div>
+
+      <div class="brands__grid">
+        <div class="brand-card brand-card--calacatta reveal" id="calacatta">
+          <div class="brand-card__image photo-placeholder photo-placeholder--calacatta">
+            <span>[PHOTO PLACEHOLDER — CALACATTA INFINITY POOL]</span>
+          </div>
+          <div class="brand-card__content">
+            <p class="brand-card__tag">For Adults &middot; Ocean Suites &middot; Infinity Pool</p>
+            <h3 class="brand-card__name">Calacatta<br />Hotel &amp; Resort</h3>
+            <p class="brand-card__desc">Calacatta is where sophistication meets the sea. Adult-preferred suites with private terraces, no-kids infinity pool, and curated luxury for those who seek the finest.</p>
+            <ul class="brand-card__rooms">
+              <li>The Suite</li>
+              <li>Young Suite</li>
+              <li>Young Suite Terrace</li>
+              <li>Premier Suite</li>
+            </ul>
+            <a href="#" class="btn btn--calacatta">EXPLORE CALACATTA &rarr;</a>
+          </div>
+        </div>
+
+        <div class="brand-card brand-card--laterrace reveal delay-1" id="laterrace">
+          <div class="brand-card__image photo-placeholder photo-placeholder--laterrace">
+            <span>[PHOTO PLACEHOLDER — LATERRACE FAMILY POOL]</span>
+          </div>
+          <div class="brand-card__content">
+            <p class="brand-card__tag brand-card__tag--warm">Family &middot; Summerland &middot; Kids Programs</p>
+            <h3 class="brand-card__name brand-card__name--warm">laterrace<br />Boutique Resort &amp; Spa</h3>
+            <p class="brand-card__desc">laterrace is where families create forever memories. From the Summerland water park to kids programs, heated indoor pools, and oceanfront terraces — joy is unlimited here.</p>
+            <a href="#" class="btn btn--laterrace">EXPLORE LATERRACE &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 9: WINTER VILLAGE TEASER
+  ============================================================ -->
+  <section class="winter" id="winter">
+    <div class="winter__inner">
+      <div class="winter__bg photo-placeholder photo-placeholder--winter">
+        <span>[PHOTO PLACEHOLDER — WINTER VILLAGE FESTIVE LIGHTS]</span>
+      </div>
+      <div class="winter__overlay"></div>
+      <div class="winter__content reveal">
+        <p class="section-label section-label--light">Winter Season</p>
+        <h2 class="winter__heading">Winter Village<br />— Coming This December</h2>
+        <p class="winter__body">
+          When summer fades, the magic transforms. laterrace's Winter Village wraps the resort in warm lights, cozy heated pools, and festive spirit. Bookmark your season.
+        </p>
+        <a href="#" class="btn btn--outline-light">LEARN MORE &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 10: DINING HIGHLIGHT
+  ============================================================ -->
+  <section class="dining" id="dining">
+    <div class="dining__inner container">
+      <div class="dining__header reveal">
+        <p class="section-label">All-in Dining</p>
+        <h2 class="dining__heading">Dine Without Limits</h2>
+      </div>
+
+      <div class="dining__scroll-wrap">
+        <div class="dining__cards reveal delay-1">
+          <div class="dining-card">
+            <div class="dining-card__image photo-placeholder photo-placeholder--dining-1"><span>[PHOTO — MANKAI DINNER]</span></div>
+            <div class="dining-card__body">
+              <h3 class="dining-card__name">Mankai Dinner</h3>
+              <p class="dining-card__desc">Oceanfront fine dining with seasonal Korean-fusion cuisine.</p>
+            </div>
+          </div>
+          <div class="dining-card">
+            <div class="dining-card__image photo-placeholder photo-placeholder--dining-2"><span>[PHOTO — NANGMAN BYEOLSIK]</span></div>
+            <div class="dining-card__body">
+              <h3 class="dining-card__name">Nangman Byeolsik</h3>
+              <p class="dining-card__desc">Romantic dining experience with curated menus for two.</p>
+            </div>
+          </div>
+          <div class="dining-card">
+            <div class="dining-card__image photo-placeholder photo-placeholder--dining-3"><span>[PHOTO — BBQ]</span></div>
+            <div class="dining-card__body">
+              <h3 class="dining-card__name">BBQ</h3>
+              <p class="dining-card__desc">Beachside BBQ with ocean breezes and fresh grilled specialties.</p>
+            </div>
+          </div>
+          <div class="dining-card">
+            <div class="dining-card__image photo-placeholder photo-placeholder--dining-4"><span>[PHOTO — BHC CHICKEN]</span></div>
+            <div class="dining-card__body">
+              <h3 class="dining-card__name">BHC Chicken</h3>
+              <p class="dining-card__desc">Korea's beloved fried chicken brand, right at the resort.</p>
+            </div>
+          </div>
+          <div class="dining-card">
+            <div class="dining-card__image photo-placeholder photo-placeholder--dining-5"><span>[PHOTO — THE BEACH]</span></div>
+            <div class="dining-card__body">
+              <h3 class="dining-card__name">laterrace The Beach</h3>
+              <p class="dining-card__desc">Casual beachfront bar and café with panoramic sea views.</p>
+            </div>
+          </div>
+          <div class="dining-card">
+            <div class="dining-card__image photo-placeholder photo-placeholder--dining-6"><span>[PHOTO — CU STORE]</span></div>
+            <div class="dining-card__body">
+              <h3 class="dining-card__name">CU Convenience Store</h3>
+              <p class="dining-card__desc">24/7 convenience for snacks, drinks, and daily essentials.</p>
+            </div>
+          </div>
+          <div class="dining-card">
+            <div class="dining-card__image photo-placeholder photo-placeholder--dining-7"><span>[PHOTO — HOT DOG]</span></div>
+            <div class="dining-card__body">
+              <h3 class="dining-card__name">Hot Dog</h3>
+              <p class="dining-card__desc">Quick bites and snacks perfect for a day at the water park.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dining__more reveal delay-2">
+        <a href="#" class="offers__more-link">VIEW ALL DINING &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 11: FACILITIES OVERVIEW
+  ============================================================ -->
+  <section class="facilities" id="facilities">
+    <div class="facilities__inner container">
+      <div class="facilities__header reveal">
+        <p class="section-label">Facilities</p>
+        <h2 class="facilities__heading">Everything You Need, All in One Place</h2>
+      </div>
+
+      <div class="facilities__grid reveal delay-1">
+        <div class="facility-item">
+          <div class="facility-item__image photo-placeholder photo-placeholder--facility-1"><span>[PHOTO — SWIMMING POOL]</span></div>
+          <div class="facility-item__icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3"><ellipse cx="20" cy="28" rx="14" ry="5"/><path d="M6 28 Q10 18 20 22 Q30 26 34 16"/></svg></div>
+          <span class="facility-item__name">Swimming Pool</span>
+        </div>
+        <div class="facility-item">
+          <div class="facility-item__image photo-placeholder photo-placeholder--facility-2"><span>[PHOTO — KIDS WATER PARK]</span></div>
+          <div class="facility-item__icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="14" cy="14" r="3"/><path d="M8 32 Q12 20 20 24 Q28 28 32 16"/></svg></div>
+          <span class="facility-item__name">Kids Water Park</span>
+        </div>
+        <div class="facility-item">
+          <div class="facility-item__image photo-placeholder photo-placeholder--facility-3"><span>[PHOTO — JACUZZI SPA]</span></div>
+          <div class="facility-item__icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="8" y="20" width="24" height="12" rx="3"/><path d="M12 20 Q14 10 20 12 Q26 14 28 20"/></svg></div>
+          <span class="facility-item__name">Jacuzzi Spa</span>
+        </div>
+        <div class="facility-item">
+          <div class="facility-item__image photo-placeholder photo-placeholder--facility-4"><span>[PHOTO — LOCKER &amp; SHOWER]</span></div>
+          <div class="facility-item__icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="8" y="8" width="10" height="24" rx="1"/><rect x="22" y="8" width="10" height="24" rx="1"/><circle cx="13" cy="20" r="1.5"/><circle cx="27" cy="20" r="1.5"/></svg></div>
+          <span class="facility-item__name">Locker &amp; Shower</span>
+        </div>
+        <div class="facility-item">
+          <div class="facility-item__image photo-placeholder photo-placeholder--facility-5"><span>[PHOTO — BBQ ZONE]</span></div>
+          <div class="facility-item__icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="6" y="26" width="28" height="6" rx="1"/><path d="M10 26 L12 16 L28 16 L30 26"/><path d="M16 16 L16 10 M24 16 L24 10"/><path d="M13 10 L27 10"/></svg></div>
+          <span class="facility-item__name">BBQ</span>
+        </div>
+        <div class="facility-item">
+          <div class="facility-item__image photo-placeholder photo-placeholder--facility-6"><span>[PHOTO — RESORT STORE]</span></div>
+          <div class="facility-item__icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M8 16 L10 8 L30 8 L32 16 Z"/><rect x="8" y="16" width="24" height="16" rx="1"/><rect x="16" y="22" width="8" height="10" rx="1"/></svg></div>
+          <span class="facility-item__name">Store</span>
+        </div>
+      </div>
+
+      <div class="facilities__more reveal delay-2">
+        <a href="#" class="offers__more-link">VIEW ALL FACILITIES &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 12: SOCIAL PROOF / ATMOSPHERE GALLERY
+  ============================================================ -->
+  <section class="gallery" id="gallery">
+    <div class="gallery__inner container">
+      <div class="gallery__header reveal">
+        <p class="gallery__tagline">Feel the Yeosu Spirit — #laterrace #calacatta #summerland</p>
+        <a href="#" class="gallery__instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+          Follow on Instagram
+        </a>
+      </div>
+
+      <div class="gallery__grid reveal delay-1">
+        <div class="gallery__item gallery__item--large photo-placeholder photo-placeholder--gallery-1"><span>[PHOTO — RESORT AERIAL VIEW]</span></div>
+        <div class="gallery__item photo-placeholder photo-placeholder--gallery-2"><span>[PHOTO — INFINITY POOL]</span></div>
+        <div class="gallery__item photo-placeholder photo-placeholder--gallery-3"><span>[PHOTO — SUMMERLAND SLIDE]</span></div>
+        <div class="gallery__item photo-placeholder photo-placeholder--gallery-4"><span>[PHOTO — OCEAN SUNSET]</span></div>
+        <div class="gallery__item gallery__item--wide photo-placeholder photo-placeholder--gallery-5"><span>[PHOTO — FAMILY FUN]</span></div>
+        <div class="gallery__item photo-placeholder photo-placeholder--gallery-6"><span>[PHOTO — DINING EXPERIENCE]</span></div>
+        <div class="gallery__item photo-placeholder photo-placeholder--gallery-7"><span>[PHOTO — SUITE INTERIOR]</span></div>
+        <div class="gallery__item photo-placeholder photo-placeholder--gallery-8"><span>[PHOTO — YEOSU COASTLINE]</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 13: FOOTER
+  ============================================================ -->
+  <footer class="footer" id="contact">
+    <div class="footer__inner container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="#" class="footer__logo">
+            <span class="footer__logo-main">laterrace</span>
+            <span class="footer__logo-sub">Resort Group</span>
+          </a>
+          <p class="footer__tagline">Yeosu's Premier Oceanfront Resort Collection</p>
+          <div class="footer__social">
+            <a href="#" class="footer__social-link" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="#" class="footer__social-link" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+            </a>
+            <a href="#" class="footer__social-link" aria-label="Naver Blog">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M16.273 12.845L7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer__links">
+          <div class="footer__col">
+            <h4 class="footer__col-title">CALACATTA</h4>
+            <ul class="footer__col-list">
+              <li><a href="#">About Calacatta</a></li>
+              <li><a href="#">The Suite</a></li>
+              <li><a href="#">Young Suite</a></li>
+              <li><a href="#">Young Suite Terrace</a></li>
+              <li><a href="#">Premier Suite</a></li>
+              <li><a href="#">Infinity Pool</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4 class="footer__col-title">LATERRACE</h4>
+            <ul class="footer__col-list">
+              <li><a href="#">About laterrace</a></li>
+              <li><a href="#">Rooms &amp; Suites</a></li>
+              <li><a href="#">Family Pool</a></li>
+              <li><a href="#">Kids Programs</a></li>
+              <li><a href="#">Indoor Heated Pool</a></li>
+              <li><a href="#">Spa &amp; Wellness</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4 class="footer__col-title">SUMMERLAND</h4>
+            <ul class="footer__col-list">
+              <li><a href="#">Summerland 2026</a></li>
+              <li><a href="#">Water Slides</a></li>
+              <li><a href="#">Kids Water Zone</a></li>
+              <li><a href="#">Jacuzzi Spa</a></li>
+              <li><a href="#">BBQ &amp; Beach Bar</a></li>
+              <li><a href="#">Season Pass</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4 class="footer__col-title">INFO</h4>
+            <ul class="footer__col-list">
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Dining</a></li>
+              <li><a href="#">Facilities</a></li>
+              <li><a href="#">Offers &amp; Packages</a></li>
+              <li><a href="#">Membership</a></li>
+              <li><a href="#">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__address">
+        <p>
+          <strong>laterrace Resort Group</strong><br />
+          전라남도 여수시 돌산읍 진모길 (Jinmo-gil, Dolsan-eup, Yeosu-si, Jeollanam-do, South Korea)<br />
+          Tel: +82-61-000-0000 &nbsp;|&nbsp; Email: info@laterrace-resort.com
+        </p>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copyright">&copy; 2026 laterrace Resort Group. All rights reserved.</p>
+        <div class="footer__legal">
+          <a href="#">Privacy Policy</a>
+          <span>|</span>
+          <a href="#">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
