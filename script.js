@@ -28,8 +28,9 @@ function initNavbar() {
   if (!navbar) return;
 
   function updateNavbar() {
-    // Become solid after scrolling past the fullscreen hero (100vh)
-    const threshold = window.innerHeight * 0.8;
+    // Become solid after scrolling past the hero video section
+    const heroEl = document.getElementById('hero');
+    const threshold = heroEl ? heroEl.offsetHeight * 0.85 : window.innerHeight * 0.85;
     if (window.scrollY > threshold) {
       navbar.classList.add('scrolled');
     } else {
@@ -96,7 +97,7 @@ function initMobileMenu() {
 function initHeroSlideshow() {
   const heroVideo = document.getElementById('heroVideo');
   const heroSlideshow = document.getElementById('heroSlideshow');
-  const slides = document.querySelectorAll('.hero-full__slide');
+  const slides = document.querySelectorAll('.hero__slide');
 
   // Try to autoplay video; if it fails, show slideshow fallback
   if (heroVideo) {

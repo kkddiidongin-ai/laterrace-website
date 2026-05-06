@@ -259,10 +259,10 @@ input, select { font-family: inherit; }
   left: 0;
   right: 0;
   z-index: 1000;
-  background: var(--color-sand);
+  background: transparent;
   transition: background var(--transition), box-shadow var(--transition), padding var(--transition);
   padding: 0;
-  border-bottom: 1px solid rgba(42,32,24,0.08);
+  border-bottom: none;
 }
 
 .navbar.scrolled {
@@ -668,7 +668,7 @@ input, select { font-family: inherit; }
 
 .hero {
   background: var(--color-sand);
-  padding-top: 80px; /* desktop: below navbar (already scrolled past fullscreen) */
+  padding-top: 0; /* no top padding — video fills full screen */
   overflow: visible;
 }
 
@@ -692,15 +692,15 @@ input, select { font-family: inherit; }
   width: 100%;
   max-width: 100%;
   margin: 0 auto;
-  margin-top: 9vw;
+  margin-top: 0;
   overflow: visible;
 }
 
-/* ---- Video wrap ---- */
+/* ---- Video wrap: full viewport height ---- */
 .hero__video-wrap {
   position: relative;
   width: 100%;
-  height: calc(100vh - 9vw);
+  height: 100vh;
   aspect-ratio: unset;
   overflow: hidden;
   border-radius: 0;
@@ -939,13 +939,13 @@ input, select { font-family: inherit; }
   .hero__stage {
     width: 100%;
     max-width: 100%;
-    margin-top: 14vw; /* space for wordmark top half */
+    margin-top: 0;
     overflow: visible;
   }
 
   /* Video: full width, full viewport height on mobile */
   .hero__video-wrap {
-    height: calc(100vh - 14vw);
+    height: 100vh;
     aspect-ratio: unset;
     border-radius: 0;
   }
