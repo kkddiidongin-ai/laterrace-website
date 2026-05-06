@@ -811,10 +811,10 @@ input, select { font-family: inherit; }
 /* ---- Wordmark overlay ---- */
 .hero__wordmark-wrap {
   position: absolute;
-  top: 0;
+  top: 80px; /* navbar height — wordmark starts just below navbar */
   left: 0;
   right: 0;
-  transform: translateY(-50%);
+  transform: none;
   z-index: 10;
   text-align: center;
   pointer-events: none;
@@ -950,9 +950,10 @@ input, select { font-family: inherit; }
     border-radius: 0;
   }
 
-  /* Wordmark: fills full screen width */
+  /* Wordmark: fills full screen width, starts just below mobile bar */
   .hero__wordmark-wrap {
-    transform: translateY(-50%);
+    transform: none;
+    top: 56px; /* mobile bar height */
     left: -2px;
     right: -2px;
   }
