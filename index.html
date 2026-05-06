@@ -135,13 +135,16 @@
 
       <!-- Video layer (behind text) -->
       <div class="hero__video-wrap">
-        <!-- Photo slideshow (always visible as fallback) -->
-        <div class="hero__slideshow" id="heroSlideshow">
+        <!-- Autoplay video (muted for browser autoplay policy) -->
+        <video class="hero__video" id="heroVideo" autoplay muted loop playsinline preload="auto" poster="hero_bg3.jpg">
+          <source src="hero_video.mp4" type="video/mp4" />
+        </video>
+        <!-- Photo slideshow fallback (shown if video fails) -->
+        <div class="hero__slideshow" id="heroSlideshow" style="display:none">
           <div class="hero__slide active" style="background-image:url('hero_bg3.jpg')"></div>
           <div class="hero__slide" style="background-image:url('hero_bg1.jpg')"></div>
           <div class="hero__slide" style="background-image:url('hero_bg2.jpg')"></div>
         </div>
-        <!-- YouTube video will be added when hosted on actual domain -->
 
         <!-- Welcome text inside video (Sun Siyam style) -->
         <div class="hero__video-text">

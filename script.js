@@ -94,18 +94,36 @@ function initMobileMenu() {
    2-B. HERO SLIDESHOW — auto-advance every 5s
 ============================================================ */
 function initHeroSlideshow() {
+  const heroVideo = document.getElementById('heroVideo');
+  const heroSlideshow = document.getElementById('heroSlideshow');
   const slides = document.querySelectorAll('.hero__slide');
-  if (!slides.length) return;
 
-  let current = 0;
-
-  function nextSlide() {
-    slides[current].classList.remove('active');
-    current = (current + 1) % slides.length;
-    slides[current].classList.add('active');
+  // Try to autoplay video; if it fails, show slideshow fallback
+  if (heroVideo) {
+    const playPromise = heroVideo.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // Video autoplay blocked — show slideshow instead
+        heroVideo.style.display = 'none';
+        if (heroSlideshow) heroSlideshow.style.display = 'block';
+        startSlideshow();
+      });
+    }
+  } else if (heroSlideshow) {
+    heroSlideshow.style.display = 'block';
+    startSlideshow();
   }
 
-  setInterval(nextSlide, 5000);
+  function startSlideshow() {
+    if (!slides.length) return;
+    let current = 0;
+    function nextSlide() {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }
+    setInterval(nextSlide, 5000);
+  }
 }
 
 /* ============================================================
@@ -115,7 +133,7 @@ function initHeroVolume() {
   const volumeBtn  = document.getElementById('volumeBtn');
   const volIconOff = document.getElementById('volIconOff');
   const volIconOn  = document.getElementById('volIconOn');
-  const heroYT     = document.getElementById('heroYT');
+  const heroVideo  = document.getElementById('heroVideo');
 
   if (!volumeBtn) return;
 
@@ -128,14 +146,12 @@ function initHeroVolume() {
     if (volIconOff) volIconOff.classList.toggle('hidden', !isMuted);
     if (volIconOn)  volIconOn.classList.toggle('hidden', isMuted);
 
-    // Try to control YouTube iframe via postMessage
-    if (heroYT) {
-      try {
-        heroYT.contentWindow.postMessage(
-          JSON.stringify({ event: 'command', func: isMuted ? 'mute' : 'unMute', args: [] }),
-          '*'
-        );
-      } catch (e) { /* cross-origin — silent fail */ }
+    // Control HTML5 video element
+    if (heroVideo) {
+      heroVideo.muted = isMuted;
+      if (!isMuted) {
+        heroVideo.play().catch(() => { heroVideo.muted = true; isMuted = true; });
+      }
     }
   });
 }
