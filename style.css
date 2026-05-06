@@ -594,8 +594,8 @@ input, select { font-family: inherit; }
 /* ---- Stage: video + overlapping wordmark ---- */
 .hero__stage {
   position: relative;
-  width: 88%;
-  max-width: 1300px;
+  width: 100%;
+  max-width: 100%;
   margin: 0 auto;
   margin-top: 9vw;
   overflow: visible;
@@ -605,9 +605,10 @@ input, select { font-family: inherit; }
 .hero__video-wrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  height: calc(100vh - 9vw);
+  aspect-ratio: unset;
   overflow: hidden;
-  border-radius: 2px;
+  border-radius: 0;
   z-index: 1;
 }
 
@@ -836,9 +837,10 @@ input, select { font-family: inherit; }
     overflow: visible;
   }
 
-  /* Video: full width, taller aspect ratio on mobile */
+  /* Video: full width, full viewport height on mobile */
   .hero__video-wrap {
-    aspect-ratio: 9 / 14; /* portrait-ish, like Sun Siyam mobile */
+    height: calc(100vh - 14vw);
+    aspect-ratio: unset;
     border-radius: 0;
   }
 
