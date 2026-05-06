@@ -107,67 +107,57 @@
   </div><!-- /mobileMenu -->
 
   <!-- ============================================================
-       SECTION 2: HERO — Sun Siyam style
-       Mobile: EN + hamburger only in nav
-       Giant wordmark overlaps video
-       Video contains welcome text + heading
+       SECTION 2: HERO
+       Part A: Fullscreen video (100vw x 100vh, no margin)
+       Part B: Scroll → beige + wordmark overlapping video
   ============================================================ -->
-  <section class="hero" id="hero">
 
-    <!-- Mobile-only top bar: EN + hamburger -->
-    <div class="hero__mobile-bar">
-      <div class="hero__mobile-lang">
-        <button class="navbar__lang-btn active" data-lang="en">EN</button>
-        <svg class="hero__mobile-lang-arrow" viewBox="0 0 10 6" fill="none">
-          <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-      </div>
-      <button class="hero__mobile-hamburger" id="heroHamburgerBtn" aria-label="Open menu">
-        <span></span><span></span><span></span>
-      </button>
+  <!-- PART A: Fullscreen video — fills entire first screen -->
+  <section class="hero-full" id="hero">
+    <video class="hero-full__video" id="heroVideo" autoplay muted loop playsinline preload="auto" poster="hero_bg3.jpg">
+      <source src="hero_video.mp4" type="video/mp4" />
+    </video>
+    <!-- Photo slideshow fallback -->
+    <div class="hero-full__slideshow" id="heroSlideshow" style="display:none">
+      <div class="hero-full__slide active" style="background-image:url('hero_bg3.jpg')"></div>
+      <div class="hero-full__slide" style="background-image:url('hero_bg1.jpg')"></div>
+      <div class="hero-full__slide" style="background-image:url('hero_bg2.jpg')"></div>
     </div>
+    <!-- Volume button -->
+    <button class="hero__volume" id="volumeBtn" aria-label="Toggle sound">
+      <svg class="hero__volume-icon" id="volIconOff" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+        <line x1="23" y1="9" x2="17" y2="15"/>
+        <line x1="17" y1="9" x2="23" y2="15"/>
+      </svg>
+      <svg class="hero__volume-icon hidden" id="volIconOn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+        <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+      </svg>
+    </button>
+    <!-- Mobile hamburger (shown on mobile only) -->
+    <button class="hero-full__hamburger" id="heroHamburgerBtn" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </section>
 
-    <!-- Brand label (small, above wordmark) -->
+  <!-- PART B: Beige + wordmark overlapping second video (scroll reveal) -->
+  <section class="hero" id="hero-overlap">
+    <!-- Brand label -->
     <p class="hero__brand-label">laterrace</p>
-
-    <!-- Hero stage: video + wordmark overlaid -->
+    <!-- Stage: second video + wordmark overlaid -->
     <div class="hero__stage">
-
-      <!-- Video layer (behind text) -->
       <div class="hero__video-wrap">
-        <!-- Autoplay video (muted for browser autoplay policy) -->
-        <video class="hero__video" id="heroVideo" autoplay muted loop playsinline preload="auto" poster="hero_bg3.jpg">
+        <video class="hero__video" autoplay muted loop playsinline preload="auto" poster="hero_bg3.jpg">
           <source src="hero_video.mp4" type="video/mp4" />
         </video>
-        <!-- Photo slideshow fallback (shown if video fails) -->
-        <div class="hero__slideshow" id="heroSlideshow" style="display:none">
-          <div class="hero__slide active" style="background-image:url('hero_bg3.jpg')"></div>
-          <div class="hero__slide" style="background-image:url('hero_bg1.jpg')"></div>
-          <div class="hero__slide" style="background-image:url('hero_bg2.jpg')"></div>
-        </div>
-
-        <!-- Volume button (bottom-left, inside video) -->
-        <button class="hero__volume" id="volumeBtn" aria-label="Toggle sound">
-          <svg class="hero__volume-icon" id="volIconOff" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M11 5L6 9H2v6h4l5 4V5z"/>
-            <line x1="23" y1="9" x2="17" y2="15"/>
-            <line x1="17" y1="9" x2="23" y2="15"/>
-          </svg>
-          <svg class="hero__volume-icon hidden" id="volIconOn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M11 5L6 9H2v6h4l5 4V5z"/>
-            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
-            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
-          </svg>
-        </button>
       </div>
-
-      <!-- Wordmark layer (absolute, on top of video) -->
+      <!-- Wordmark layer -->
       <div class="hero__wordmark-wrap" aria-hidden="true">
         <span class="hero__wordmark">laterrace</span>
       </div>
-
     </div>
-
   </section>
 
   <!-- ============================================================

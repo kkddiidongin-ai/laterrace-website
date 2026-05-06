@@ -560,12 +560,107 @@ input, select { font-family: inherit; }
 .menu-overlay.visible { opacity: 1; pointer-events: all; }
 
 /* ============================================================
-   SECTION 2: HERO — Sun Siyam style
-   DESKTOP: navbar visible, hero below navbar
-   MOBILE:  navbar hidden, hero__mobile-bar shows EN + hamburger
-            Giant wordmark overlaps video
+   SECTION 2: HERO
+   Part A: hero-full — 100vw x 100vh fullscreen video (no margin)
+   Part B: hero — beige + wordmark overlapping video on scroll
 ============================================================ */
 
+/* ---- Part A: Fullscreen video section ---- */
+.hero-full {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #000;
+}
+
+.hero-full__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.hero-full__slideshow {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.hero-full__slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.hero-full__slide.active {
+  opacity: 1;
+}
+
+/* Volume button inside fullscreen video */
+.hero-full .hero__volume {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  z-index: 10;
+}
+
+/* Mobile hamburger inside fullscreen (hidden on desktop) */
+.hero-full__hamburger {
+  display: none;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+  flex-direction: column;
+  gap: 5px;
+  padding: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.hero-full__hamburger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--color-white);
+}
+
+/* ---- Navbar: transparent on fullscreen video, solid after scroll ---- */
+.navbar {
+  background: transparent;
+  border-bottom: none;
+}
+.navbar.scrolled {
+  background: var(--color-sand);
+  border-bottom: 1px solid rgba(42,32,24,0.08);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.08);
+}
+/* Navbar text white on fullscreen, dark after scroll */
+.navbar:not(.scrolled) .navbar__logo-main,
+.navbar:not(.scrolled) .navbar__link,
+.navbar:not(.scrolled) .navbar__lang-btn,
+.navbar:not(.scrolled) .navbar__lang-sep {
+  color: var(--color-white);
+}
+.navbar:not(.scrolled) .navbar__link::after {
+  background: var(--color-white);
+}
+.navbar:not(.scrolled) .navbar__hamburger span {
+  background: var(--color-white);
+}
+.navbar:not(.scrolled) .btn--book {
+  background: rgba(255,255,255,0.15);
+  color: var(--color-white);
+  border-color: rgba(255,255,255,0.5);
+}
+
+/* ---- Part B: Beige + wordmark overlap section ---- */
 /* ---- Mobile-only top bar (EN + hamburger) ---- */
 .hero__mobile-bar {
   display: none; /* hidden on desktop */
@@ -573,7 +668,7 @@ input, select { font-family: inherit; }
 
 .hero {
   background: var(--color-sand);
-  padding-top: 80px; /* desktop: below navbar */
+  padding-top: 80px; /* desktop: below navbar (already scrolled past fullscreen) */
   overflow: visible;
 }
 
@@ -766,6 +861,17 @@ input, select { font-family: inherit; }
   /* Hide desktop navbar on mobile */
   .navbar {
     display: none;
+  }
+
+  /* Show mobile hamburger inside fullscreen hero */
+  .hero-full__hamburger {
+    display: flex;
+  }
+
+  /* Fullscreen hero: full viewport on mobile too */
+  .hero-full {
+    width: 100vw;
+    height: 100vh;
   }
 
   /* Show mobile bar */

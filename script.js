@@ -27,10 +27,10 @@ function initNavbar() {
   const navbar = document.getElementById('navbar');
   if (!navbar) return;
 
-  const SCROLL_THRESHOLD = 80;
-
   function updateNavbar() {
-    if (window.scrollY > SCROLL_THRESHOLD) {
+    // Become solid after scrolling past the fullscreen hero (100vh)
+    const threshold = window.innerHeight * 0.8;
+    if (window.scrollY > threshold) {
       navbar.classList.add('scrolled');
     } else {
       navbar.classList.remove('scrolled');
@@ -96,7 +96,7 @@ function initMobileMenu() {
 function initHeroSlideshow() {
   const heroVideo = document.getElementById('heroVideo');
   const heroSlideshow = document.getElementById('heroSlideshow');
-  const slides = document.querySelectorAll('.hero__slide');
+  const slides = document.querySelectorAll('.hero-full__slide');
 
   // Try to autoplay video; if it fails, show slideshow fallback
   if (heroVideo) {
