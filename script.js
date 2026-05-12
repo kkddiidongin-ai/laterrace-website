@@ -99,7 +99,8 @@ function initHeroSlideshow() {
   const heroVideo    = document.getElementById('heroVideo');
   const heroSlideshow = document.getElementById('heroSlideshow');
   const slides        = document.querySelectorAll('.hero__slide');
-  const HLS_SRC       = 'https://hls.midibus.kinxcdn.com/hls/ch_18f57400/19daf17f0e5adc25/v/playlist.m3u8';
+  // 깔라까따 full 영상 (3840×2160 가로) — 라테라스 공식 홈페이지 메인 영상
+  const HLS_SRC       = 'https://hls.midibus.kinxcdn.com/hls/ch_18f57400/197c018addb0ff99/v/playlist.m3u8';
 
   function startSlideshow() {
     if (!slides.length) return;
@@ -123,33 +124,51 @@ function initHeroSlideshow() {
 
   // HLS.js path (Chrome, Firefox, etc.)
   if (typeof Hls !== 'undefined' && Hls.isSupported()) {
-    const hls = new Hls({ autoStartLoad: true, startLevel: -1 });
+    const hls = new Hls({
+      autoStartLoad: true,
+      startLevel: 1,          // 1080P 레벨 우선
+      maxBufferLength: 30,
+      enableWorker: true
+    });
     hls.loadSource(HLS_SRC);
     hls.attachMedia(heroVideo);
+
     hls.on(Hls.Events.MANIFEST_PARSED, () => {
       heroVideo.muted = true;
-      heroVideo.play().then(() => {
-        // Video playing — hide slideshow
-        if (heroSlideshow) heroSlideshow.style.display = 'none';
-      }).catch(() => {
-        // Autoplay blocked — keep slideshow
-      });
-    });
-    hls.on(Hls.Events.ERROR, (event, data) => {
-      if (data.fatal) {
-        // Fatal error — keep slideshow visible
-        if (heroSlideshow) heroSlideshow.style.display = 'block';
+      const playPromise = heroVideo.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // 자동재생 차단 시 슬라이드쇼 유지
+        });
       }
     });
-    // Store hls instance for volume toggle
+
+    // 첫 프레임이 렌더링되면 슬라이드쇼 숨김
+    heroVideo.addEventListener('playing', () => {
+      if (heroSlideshow) heroSlideshow.style.display = 'none';
+    }, { once: true });
+
+    hls.on(Hls.Events.ERROR, (event, data) => {
+      if (data.fatal) {
+        if (heroSlideshow) heroSlideshow.style.display = 'block';
+        if (data.type === Hls.ErrorTypes.NETWORK_ERROR) {
+          hls.startLoad();
+        } else if (data.type === Hls.ErrorTypes.MEDIA_ERROR) {
+          hls.recoverMediaError();
+        }
+      }
+    });
+
     heroVideo._hls = hls;
+
   } else if (heroVideo.canPlayType('application/vnd.apple.mpegurl')) {
     // Safari native HLS
     heroVideo.src = HLS_SRC;
     heroVideo.muted = true;
-    heroVideo.play().then(() => {
+    heroVideo.addEventListener('playing', () => {
       if (heroSlideshow) heroSlideshow.style.display = 'none';
-    }).catch(() => {});
+    }, { once: true });
+    heroVideo.play().catch(() => {});
   } else {
     // No HLS support — keep slideshow
   }

@@ -788,9 +788,13 @@ input, select { font-family: inherit; }
 
 /* video sits on top of slideshow */
 .hero__video-wrap video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   z-index: 2;
   background: transparent;
-  object-fit: cover;
 }
 
 .hero__video-placeholder {
