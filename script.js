@@ -100,18 +100,9 @@ function initHeroSlideshow() {
   const heroSlideshow = document.getElementById('heroSlideshow');
   const slides = document.querySelectorAll('.hero__slide');
 
-  // Try to autoplay video; if it fails, show slideshow fallback
-  if (heroVideo) {
-    const playPromise = heroVideo.play();
-    if (playPromise !== undefined) {
-      playPromise.catch(() => {
-        // Video autoplay blocked — show slideshow instead
-        heroVideo.style.display = 'none';
-        if (heroSlideshow) heroSlideshow.style.display = 'block';
-        startSlideshow();
-      });
-    }
-  } else if (heroSlideshow) {
+  // heroVideo is now an iframe (mbus.tv embed) — no play() needed
+  // Slideshow runs as background fallback; iframe is on top via z-index
+  if (heroSlideshow) {
     heroSlideshow.style.display = 'block';
     startSlideshow();
   }
@@ -148,11 +139,13 @@ function initHeroVolume() {
     if (volIconOff) volIconOff.classList.toggle('hidden', !isMuted);
     if (volIconOn)  volIconOn.classList.toggle('hidden', isMuted);
 
-    // Control HTML5 video element
-    if (heroVideo) {
-      heroVideo.muted = isMuted;
-      if (!isMuted) {
-        heroVideo.play().catch(() => { heroVideo.muted = true; isMuted = true; });
+    // heroVideo is now an iframe (mbus.tv) — toggle mute via src param
+    if (heroVideo && heroVideo.tagName === 'IFRAME') {
+      const src = heroVideo.src;
+      if (isMuted) {
+        heroVideo.src = src.replace('&unmute', '').replace('?unmute', '?').replace(/&?mute=0/, '') + (src.includes('mute') ? '' : '&mute');
+      } else {
+        heroVideo.src = src.replace('&mute', '').replace('?mute', '?') + '&unmute';
       }
     }
   });
