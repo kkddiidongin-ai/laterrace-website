@@ -9,6 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <!-- HLS.js for native HLS streaming support -->
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.13/dist/hls.min.js"></script>
 </head>
 <body>
 
@@ -130,7 +132,7 @@
 
       <!-- Video layer (behind text) -->
       <div class="hero__video-wrap">
-        <iframe class="hero__video" id="heroVideo" src="https://play.mbus.tv/v1/hls/19daf17f0e5adc25?autoplay&repeat&mute" frameborder="0" allow="autoplay; fullscreen" allowfullscreen style="pointer-events:none;"></iframe>
+        <video class="hero__video" id="heroVideo" preload="none" webkit-playsinline="true" playsinline="true" x-webkit-airplay="allow" muted autoplay loop></video>
         <!-- Photo slideshow fallback -->
         <div class="hero__slideshow" id="heroSlideshow" style="display:none">
           <div class="hero__slide active" style="background-image:url('http://gonylab11.speedgabia.com/calacatta/main/1.jpg')"></div>

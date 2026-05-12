@@ -96,16 +96,10 @@ function initMobileMenu() {
    2-B. HERO SLIDESHOW — auto-advance every 5s
 ============================================================ */
 function initHeroSlideshow() {
-  const heroVideo = document.getElementById('heroVideo');
+  const heroVideo    = document.getElementById('heroVideo');
   const heroSlideshow = document.getElementById('heroSlideshow');
-  const slides = document.querySelectorAll('.hero__slide');
-
-  // heroVideo is now an iframe (mbus.tv embed) — no play() needed
-  // Slideshow runs as background fallback; iframe is on top via z-index
-  if (heroSlideshow) {
-    heroSlideshow.style.display = 'block';
-    startSlideshow();
-  }
+  const slides        = document.querySelectorAll('.hero__slide');
+  const HLS_SRC       = 'https://hls.midibus.kinxcdn.com/hls/ch_18f57400/19daf17f0e5adc25/v/playlist.m3u8';
 
   function startSlideshow() {
     if (!slides.length) return;
@@ -116,6 +110,48 @@ function initHeroSlideshow() {
       slides[current].classList.add('active');
     }
     setInterval(nextSlide, 5000);
+  }
+
+  if (!heroVideo) {
+    if (heroSlideshow) { heroSlideshow.style.display = 'block'; startSlideshow(); }
+    return;
+  }
+
+  // Show slideshow as background while video loads
+  if (heroSlideshow) heroSlideshow.style.display = 'block';
+  startSlideshow();
+
+  // HLS.js path (Chrome, Firefox, etc.)
+  if (typeof Hls !== 'undefined' && Hls.isSupported()) {
+    const hls = new Hls({ autoStartLoad: true, startLevel: -1 });
+    hls.loadSource(HLS_SRC);
+    hls.attachMedia(heroVideo);
+    hls.on(Hls.Events.MANIFEST_PARSED, () => {
+      heroVideo.muted = true;
+      heroVideo.play().then(() => {
+        // Video playing — hide slideshow
+        if (heroSlideshow) heroSlideshow.style.display = 'none';
+      }).catch(() => {
+        // Autoplay blocked — keep slideshow
+      });
+    });
+    hls.on(Hls.Events.ERROR, (event, data) => {
+      if (data.fatal) {
+        // Fatal error — keep slideshow visible
+        if (heroSlideshow) heroSlideshow.style.display = 'block';
+      }
+    });
+    // Store hls instance for volume toggle
+    heroVideo._hls = hls;
+  } else if (heroVideo.canPlayType('application/vnd.apple.mpegurl')) {
+    // Safari native HLS
+    heroVideo.src = HLS_SRC;
+    heroVideo.muted = true;
+    heroVideo.play().then(() => {
+      if (heroSlideshow) heroSlideshow.style.display = 'none';
+    }).catch(() => {});
+  } else {
+    // No HLS support — keep slideshow
   }
 }
 
@@ -139,13 +175,11 @@ function initHeroVolume() {
     if (volIconOff) volIconOff.classList.toggle('hidden', !isMuted);
     if (volIconOn)  volIconOn.classList.toggle('hidden', isMuted);
 
-    // heroVideo is now an iframe (mbus.tv) — toggle mute via src param
-    if (heroVideo && heroVideo.tagName === 'IFRAME') {
-      const src = heroVideo.src;
-      if (isMuted) {
-        heroVideo.src = src.replace('&unmute', '').replace('?unmute', '?').replace(/&?mute=0/, '') + (src.includes('mute') ? '' : '&mute');
-      } else {
-        heroVideo.src = src.replace('&mute', '').replace('?mute', '?') + '&unmute';
+    // Control HTML5 video element
+    if (heroVideo && heroVideo.tagName === 'VIDEO') {
+      heroVideo.muted = isMuted;
+      if (!isMuted) {
+        heroVideo.play().catch(() => { heroVideo.muted = true; isMuted = true; });
       }
     }
   });
