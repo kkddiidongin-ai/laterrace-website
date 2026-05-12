@@ -17,38 +17,32 @@
   ============================================================ -->
   <header class="navbar" id="navbar">
     <div class="navbar__inner">
-      <!-- Logo (desktop) -->
+
+      <!-- Left: OFFERS + BOOK (Sun Siyam style underline buttons) -->
+      <div class="navbar__left">
+        <a href="#offers" class="navbar__pill">OFFERS</a>
+        <a href="#booking" class="navbar__pill">BOOK</a>
+      </div>
+
+      <!-- Center: brand name -->
       <a href="#" class="navbar__logo">
-        <span class="navbar__logo-main">laterrace</span>
-        <span class="navbar__logo-sub">Resort Group</span>
+        <span class="navbar__logo-sub">laterrace</span>
       </a>
 
-      <!-- Desktop Nav Links -->
-      <nav class="navbar__nav" id="navMenu">
-        <a href="#calacatta" class="navbar__link">CALACATTA</a>
-        <a href="#laterrace" class="navbar__link">LATERRACE</a>
-        <a href="#summerland" class="navbar__link">SUMMERLAND</a>
-        <a href="#rooms" class="navbar__link">ROOMS</a>
-        <a href="#dining" class="navbar__link">DINING</a>
-        <a href="#facilities" class="navbar__link">FACILITIES</a>
-        <a href="#offers" class="navbar__link">OFFERS</a>
-        <a href="#contact" class="navbar__link">CONTACT</a>
-      </nav>
-
-      <!-- Right Controls -->
-      <div class="navbar__controls">
+      <!-- Right: EN + hamburger -->
+      <div class="navbar__right">
         <div class="navbar__lang">
           <button class="navbar__lang-btn active" data-lang="en">EN</button>
-          <span class="navbar__lang-sep">|</span>
-          <button class="navbar__lang-btn" data-lang="ko">KO</button>
+          <svg class="navbar__lang-arrow" viewBox="0 0 10 6" fill="none">
+            <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
         </div>
-        <a href="#booking" class="btn btn--book">BOOK NOW</a>
         <button class="navbar__hamburger" id="hamburgerBtn" aria-label="Open menu">
           <span></span><span></span><span></span>
         </button>
       </div>
-    </div>
 
+    </div>
   </header>
 
   <!-- Mobile Menu Overlay (Sun Siyam style) — placed outside header to avoid display:none inheritance -->
@@ -129,7 +123,7 @@
     </div>
 
     <!-- Brand label (small, above wordmark) -->
-    <p class="hero__brand-label">laterrace</p>
+    <p class="hero__brand-label">LATERRACE</p>
 
     <!-- Hero stage: video + wordmark overlaid -->
     <div class="hero__stage">

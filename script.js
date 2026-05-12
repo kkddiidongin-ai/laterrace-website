@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initParallax();
   initLangSwitcher();
   initBookingNights();
+  initWordmarkFadeIn();
 });
 
 /* ============================================================
@@ -546,3 +547,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }, { passive: true });
 });
+
+/* ============================================================
+   16. WORDMARK FADE-IN on page load
+   — .hero__wordmark-wrap starts opacity:0 translateY(24px)
+   — after short delay, add .is-visible for smooth entrance
+============================================================ */
+function initWordmarkFadeIn() {
+  const wordmarkWrap = document.querySelector('.hero__wordmark-wrap');
+  if (!wordmarkWrap) return;
+
+  // Small delay so the transition is visible after page renders
+  setTimeout(() => {
+    wordmarkWrap.classList.add('is-visible');
+  }, 300);
+}

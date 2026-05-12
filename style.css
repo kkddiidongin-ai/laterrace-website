@@ -271,44 +271,88 @@ input, select { font-family: inherit; }
 }
 
 .navbar__inner {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 0 60px;
+  max-width: 100%;
+  margin: 0;
+  padding: 0 48px;
   height: 80px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
-  gap: 24px;
+  gap: 0;
 }
 
 .navbar.scrolled .navbar__inner { height: 64px; }
 
-/* Logo */
+/* Left pill buttons (OFFERS / BOOK) */
+.navbar__left {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+.navbar__pill {
+  font-family: var(--font-sans);
+  font-size: 0.62rem;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  padding: 6px 28px;
+  border: 1px solid rgba(255,255,255,0.55);
+  border-radius: 0;
+  transition: color var(--transition), border-color var(--transition), background var(--transition);
+  white-space: nowrap;
+}
+.navbar__pill:first-child {
+  border-right: none;
+}
+.navbar__pill:hover {
+  background: rgba(255,255,255,0.12);
+}
+.navbar.scrolled .navbar__pill {
+  color: var(--color-text);
+  border-color: rgba(42,32,24,0.35);
+}
+.navbar.scrolled .navbar__pill:hover {
+  background: rgba(42,32,24,0.06);
+}
+
+/* Center logo */
 .navbar__logo {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   line-height: 1.1;
-  flex-shrink: 0;
+  text-decoration: none;
 }
 .navbar__logo-main {
   font-family: var(--font-serif);
   font-size: 1.5rem;
   font-weight: 500;
-  color: var(--color-text);
+  color: var(--color-white);
   letter-spacing: 0.04em;
   transition: color var(--transition);
 }
 .navbar__logo-sub {
   font-family: var(--font-sans);
-  font-size: 0.55rem;
+  font-size: 0.72rem;
   font-weight: 400;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.38em;
   text-transform: uppercase;
-  color: var(--color-text-muted);
+  color: var(--color-white);
   transition: color var(--transition);
 }
 .navbar.scrolled .navbar__logo-main { color: var(--color-text); }
-.navbar.scrolled .navbar__logo-sub  { color: var(--color-text-muted); }
+.navbar.scrolled .navbar__logo-sub  { color: var(--color-text); }
+
+/* Right controls */
+.navbar__right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+}
 
 /* Nav Links */
 .navbar__nav {
@@ -361,30 +405,41 @@ input, select { font-family: inherit; }
   font-size: 0.68rem;
   font-weight: 400;
   letter-spacing: 0.1em;
-  color: var(--color-text-muted);
+  color: var(--color-white);
   transition: color var(--transition);
   padding: 2px 0;
 }
 .navbar__lang-btn.active,
-.navbar__lang-btn:hover { color: var(--color-text); }
-.navbar.scrolled .navbar__lang-btn { color: var(--color-text-muted); }
+.navbar__lang-btn:hover { color: var(--color-white); opacity: 0.8; }
+.navbar.scrolled .navbar__lang-btn { color: var(--color-text-muted); opacity: 1; }
 .navbar.scrolled .navbar__lang-btn.active,
 .navbar.scrolled .navbar__lang-btn:hover { color: var(--color-text); }
-.navbar__lang-sep { color: var(--color-text-muted); font-size: 0.65rem; }
+.navbar__lang-sep { color: rgba(255,255,255,0.5); font-size: 0.65rem; }
 .navbar.scrolled .navbar__lang-sep { color: var(--color-text-muted); }
 
-/* Hamburger */
+/* Lang arrow */
+.navbar__lang-arrow {
+  width: 10px;
+  height: 6px;
+  stroke: currentColor;
+  flex-shrink: 0;
+}
+
+/* Hamburger — always visible (Sun Siyam style) */
 .navbar__hamburger {
-  display: none;
+  display: flex;
   flex-direction: column;
   gap: 5px;
   padding: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 .navbar__hamburger span {
   display: block;
   width: 22px;
   height: 1.5px;
-  background: var(--color-text);
+  background: var(--color-white);
   transition: background var(--transition);
 }
 .navbar.scrolled .navbar__hamburger span { background: var(--color-text); }
@@ -641,23 +696,10 @@ input, select { font-family: inherit; }
   border-bottom: 1px solid rgba(42,32,24,0.08);
   box-shadow: 0 1px 0 rgba(0,0,0,0.08);
 }
-/* Navbar text white on fullscreen, dark after scroll */
-.navbar:not(.scrolled) .navbar__logo-main,
-.navbar:not(.scrolled) .navbar__link,
+/* Navbar text white on video (not scrolled), dark after scroll */
 .navbar:not(.scrolled) .navbar__lang-btn,
-.navbar:not(.scrolled) .navbar__lang-sep {
+.navbar:not(.scrolled) .navbar__lang-arrow {
   color: var(--color-white);
-}
-.navbar:not(.scrolled) .navbar__link::after {
-  background: var(--color-white);
-}
-.navbar:not(.scrolled) .navbar__hamburger span {
-  background: var(--color-white);
-}
-.navbar:not(.scrolled) .btn--book {
-  background: rgba(255,255,255,0.15);
-  color: var(--color-white);
-  border-color: rgba(255,255,255,0.5);
 }
 
 /* ---- Part B: Beige + wordmark overlap section ---- */
@@ -814,11 +856,17 @@ input, select { font-family: inherit; }
   top: 80px; /* navbar height — wordmark starts just below navbar */
   left: 0;
   right: 0;
-  transform: none;
   z-index: 10;
   text-align: center;
   pointer-events: none;
   user-select: none;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+.hero__wordmark-wrap.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .hero__wordmark {
@@ -952,10 +1000,10 @@ input, select { font-family: inherit; }
 
   /* Wordmark: fills full screen width, starts just below mobile bar */
   .hero__wordmark-wrap {
-    transform: none;
     top: 56px; /* mobile bar height */
     left: -2px;
     right: -2px;
+    /* fade-in transition preserved from desktop */
   }
   .hero__wordmark {
     font-size: 28vw; /* fills width like Sun Siyam "siyam" */
