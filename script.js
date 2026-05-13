@@ -124,22 +124,26 @@ function initHeroSlideshow() {
   if (typeof Hls !== 'undefined' && Hls.isSupported()) {
     const hls = new Hls({
       autoStartLoad: true,
-      startLevel: 1,          // 1080P 레벨 우선
-      maxBufferLength: 30,
-      maxMaxBufferLength: 60,
+      startLevel: -1,          // 자동 화질 선택 → 가장 빠른 시작
+      maxBufferLength: 8,      // 버퍼 최소화 → 첫 프레임 빠르게
+      maxMaxBufferLength: 20,
       enableWorker: true,
-      lowLatencyMode: false
+      lowLatencyMode: false,
+      progressive: true        // 점진적 로딩
     });
     hls.loadSource(HLS_SRC);
     hls.attachMedia(heroVideo);
+
+    // media 연결 즉시 재생 시도 (MANIFEST_PARSED 기다리지 않음)
+    heroVideo.muted = true;
+    const earlyPlay = heroVideo.play();
+    if (earlyPlay !== undefined) earlyPlay.catch(() => {});
 
     hls.on(Hls.Events.MANIFEST_PARSED, () => {
       heroVideo.muted = true;
       const playPromise = heroVideo.play();
       if (playPromise !== undefined) {
-        playPromise.catch(() => {
-          // 자동재생 차단 시 슬라이드쇼 유지
-        });
+        playPromise.catch(() => {});
       }
     });
 
