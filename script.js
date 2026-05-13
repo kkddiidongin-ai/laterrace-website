@@ -118,9 +118,7 @@ function initHeroSlideshow() {
     return;
   }
 
-  // Show slideshow as background while video loads
-  if (heroSlideshow) heroSlideshow.style.display = 'block';
-  startSlideshow();
+  // 슬라이드쇼는 HLS 미지원 환경에서만 폴백으로 사용 (기본 숨김 유지)
 
   // HLS.js path (Chrome, Firefox, etc.)
   if (typeof Hls !== 'undefined' && Hls.isSupported()) {
@@ -128,7 +126,9 @@ function initHeroSlideshow() {
       autoStartLoad: true,
       startLevel: 1,          // 1080P 레벨 우선
       maxBufferLength: 30,
-      enableWorker: true
+      maxMaxBufferLength: 60,
+      enableWorker: true,
+      lowLatencyMode: false
     });
     hls.loadSource(HLS_SRC);
     hls.attachMedia(heroVideo);
@@ -150,7 +150,7 @@ function initHeroSlideshow() {
 
     hls.on(Hls.Events.ERROR, (event, data) => {
       if (data.fatal) {
-        if (heroSlideshow) heroSlideshow.style.display = 'block';
+        // 치명적 오류 시 자동 복구 시도 (슬라이드쇼 표시 안 함)
         if (data.type === Hls.ErrorTypes.NETWORK_ERROR) {
           hls.startLoad();
         } else if (data.type === Hls.ErrorTypes.MEDIA_ERROR) {
@@ -170,7 +170,9 @@ function initHeroSlideshow() {
     }, { once: true });
     heroVideo.play().catch(() => {});
   } else {
-    // No HLS support — keep slideshow
+    // HLS 미지원 환경에서만 슬라이드쇼 표시
+    if (heroSlideshow) heroSlideshow.style.display = 'block';
+    startSlideshow();
   }
 }
 

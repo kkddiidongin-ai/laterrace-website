@@ -747,6 +747,7 @@ input, select { font-family: inherit; }
   overflow: hidden;
   border-radius: 0;
   z-index: 1;
+  background: #000; /* 영상 로딩 전 검은 배경 */
 }
 
 .hero__video {
