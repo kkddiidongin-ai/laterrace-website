@@ -1,616 +1,260 @@
 /* ============================================================
-   LA TERRACE RESORT GROUP — SCRIPT.JS
-   Vanilla JS — No frameworks
+   LATERRACE v2 — script.js
    ============================================================ */
 
-'use strict';
+const HLS_SRC = 'https://hls.midibus.kinxcdn.com/hls/ch_18f57400/197c018addb0ff99/v/playlist.m3u8';
 
-/* ── DOM Ready ── */
 document.addEventListener('DOMContentLoaded', () => {
   initNavbar();
   initMobileMenu();
-  initHeroSlideshow();
-  initHeroVolume();
-  initScrollReveal();
-  initBookingDates();
-  initDiningScroll();
-  initSmoothScroll();
-  initParallax();
-  initLangSwitcher();
-  initBookingNights();
-  initWordmarkFadeIn();
+  initHeroVideo();
+  initResortsSlider();
+  initOffersSlider();
 });
 
 /* ============================================================
-   1. NAVBAR — transparent → opaque on scroll
-============================================================ */
+   NAVBAR — transparent over hero, beige on scroll
+   ============================================================ */
 function initNavbar() {
   const navbar = document.getElementById('navbar');
   if (!navbar) return;
 
-  function updateNavbar() {
-    // Become solid after scrolling past the hero video section
-    const heroEl = document.getElementById('hero');
-    const threshold = heroEl ? heroEl.offsetHeight * 0.85 : window.innerHeight * 0.85;
-    if (window.scrollY > threshold) {
+  function update() {
+    if (window.scrollY > 60) {
       navbar.classList.add('scrolled');
     } else {
       navbar.classList.remove('scrolled');
     }
   }
 
-  window.addEventListener('scroll', updateNavbar, { passive: true });
-  updateNavbar(); // run on load
+  window.addEventListener('scroll', update, { passive: true });
+  update();
 }
 
 /* ============================================================
-   2. MOBILE MENU
-============================================================ */
+   MOBILE MENU
+   ============================================================ */
 function initMobileMenu() {
-  const hamburgerBtn      = document.getElementById('hamburgerBtn');
-  const heroHamburgerBtn  = document.getElementById('heroHamburgerBtn'); // mobile hero bar
-  const mobileMenu        = document.getElementById('mobileMenu');
-  const mobileClose       = document.getElementById('mobileClose');
-  const mobileLinks       = document.querySelectorAll('.navbar__mobile-link, .mobile-menu__link');
+  const hamburger = document.getElementById('hamburgerBtn');
+  const menu = document.getElementById('mobileMenu');
+  const overlay = document.getElementById('menuOverlay');
+  const close = document.getElementById('mobileClose');
 
-  if (!mobileMenu) return;
-
-  // Create overlay
-  const overlay = document.createElement('div');
-  overlay.className = 'menu-overlay';
-  document.body.appendChild(overlay);
+  if (!hamburger || !menu) return;
 
   function openMenu() {
-    mobileMenu.classList.add('open');
-    overlay.classList.add('visible');
+    menu.classList.add('open');
+    overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
 
   function closeMenu() {
-    mobileMenu.classList.remove('open');
-    overlay.classList.remove('visible');
+    menu.classList.remove('open');
+    overlay.classList.remove('open');
     document.body.style.overflow = '';
   }
 
-  // Desktop hamburger
-  if (hamburgerBtn) hamburgerBtn.addEventListener('click', openMenu);
-  // Mobile hero bar hamburger
-  if (heroHamburgerBtn) heroHamburgerBtn.addEventListener('click', openMenu);
+  hamburger.addEventListener('click', openMenu);
+  if (close) close.addEventListener('click', closeMenu);
+  if (overlay) overlay.addEventListener('click', closeMenu);
 
-  if (mobileClose) mobileClose.addEventListener('click', closeMenu);
-  overlay.addEventListener('click', closeMenu);
-
-  mobileLinks.forEach(link => {
+  // Close on nav link click
+  menu.querySelectorAll('.mobile-menu__link, .mobile-menu__join').forEach(link => {
     link.addEventListener('click', closeMenu);
   });
-
-  // Close on Escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
-      closeMenu();
-    }
-  });
 }
 
 /* ============================================================
-   2-B. HERO SLIDESHOW — auto-advance every 5s
-============================================================ */
-function initHeroSlideshow() {
-  const heroVideo    = document.getElementById('heroVideo');
-  const heroSlideshow = document.getElementById('heroSlideshow');
-  const slides        = document.querySelectorAll('.hero__slide');
-  // 깔라까따 full 영상 (3840×2160 가로) — 라테라스 공식 홈페이지 메인 영상
-  const HLS_SRC       = 'https://hls.midibus.kinxcdn.com/hls/ch_18f57400/197c018addb0ff99/v/playlist.m3u8';
+   HERO VIDEO — HLS.js streaming
+   ============================================================ */
+function initHeroVideo() {
+  const video = document.getElementById('heroVideo');
+  const volumeBtn = document.getElementById('volumeBtn');
+  const volOff = document.getElementById('volIconOff');
+  const volOn = document.getElementById('volIconOn');
 
-  function startSlideshow() {
-    if (!slides.length) return;
-    let current = 0;
-    function nextSlide() {
-      slides[current].classList.remove('active');
-      current = (current + 1) % slides.length;
-      slides[current].classList.add('active');
-    }
-    setInterval(nextSlide, 5000);
-  }
+  if (!video) return;
 
-  if (!heroVideo) {
-    if (heroSlideshow) { heroSlideshow.style.display = 'block'; startSlideshow(); }
-    return;
-  }
-
-  // 슬라이드쇼는 HLS 미지원 환경에서만 폴백으로 사용 (기본 숨김 유지)
-
-  // HLS.js path (Chrome, Firefox, etc.)
-  if (typeof Hls !== 'undefined' && Hls.isSupported()) {
+  // HLS.js
+  if (Hls.isSupported()) {
     const hls = new Hls({
-      autoStartLoad: true,
-      startLevel: -1,          // 자동 화질 선택 → 가장 빠른 시작
-      maxBufferLength: 8,      // 버퍼 최소화 → 첫 프레임 빠르게
+      startLevel: -1,
+      maxBufferLength: 8,
       maxMaxBufferLength: 20,
+      maxBufferSize: 20 * 1000 * 1000,
       enableWorker: true,
-      lowLatencyMode: false,
-      progressive: true        // 점진적 로딩
     });
     hls.loadSource(HLS_SRC);
-    hls.attachMedia(heroVideo);
-
-    // media 연결 즉시 재생 시도 (MANIFEST_PARSED 기다리지 않음)
-    heroVideo.muted = true;
-    const earlyPlay = heroVideo.play();
-    if (earlyPlay !== undefined) earlyPlay.catch(() => {});
-
+    hls.attachMedia(video);
     hls.on(Hls.Events.MANIFEST_PARSED, () => {
-      heroVideo.muted = true;
-      const playPromise = heroVideo.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(() => {});
-      }
+      video.play().catch(() => {});
     });
-
-    // 첫 프레임이 렌더링되면 슬라이드쇼 숨김
-    heroVideo.addEventListener('playing', () => {
-      if (heroSlideshow) heroSlideshow.style.display = 'none';
-    }, { once: true });
-
     hls.on(Hls.Events.ERROR, (event, data) => {
       if (data.fatal) {
-        // 치명적 오류 시 자동 복구 시도 (슬라이드쇼 표시 안 함)
-        if (data.type === Hls.ErrorTypes.NETWORK_ERROR) {
-          hls.startLoad();
-        } else if (data.type === Hls.ErrorTypes.MEDIA_ERROR) {
-          hls.recoverMediaError();
-        }
+        console.warn('HLS fatal error:', data.type);
       }
     });
-
-    heroVideo._hls = hls;
-
-  } else if (heroVideo.canPlayType('application/vnd.apple.mpegurl')) {
+  } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
     // Safari native HLS
-    heroVideo.src = HLS_SRC;
-    heroVideo.muted = true;
-    heroVideo.addEventListener('playing', () => {
-      if (heroSlideshow) heroSlideshow.style.display = 'none';
-    }, { once: true });
-    heroVideo.play().catch(() => {});
-  } else {
-    // HLS 미지원 환경에서만 슬라이드쇼 표시
-    if (heroSlideshow) heroSlideshow.style.display = 'block';
-    startSlideshow();
+    video.src = HLS_SRC;
+    video.play().catch(() => {});
+  }
+
+  // Volume toggle
+  if (volumeBtn) {
+    volumeBtn.addEventListener('click', () => {
+      video.muted = !video.muted;
+      if (video.muted) {
+        volOff.classList.remove('hidden');
+        volOn.classList.add('hidden');
+      } else {
+        volOff.classList.add('hidden');
+        volOn.classList.remove('hidden');
+      }
+    });
   }
 }
 
 /* ============================================================
-   3. HERO VIDEO VOLUME TOGGLE (YouTube iframe)
-============================================================ */
-function initHeroVolume() {
-  const volumeBtn  = document.getElementById('volumeBtn');
-  const volIconOff = document.getElementById('volIconOff');
-  const volIconOn  = document.getElementById('volIconOn');
-  const heroVideo  = document.getElementById('heroVideo');
+   RESORTS SLIDER
+   ============================================================ */
+function initResortsSlider() {
+  const slider = document.getElementById('resortsSlider');
+  const prevBtn = document.getElementById('resortsPrev');
+  const nextBtn = document.getElementById('resortsNext');
+  const filters = document.querySelectorAll('.resorts__filter');
 
-  if (!volumeBtn) return;
+  if (!slider) return;
 
-  let isMuted = true;
+  let currentIndex = 0;
+  let visibleCards = [];
 
-  volumeBtn.addEventListener('click', () => {
-    isMuted = !isMuted;
+  function getCardsPerView() {
+    if (window.innerWidth <= 768) return 1;
+    if (window.innerWidth <= 1024) return 2;
+    return 3;
+  }
 
-    // Toggle icons
-    if (volIconOff) volIconOff.classList.toggle('hidden', !isMuted);
-    if (volIconOn)  volIconOn.classList.toggle('hidden', isMuted);
+  function buildVisible(filter) {
+    const allCards = Array.from(slider.querySelectorAll('.resort-card'));
+    allCards.forEach(c => { c.style.display = ''; });
 
-    // Control HTML5 video element
-    if (heroVideo && heroVideo.tagName === 'VIDEO') {
-      heroVideo.muted = isMuted;
-      if (!isMuted) {
-        heroVideo.play().catch(() => { heroVideo.muted = true; isMuted = true; });
-      }
-    }
-  });
-}
-
-/* ============================================================
-   4. SCROLL REVEAL — Intersection Observer
-============================================================ */
-function initScrollReveal() {
-  const revealEls = document.querySelectorAll('.reveal');
-  if (!revealEls.length) return;
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
+    if (filter === 'all') {
+      visibleCards = allCards;
+    } else {
+      allCards.forEach(c => {
+        if (c.dataset.collection !== filter) {
+          c.style.display = 'none';
         }
       });
-    },
-    {
-      threshold: 0.12,
-      rootMargin: '0px 0px -40px 0px'
+      visibleCards = allCards.filter(c => c.dataset.collection === filter);
     }
-  );
-
-  revealEls.forEach(el => observer.observe(el));
-}
-
-/* ============================================================
-   5. BOOKING WIDGET — Auto-calculate nights
-============================================================ */
-function initBookingDates() {
-  const dateInputs   = document.querySelectorAll('.booking__bar input[type="date"]');
-  const checkinInput  = dateInputs[0];
-  const checkoutInput = dateInputs[1];
-  const nightsInput   = document.querySelector('.booking__bar input[type="number"]');
-
-  if (!checkinInput || !checkoutInput || !nightsInput) return;
-
-  // Set default dates (today + tomorrow)
-  const today    = new Date();
-  const tomorrow = new Date(today);
-  tomorrow.setDate(tomorrow.getDate() + 1);
-
-  const fmt = (d) => d.toISOString().split('T')[0];
-  checkinInput.value  = fmt(today);
-  checkoutInput.value = fmt(tomorrow);
-  nightsInput.value   = 1;
-
-  function updateNights() {
-    const ci = new Date(checkinInput.value);
-    const co = new Date(checkoutInput.value);
-    if (ci && co && co > ci) {
-      const diff = Math.round((co - ci) / (1000 * 60 * 60 * 24));
-      nightsInput.value = diff;
-    }
+    currentIndex = 0;
+    updateSlider();
   }
 
-  checkinInput.addEventListener('change', () => {
-    // Ensure checkout is after checkin
-    const ci = new Date(checkinInput.value);
-    const co = new Date(checkoutInput.value);
-    if (co <= ci) {
-      const next = new Date(ci);
-      next.setDate(next.getDate() + 1);
-      checkoutInput.value = fmt(next);
-    }
-    updateNights();
-  });
+  function updateSlider() {
+    const perView = getCardsPerView();
+    const maxIndex = Math.max(0, visibleCards.length - perView);
+    currentIndex = Math.min(currentIndex, maxIndex);
 
-  checkoutInput.addEventListener('change', updateNights);
-}
+    // Calculate offset: find position of currentIndex-th visible card
+    const allCards = Array.from(slider.querySelectorAll('.resort-card'));
+    const visibleInDom = allCards.filter(c => c.style.display !== 'none');
 
-function initBookingNights() {
-  const nightsInput   = document.querySelector('.booking__bar input[type="number"]');
-  const allDateInputs = document.querySelectorAll('.booking__bar input[type="date"]');
-  const checkinInput  = allDateInputs[0];
-  const checkoutInput = allDateInputs[1];
+    if (visibleInDom.length === 0) return;
 
-  if (!nightsInput || !checkinInput || !checkoutInput) return;
+    const gap = 20;
+    const cardWidth = visibleInDom[0].offsetWidth;
+    const offset = currentIndex * (cardWidth + gap);
+    slider.style.transform = `translateX(-${offset}px)`;
 
-  nightsInput.addEventListener('change', () => {
-    const nights = parseInt(nightsInput.value, 10);
-    if (nights > 0 && checkinInput.value) {
-      const ci = new Date(checkinInput.value);
-      ci.setDate(ci.getDate() + nights);
-      checkoutInput.value = ci.toISOString().split('T')[0];
-    }
-  });
-}
-
-/* ============================================================
-   6. DINING HORIZONTAL SCROLL — drag to scroll
-============================================================ */
-function initDiningScroll() {
-  const scrollWrap = document.querySelector('.dining__scroll-wrap');
-  if (!scrollWrap) return;
-
-  let isDown   = false;
-  let startX   = 0;
-  let scrollLeft = 0;
-
-  scrollWrap.addEventListener('mousedown', (e) => {
-    isDown = true;
-    scrollWrap.style.cursor = 'grabbing';
-    startX = e.pageX - scrollWrap.offsetLeft;
-    scrollLeft = scrollWrap.scrollLeft;
-  });
-
-  scrollWrap.addEventListener('mouseleave', () => {
-    isDown = false;
-    scrollWrap.style.cursor = '';
-  });
-
-  scrollWrap.addEventListener('mouseup', () => {
-    isDown = false;
-    scrollWrap.style.cursor = '';
-  });
-
-  scrollWrap.addEventListener('mousemove', (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x    = e.pageX - scrollWrap.offsetLeft;
-    const walk = (x - startX) * 1.5;
-    scrollWrap.scrollLeft = scrollLeft - walk;
-  });
-
-  // Touch support
-  let touchStartX = 0;
-  let touchScrollLeft = 0;
-
-  scrollWrap.addEventListener('touchstart', (e) => {
-    touchStartX    = e.touches[0].pageX;
-    touchScrollLeft = scrollWrap.scrollLeft;
-  }, { passive: true });
-
-  scrollWrap.addEventListener('touchmove', (e) => {
-    const x    = e.touches[0].pageX;
-    const walk = (touchStartX - x) * 1.2;
-    scrollWrap.scrollLeft = touchScrollLeft + walk;
-  }, { passive: true });
-}
-
-/* ============================================================
-   7. SMOOTH SCROLL for nav anchor links
-============================================================ */
-function initSmoothScroll() {
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', (e) => {
-      const href = anchor.getAttribute('href');
-      if (href === '#') return;
-
-      const target = document.querySelector(href);
-      if (!target) return;
-
-      e.preventDefault();
-
-      const navbarHeight = document.getElementById('navbar')?.offsetHeight || 80;
-      const targetTop    = target.getBoundingClientRect().top + window.scrollY - navbarHeight;
-
-      window.scrollTo({
-        top: targetTop,
-        behavior: 'smooth'
-      });
-    });
-  });
-}
-
-/* ============================================================
-   8. SUBTLE PARALLAX on hero section
-============================================================ */
-function initParallax() {
-  // Disabled in new Sun Siyam-style layout
-  // The hero is a static layout, not a full-screen video
-}
-
-/* ============================================================
-   9. LANGUAGE SWITCHER (UI toggle — content swap placeholder)
-============================================================ */
-function initLangSwitcher() {
-  const langBtns = document.querySelectorAll('.navbar__lang-btn');
-
-  langBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      // Remove active from siblings in same container
-      const parent = btn.closest('.navbar__lang, .navbar__mobile-lang');
-      if (parent) {
-        parent.querySelectorAll('.navbar__lang-btn').forEach(b => b.classList.remove('active'));
-      }
-      btn.classList.add('active');
-
-      const lang = btn.dataset.lang || btn.textContent.trim().toLowerCase();
-      // Placeholder: In production, this would trigger i18n content swap
-      console.log(`Language switched to: ${lang}`);
-    });
-  });
-}
-
-/* ============================================================
-   10. BOOKING SEARCH BUTTON
-============================================================ */
-document.addEventListener('DOMContentLoaded', () => {
-  const searchBtn = document.querySelector('.booking__btn');
-  if (!searchBtn) return;
-
-  searchBtn.addEventListener('click', () => {
-    const brand    = document.querySelector('.booking__bar .booking__select')?.value;
-    const checkin  = document.querySelector('.booking__bar input[type="date"]:first-of-type')?.value;
-    const checkout = document.querySelector('.booking__bar input[type="date"]:last-of-type')?.value;
-    const guests   = document.querySelectorAll('.booking__bar .booking__select')[1]?.value;
-
-    if (!brand) {
-      showBookingAlert('Please select a brand (Calacatta or laterrace).');
-      return;
-    }
-    if (!checkin || !checkout) {
-      showBookingAlert('Please select your check-in and check-out dates.');
-      return;
-    }
-
-    // Placeholder: In production, redirect to booking engine
-    console.log('Booking search:', { brand, checkin, checkout, guests });
-    showBookingAlert(`Searching rooms for ${brand === 'calacatta' ? 'Calacatta Hotel & Resort' : 'laterrace Boutique Resort'}…\n\nBooking engine coming soon.`);
-  });
-});
-
-function showBookingAlert(msg) {
-  // Simple inline toast notification
-  let toast = document.getElementById('bookingToast');
-  if (!toast) {
-    toast = document.createElement('div');
-    toast.id = 'bookingToast';
-    toast.style.cssText = `
-      position: fixed;
-      bottom: 32px;
-      left: 50%;
-      transform: translateX(-50%) translateY(20px);
-      background: #2a2018;
-      color: #f0ebe3;
-      font-family: 'Jost', sans-serif;
-      font-size: 0.82rem;
-      letter-spacing: 0.04em;
-      padding: 16px 28px;
-      border-left: 3px solid #9a8060;
-      z-index: 9999;
-      opacity: 0;
-      transition: opacity 0.3s ease, transform 0.3s ease;
-      max-width: 400px;
-      text-align: center;
-      white-space: pre-line;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-    `;
-    document.body.appendChild(toast);
+    // Arrow visibility
+    if (prevBtn) prevBtn.style.opacity = currentIndex === 0 ? '0.35' : '1';
+    if (nextBtn) nextBtn.style.opacity = currentIndex >= maxIndex ? '0.35' : '1';
   }
 
-  toast.textContent = msg;
-  toast.style.opacity = '1';
-  toast.style.transform = 'translateX(-50%) translateY(0)';
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      if (currentIndex > 0) { currentIndex--; updateSlider(); }
+    });
+  }
 
-  clearTimeout(toast._timeout);
-  toast._timeout = setTimeout(() => {
-    toast.style.opacity = '0';
-    toast.style.transform = 'translateX(-50%) translateY(20px)';
-  }, 3500);
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      const perView = getCardsPerView();
+      const maxIndex = Math.max(0, visibleCards.length - perView);
+      if (currentIndex < maxIndex) { currentIndex++; updateSlider(); }
+    });
+  }
+
+  filters.forEach(f => {
+    f.addEventListener('click', () => {
+      filters.forEach(x => x.classList.remove('active'));
+      f.classList.add('active');
+      buildVisible(f.dataset.filter);
+    });
+  });
+
+  window.addEventListener('resize', () => updateSlider(), { passive: true });
+
+  buildVisible('all');
 }
 
 /* ============================================================
-   11. GALLERY ITEM HOVER EFFECT — subtle tilt
-============================================================ */
-document.addEventListener('DOMContentLoaded', () => {
-  const galleryItems = document.querySelectorAll('.gallery__item');
+   OFFERS SLIDER
+   ============================================================ */
+function initOffersSlider() {
+  const slider = document.getElementById('offersSlider');
+  const prevBtn = document.getElementById('offersPrev');
+  const nextBtn = document.getElementById('offersNext');
 
-  galleryItems.forEach(item => {
-    item.addEventListener('mouseenter', () => {
-      item.style.zIndex = '2';
+  if (!slider) return;
+
+  let currentIndex = 0;
+
+  function getCardsPerView() {
+    if (window.innerWidth <= 768) return 1;
+    return 2;
+  }
+
+  function getCards() {
+    return Array.from(slider.querySelectorAll('.offer-card'));
+  }
+
+  function updateSlider() {
+    const cards = getCards();
+    const perView = getCardsPerView();
+    const maxIndex = Math.max(0, cards.length - perView);
+    currentIndex = Math.min(currentIndex, maxIndex);
+
+    if (cards.length === 0) return;
+
+    const gap = 24;
+    const cardWidth = cards[0].offsetWidth;
+    const offset = currentIndex * (cardWidth + gap);
+    slider.style.transform = `translateX(-${offset}px)`;
+
+    if (prevBtn) prevBtn.style.opacity = currentIndex === 0 ? '0.35' : '1';
+    if (nextBtn) nextBtn.style.opacity = currentIndex >= maxIndex ? '0.35' : '1';
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      if (currentIndex > 0) { currentIndex--; updateSlider(); }
     });
-    item.addEventListener('mouseleave', () => {
-      item.style.zIndex = '';
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      const cards = getCards();
+      const perView = getCardsPerView();
+      const maxIndex = Math.max(0, cards.length - perView);
+      if (currentIndex < maxIndex) { currentIndex++; updateSlider(); }
     });
-  });
-});
+  }
 
-/* ============================================================
-   12. STICKY BOOKING WIDGET on mobile scroll
-============================================================ */
-document.addEventListener('DOMContentLoaded', () => {
-  if (!window.matchMedia('(max-width: 768px)').matches) return;
+  window.addEventListener('resize', () => updateSlider(), { passive: true });
 
-  const bookingSection = document.querySelector('.booking');
-  if (!bookingSection) return;
-
-  // Add sticky booking CTA button for mobile
-  const stickyBook = document.createElement('a');
-  stickyBook.href  = '#booking';
-  stickyBook.className = 'sticky-book-btn';
-  stickyBook.textContent = 'BOOK NOW';
-  stickyBook.style.cssText = `
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: #2a2018;
-    color: #f0ebe3;
-    font-family: 'Jost', sans-serif;
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    text-align: center;
-    padding: 18px;
-    z-index: 900;
-    display: none;
-    transition: background 0.3s ease;
-  `;
-
-  document.body.appendChild(stickyBook);
-
-  const heroSection = document.querySelector('.hero');
-
-  const stickyObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        // Show sticky button when hero is out of view
-        stickyBook.style.display = entry.isIntersecting ? 'none' : 'block';
-      });
-    },
-    { threshold: 0 }
-  );
-
-  if (heroSection) stickyObserver.observe(heroSection);
-});
-
-/* ============================================================
-   13. SCROLL PROGRESS INDICATOR (subtle top bar)
-============================================================ */
-document.addEventListener('DOMContentLoaded', () => {
-  const progressBar = document.createElement('div');
-  progressBar.style.cssText = `
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 2px;
-    background: linear-gradient(to right, #9a8060, #2a2018);
-    z-index: 2000;
-    width: 0%;
-    transition: width 0.1s linear;
-    pointer-events: none;
-  `;
-  document.body.appendChild(progressBar);
-
-  window.addEventListener('scroll', () => {
-    const scrollTop    = window.scrollY;
-    const docHeight    = document.documentElement.scrollHeight - window.innerHeight;
-    const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-    progressBar.style.width = `${scrollPercent}%`;
-  }, { passive: true });
-});
-
-/* ============================================================
-   14. OFFER CARD — image zoom on hover (CSS handles it,
-       JS adds class for additional effects)
-============================================================ */
-document.addEventListener('DOMContentLoaded', () => {
-  const offerCards = document.querySelectorAll('.offer-card, .brand-card, .dining-card');
-
-  offerCards.forEach(card => {
-    card.addEventListener('mouseenter', () => {
-      card.classList.add('hovered');
-    });
-    card.addEventListener('mouseleave', () => {
-      card.classList.remove('hovered');
-    });
-  });
-});
-
-/* ============================================================
-   15. HERO SCROLL ARROW — hide when scrolled past hero
-============================================================ */
-document.addEventListener('DOMContentLoaded', () => {
-  const scrollArrow = document.querySelector('.hero__scroll-arrow');
-  if (!scrollArrow) return;
-
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 100) {
-      scrollArrow.style.opacity = '0';
-      scrollArrow.style.pointerEvents = 'none';
-    } else {
-      scrollArrow.style.opacity = '';
-      scrollArrow.style.pointerEvents = '';
-    }
-  }, { passive: true });
-});
-
-/* ============================================================
-   16. WORDMARK FADE-IN on page load
-   — .hero__wordmark-wrap starts opacity:0 translateY(24px)
-   — after short delay, add .is-visible for smooth entrance
-============================================================ */
-function initWordmarkFadeIn() {
-  const wordmarkWrap = document.querySelector('.hero__wordmark-wrap');
-  if (!wordmarkWrap) return;
-
-  // Small delay so the transition is visible after page renders
-  setTimeout(() => {
-    wordmarkWrap.classList.add('is-visible');
-  }, 300);
+  updateSlider();
 }

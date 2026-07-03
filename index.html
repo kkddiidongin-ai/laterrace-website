@@ -1,712 +1,462 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>laterrace Resort Group | Yeosu's Premier Oceanfront Resort Collection</title>
-  <meta name="description" content="Discover laterrace Resort Group in Yeosu, South Korea — home to Calacatta Hotel & Resort and laterrace Boutique Resort & Spa. Experience Summerland, luxury suites, and oceanfront living." />
+  <title>laterrace | 여수 프리미엄 리조트</title>
+  <meta name="description" content="여수 최고의 프리미엄 리조트, 라테라스. 깔라까따와 라테라스 두 브랜드로 여수의 바다를 온전히 즐기세요." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-  <!-- HLS.js for native HLS streaming support -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.13/dist/hls.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- ============================================================
-       SECTION 1: NAVIGATION BAR
-  ============================================================ -->
-  <header class="navbar" id="navbar">
-    <div class="navbar__inner">
+<!-- ===== NAVBAR ===== -->
+<header class="navbar" id="navbar">
+  <div class="navbar__left">
+    <a href="#offers" class="navbar__pill">OFFERS</a>
+    <a href="#booking" class="navbar__pill">BOOK</a>
+  </div>
+  <div class="navbar__center">
+    <a href="#" class="navbar__logo">
+      <span class="navbar__logo-sup">laterrace</span>
+      <span class="navbar__logo-main">resort</span>
+    </a>
+  </div>
+  <div class="navbar__right">
+    <button class="navbar__lang-btn" id="langBtn">KO <span class="navbar__lang-caret">&#8964;</span></button>
+    <button class="navbar__hamburger" id="hamburgerBtn" aria-label="메뉴 열기">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
 
-      <!-- Left: OFFERS + BOOK (Sun Siyam style underline buttons) -->
-      <div class="navbar__left">
-        <a href="#offers" class="navbar__pill">OFFERS</a>
-        <a href="#booking" class="navbar__pill">BOOK</a>
-      </div>
-
-      <!-- Center: brand name -->
-      <a href="#" class="navbar__logo">
-        <span class="navbar__logo-sub">laterrace</span>
-      </a>
-
-      <!-- Right: EN + hamburger -->
-      <div class="navbar__right">
-        <div class="navbar__lang">
-          <button class="navbar__lang-btn active" data-lang="en">EN</button>
-          <svg class="navbar__lang-arrow" viewBox="0 0 10 6" fill="none">
-            <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <button class="navbar__hamburger" id="hamburgerBtn" aria-label="Open menu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-
+<!-- ===== MOBILE MENU ===== -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu__header">
+    <div class="mobile-menu__ornament" aria-hidden="true">
+      <svg viewBox="0 0 80 80" width="60" height="60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="40" cy="40" r="30" stroke="currentColor" stroke-width="0.8"/>
+        <path d="M40 10 C35 20 28 30 40 38 C52 30 45 20 40 10Z" fill="currentColor" opacity="0.7"/>
+        <path d="M40 38 C35 48 28 58 40 66 C52 58 45 48 40 38Z" fill="currentColor" opacity="0.4"/>
+        <circle cx="40" cy="40" r="4" fill="currentColor" opacity="0.6"/>
+      </svg>
     </div>
-  </header>
+    <button class="mobile-menu__close" id="mobileClose" aria-label="메뉴 닫기">&times;</button>
+  </div>
+  <div class="mobile-menu__divider"></div>
+  <nav class="mobile-menu__nav">
+    <a href="#" class="mobile-menu__link mobile-menu__link--active">Home</a>
+    <a href="#resorts" class="mobile-menu__link">Resorts</a>
+    <a href="#offers" class="mobile-menu__link">Offers</a>
+    <a href="#rewards" class="mobile-menu__link">Rewards</a>
+    <a href="#dining" class="mobile-menu__link">Dining</a>
+    <a href="#facilities" class="mobile-menu__link">Facilities</a>
+    <a href="#contact" class="mobile-menu__link">Contact</a>
+  </nav>
+  <a href="#booking" class="mobile-menu__join">예약하기</a>
+  <div class="mobile-menu__lang">
+    <button class="mobile-menu__lang-btn active">KO</button>
+    <span>|</span>
+    <button class="mobile-menu__lang-btn">EN</button>
+  </div>
+</div>
+<div class="mobile-menu__overlay" id="menuOverlay"></div>
 
-  <!-- Mobile Menu Overlay (Sun Siyam style) — placed outside header to avoid display:none inheritance -->
-  <div class="navbar__mobile-menu" id="mobileMenu">
-      <!-- Header: decorative logo center + X right -->
-      <div class="mobile-menu__header">
-        <!-- Decorative ornament (Sun Siyam style) -->
-        <div class="mobile-menu__ornament" aria-hidden="true">
-          <svg viewBox="0 0 80 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Decorative circular ornament like Sun Siyam -->
-            <g transform="translate(40,25)">
-              <circle cx="0" cy="0" r="18" stroke="currentColor" stroke-width="1" fill="none"/>
-              <circle cx="0" cy="-18" r="3" fill="currentColor"/>
-              <circle cx="0" cy="18" r="3" fill="currentColor"/>
-              <circle cx="18" cy="0" r="3" fill="currentColor"/>
-              <circle cx="-18" cy="0" r="3" fill="currentColor"/>
-              <circle cx="12.7" cy="-12.7" r="2.5" fill="currentColor"/>
-              <circle cx="-12.7" cy="-12.7" r="2.5" fill="currentColor"/>
-              <circle cx="12.7" cy="12.7" r="2.5" fill="currentColor"/>
-              <circle cx="-12.7" cy="12.7" r="2.5" fill="currentColor"/>
-              <!-- Inner swirl lines -->
-              <path d="M-8 -8 Q0 -14 8 -8 Q14 0 8 8 Q0 14 -8 8 Q-14 0 -8 -8Z" stroke="currentColor" stroke-width="1" fill="none"/>
-            </g>
-          </svg>
-        </div>
-        <button class="mobile-menu__close" id="mobileClose" aria-label="Close menu">&times;</button>
-      </div>
-
-      <!-- Divider -->
-      <div class="mobile-menu__divider"></div>
-
-      <!-- Nav links: large serif, title case -->
-      <nav class="mobile-menu__nav">
-        <a href="#" class="mobile-menu__link mobile-menu__link--active">
-          <span class="mobile-menu__arrow">&#9654;</span>Home
-        </a>
-        <a href="#calacatta" class="mobile-menu__link">Calacatta</a>
-        <a href="#laterrace" class="mobile-menu__link">laterrace</a>
-        <a href="#summerland" class="mobile-menu__link">Summerland</a>
-        <a href="#offers" class="mobile-menu__link">Offers</a>
-        <a href="#dining" class="mobile-menu__link">Dining</a>
-        <a href="#facilities" class="mobile-menu__link">Facilities</a>
-        <a href="#contact" class="mobile-menu__link">Contact</a>
-      </nav>
-
-      <!-- JOIN MEMBERSHIP button -->
-      <a href="#rewards" class="mobile-menu__join">JOIN OUR MEMBERSHIP</a>
-
-      <!-- Language switcher -->
-      <div class="mobile-menu__lang">
-        <button class="mobile-menu__lang-btn active" data-lang="en">EN</button>
-        <span class="mobile-menu__lang-sep">|</span>
-        <button class="mobile-menu__lang-btn" data-lang="ko">KO</button>
-      </div>
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+  <div class="hero__video-wrap">
+    <video id="heroVideo" class="hero__video" muted playsinline autoplay preload="auto"
+      poster="http://gonylab11.speedgabia.com/calacatta/main/4.jpg"></video>
+    <div class="hero__slideshow" id="heroSlideshow" style="display:none">
+      <div class="hero__slide active" style="background-image:url('http://gonylab11.speedgabia.com/calacatta/main/1.jpg')"></div>
+      <div class="hero__slide" style="background-image:url('http://gonylab11.speedgabia.com/calacatta/main/2.jpg')"></div>
+      <div class="hero__slide" style="background-image:url('http://gonylab11.speedgabia.com/calacatta/main/3.jpg')"></div>
     </div>
-  </div><!-- /mobileMenu -->
+  </div>
+  <div class="hero__content">
+    <p class="hero__welcome">WELCOME TO LATERRACE</p>
+    <h1 class="hero__wordmark">
+      <span class="hero__wordmark-line1">The Home of</span>
+      <span class="hero__wordmark-line2">여수의 정신</span>
+    </h1>
+  </div>
+  <button class="hero__volume" id="volumeBtn" aria-label="볼륨 토글">
+    <svg id="volIconOff" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+      <line x1="23" y1="9" x2="17" y2="15"></line>
+      <line x1="17" y1="9" x2="23" y2="15"></line>
+    </svg>
+    <svg id="volIconOn" class="hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+      <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+      <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+    </svg>
+  </button>
+</section>
 
-  <!-- ============================================================
-       SECTION 2: HERO
-       Part A: Fullscreen video (100vw x 100vh, no margin)
-       Part B: Scroll → beige + wordmark overlapping video
-  ============================================================ -->
-
-  <!-- HERO: beige + wordmark overlapping fullscreen video -->
-  <section class="hero" id="hero">
-
-    <!-- Mobile-only top bar: hamburger -->
-    <div class="hero__mobile-bar">
-      <div class="hero__mobile-lang">
-        <button class="navbar__lang-btn active" data-lang="en">EN</button>
-        <svg class="hero__mobile-lang-arrow" viewBox="0 0 10 6" fill="none">
-          <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-      </div>
-      <button class="hero__mobile-hamburger" id="heroHamburgerBtn" aria-label="Open menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-
-    <!-- Brand label (small, above wordmark) -->
-    <p class="hero__brand-label">LATERRACE</p>
-
-    <!-- Hero stage: video + wordmark overlaid -->
-    <div class="hero__stage">
-
-      <!-- Video layer (behind text) -->
-      <div class="hero__video-wrap">
-        <video class="hero__video" id="heroVideo" preload="auto" webkit-playsinline="true" playsinline="true" x-webkit-airplay="allow" muted autoplay loop poster="http://gonylab11.speedgabia.com/calacatta/main/4.jpg"></video>
-        <!-- Photo slideshow fallback -->
-        <div class="hero__slideshow" id="heroSlideshow" style="display:none">
-          <div class="hero__slide active" style="background-image:url('http://gonylab11.speedgabia.com/calacatta/main/1.jpg')"></div>
-          <div class="hero__slide" style="background-image:url('http://gonylab11.speedgabia.com/calacatta/main/2.jpg')"></div>
-          <div class="hero__slide" style="background-image:url('http://gonylab11.speedgabia.com/calacatta/main/3.jpg')"></div>
-        </div>
-        <!-- Volume button -->
-        <button class="hero__volume" id="volumeBtn" aria-label="Toggle sound">
-          <svg class="hero__volume-icon" id="volIconOff" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M11 5L6 9H2v6h4l5 4V5z"/>
-            <line x1="23" y1="9" x2="17" y2="15"/>
-            <line x1="17" y1="9" x2="23" y2="15"/>
-          </svg>
-          <svg class="hero__volume-icon hidden" id="volIconOn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M11 5L6 9H2v6h4l5 4V5z"/>
-            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
-            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
-          </svg>
-        </button>
-      </div>
-
-      <!-- Wordmark layer (absolute, on top of video) -->
-      <div class="hero__wordmark-wrap" aria-hidden="true">
-        <span class="hero__wordmark">laterrace</span>
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- ============================================================
-       SECTION 3: BOOKING WIDGET BAR
-  ============================================================ -->
-  <section class="booking" id="booking">
-    <div class="booking__bar">
-      <div class="booking__field">
-        <label class="booking__label">BRAND</label>
-        <select class="booking__select">
-          <option value="">Select Brand</option>
-          <option value="calacatta">CALACATTA Hotel &amp; Resort</option>
-          <option value="laterrace">LATERRACE Boutique Resort</option>
+<!-- ===== BOOKING BAR ===== -->
+<section class="booking-bar" id="booking">
+  <div class="booking-bar__inner">
+    <div class="booking-bar__field">
+      <label class="booking-bar__label">DESTINATION</label>
+      <div class="booking-bar__select-wrap">
+        <select class="booking-bar__select">
+          <option value="">어디로 가시겠어요?</option>
+          <option value="calacatta">깔라까따</option>
+          <option value="laterrace">라테라스</option>
         </select>
-      </div>
-      <div class="booking__divider"></div>
-      <div class="booking__field">
-        <label class="booking__label">CHECK-IN</label>
-        <input type="date" class="booking__input" placeholder="Select date" />
-      </div>
-      <div class="booking__divider"></div>
-      <div class="booking__field">
-        <label class="booking__label">CHECK-OUT</label>
-        <input type="date" class="booking__input" placeholder="Select date" />
-      </div>
-      <div class="booking__divider"></div>
-      <div class="booking__field">
-        <label class="booking__label">NIGHTS</label>
-        <input type="number" class="booking__input" value="1" min="1" max="30" />
-      </div>
-      <div class="booking__divider"></div>
-      <div class="booking__field">
-        <label class="booking__label">GUESTS</label>
-        <select class="booking__select">
-          <option>1 Guest</option>
-          <option>2 Guests</option>
-          <option>3 Guests</option>
-          <option>4 Guests</option>
-          <option>5+ Guests</option>
-        </select>
-      </div>
-      <button class="booking__btn">SEARCH ROOMS</button>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       SECTION 4: BRAND INTRODUCTION — Split layout
-  ============================================================ -->
-  <section class="intro" id="about">
-    <div class="intro__inner container">
-      <div class="intro__left reveal">
-        <p class="section-label">Welcome to laterrace</p>
-        <h2 class="intro__heading">
-          With the Sea as Its Soul,<br />
-          laterrace Shares the Spirit<br />
-          of Yeosu with the World.
-        </h2>
-        <p class="intro__body">
-          Perched on the cliffs of Yeosu's pristine coastline, laterrace Resort Group invites guests to discover two remarkable worlds. Whether you seek the refined elegance of Calacatta's adult infinity pool or the vibrant joy of laterrace's Summerland water park — every stay is a story worth telling.
-        </p>
-        <div class="intro__motif" aria-hidden="true">
-          <svg viewBox="0 0 120 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 40 Q15 10 30 40 Q45 70 60 40 Q75 10 90 40 Q105 70 120 40" stroke="#9a8060" stroke-width="1.5" fill="none" opacity="0.6"/>
-            <path d="M0 50 Q15 20 30 50 Q45 80 60 50 Q75 20 90 50 Q105 80 120 50" stroke="#9a8060" stroke-width="1" fill="none" opacity="0.4"/>
-            <circle cx="60" cy="15" r="3" fill="#9a8060" opacity="0.5"/>
-            <path d="M55 15 Q60 5 65 15" stroke="#9a8060" stroke-width="1" fill="none" opacity="0.5"/>
-          </svg>
-        </div>
-      </div>
-
-      <div class="intro__right reveal delay-1">
-        <div class="intro__pillar">
-          <div class="intro__pillar-icon">
-            <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
-              <circle cx="20" cy="20" r="16"/>
-              <path d="M12 20 Q16 12 20 20 Q24 28 28 20"/>
-            </svg>
-          </div>
-          <div class="intro__pillar-text">
-            <h3 class="intro__pillar-title">Never Boring</h3>
-            <p class="intro__pillar-desc">Every season, a new village. Summerland to Winter Village, there's always something to discover.</p>
-          </div>
-        </div>
-        <div class="intro__pillar">
-          <div class="intro__pillar-icon">
-            <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
-              <rect x="8" y="14" width="24" height="16" rx="2"/>
-              <path d="M14 14V10a6 6 0 0 1 12 0v4"/>
-              <circle cx="20" cy="22" r="2"/>
-            </svg>
-          </div>
-          <div class="intro__pillar-text">
-            <h3 class="intro__pillar-title">Effortlessly Yours</h3>
-            <p class="intro__pillar-desc">Seamless online booking, warm concierge service, and QR room ordering at your fingertips.</p>
-          </div>
-        </div>
-        <div class="intro__pillar">
-          <div class="intro__pillar-icon">
-            <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
-              <path d="M4 28 Q10 16 20 20 Q30 24 36 12"/>
-              <path d="M4 34 Q10 22 20 26 Q30 30 36 18"/>
-              <circle cx="20" cy="8" r="4"/>
-            </svg>
-          </div>
-          <div class="intro__pillar-text">
-            <h3 class="intro__pillar-title">Ocean, Always</h3>
-            <p class="intro__pillar-desc">Every room, every terrace, every breath — the sea of Yeosu is forever with you.</p>
-          </div>
-        </div>
+        <span class="booking-bar__arrow">&#8964;</span>
       </div>
     </div>
-  </section>
+    <div class="booking-bar__divider"></div>
+    <div class="booking-bar__field">
+      <label class="booking-bar__label">DATE</label>
+      <input class="booking-bar__input" type="text" id="checkDate" placeholder="체크인 – 체크아웃" readonly />
+    </div>
+    <div class="booking-bar__divider"></div>
+    <div class="booking-bar__field">
+      <label class="booking-bar__label">GUESTS</label>
+      <input class="booking-bar__input" type="text" id="guestInput" placeholder="1실 | 성인 2명" readonly />
+    </div>
+    <button class="booking-bar__btn" id="checkAvailability">CHECK AVAILABILITY</button>
+  </div>
+</section>
 
-  <!-- ============================================================
-       SECTION 5: MEMBERSHIP / REWARDS TEASER
-  ============================================================ -->
-  <section class="rewards" id="rewards">
-    <div class="rewards__inner container">
-      <div class="rewards__content reveal">
-        <p class="section-label section-label--light">Be Rewarded</p>
-        <h2 class="rewards__heading">Get More From Your Stay</h2>
-        <ul class="rewards__list">
-          <li class="rewards__item"><span class="rewards__check">&#10003;</span>Lowest rates guaranteed</li>
-          <li class="rewards__item"><span class="rewards__check">&#10003;</span>Priority early check-in</li>
-          <li class="rewards__item"><span class="rewards__check">&#10003;</span>Complimentary room upgrade (subject to availability)</li>
-          <li class="rewards__item"><span class="rewards__check">&#10003;</span>Exclusive seasonal village access benefits</li>
-          <li class="rewards__item"><span class="rewards__check">&#10003;</span>Member-only dining offers</li>
-          <li class="rewards__item"><span class="rewards__check">&#10003;</span>Free to join</li>
-        </ul>
-        <a href="#" class="btn btn--outline-light">JOIN NOW — IT'S FREE</a>
+<!-- ===== INTRO ===== -->
+<section class="intro">
+  <div class="intro__inner">
+    <h2 class="intro__heading">여수의 바다를 품은 라테라스는<br>그 섬의 정신을 온 세상과 나눕니다.</h2>
+    <p class="intro__body">깔라까따와 라테라스에서 투숙객은 꿈꿔왔던 해양 낙원에서 눈을 뜨고, 아름다운 여수의 풍경을 만끽하며 리조트 생활의 마법을 느낍니다. 아늑한 부티크부터 넓고 웅장한 공간까지, 매혹적인 하루하루가 이어지는 핀치-유어셀프 파라다이스입니다.</p>
+    <div class="intro__features">
+      <div class="intro__feature">
+        <h6 class="intro__feature-title">NEVER BORING</h6>
+        <p class="intro__feature-desc">눈부신 여수에서 끊임없이 변화하는 액티비티로 섬의 정신을 증폭시킵니다.</p>
       </div>
-        <div class="rewards__visual reveal delay-1">
-        <div class="rewards__photo" style="background-image:url('http://gonylab4.speedgabia.com/laterrace/facility/2/1.jpg'); background-size:cover; background-position:center; width:100%; height:100%; min-height:400px; border-radius:4px;"></div>
+      <div class="intro__feature">
+        <h6 class="intro__feature-title">EFFORTLESSLY EASY</h6>
+        <p class="intro__feature-desc">간편한 온라인 예약부터 체크아웃까지, 모든 것이 바람처럼 편안합니다.</p>
+      </div>
+      <div class="intro__feature">
+        <h6 class="intro__feature-title">REINVIGORATING RESET</h6>
+        <p class="intro__feature-desc">야자수와 바다로 둘러싸인 이 공간에서 일상을 리셋하는 재충전의 시간을 누리세요.</p>
       </div>
     </div>
-  </section>
+  </div>
+  <div class="intro__emblem">
+    <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" width="90" height="90">
+      <defs>
+        <path id="circle-path" d="M60,8 a52,52 0 1,1 -0.01,0"/>
+      </defs>
+      <circle cx="60" cy="60" r="55" fill="none" stroke="#1a1a1a" stroke-width="0.6"/>
+      <text font-family="Jost, sans-serif" font-size="8.5" fill="#1a1a1a" letter-spacing="2.5">
+        <textPath href="#circle-path">· LATERRACE RESORT · YEOSU · KOREA ·&nbsp;&nbsp;</textPath>
+      </text>
+      <path d="M60 32 C55 40 48 50 60 57 C72 50 65 40 60 32Z" fill="#1a1a1a" opacity="0.75"/>
+      <path d="M60 57 C55 65 48 75 60 82 C72 75 65 65 60 57Z" fill="#1a1a1a" opacity="0.45"/>
+      <circle cx="60" cy="60" r="3" fill="#1a1a1a" opacity="0.5"/>
+    </svg>
+  </div>
+</section>
 
-  <!-- ============================================================
-       SECTION 6: SEASONAL VILLAGE — SUMMERLAND HERO
-  ============================================================ -->
-  <section class="summerland" id="summerland">
-    <div class="summerland__inner">
-      <div class="summerland__visual reveal">
-        <div class="summerland__photo" style="background-image:url('http://gonylab4.speedgabia.com/laterrace/facility/1/1.jpg'); background-size:cover; background-position:center; width:100%; height:100%; min-height:500px; border-radius:4px;"></div>
-      </div>
-
-      <div class="summerland__content reveal delay-1">
-        <p class="section-label section-label--summer">Summer Season</p>
-        <h2 class="summerland__heading">SUMMERLAND 2026</h2>
-        <p class="summerland__sub">The Rules of Water Play Have Changed</p>
-        <p class="summerland__body">
-          An expanded scale, a completely new kind of fun. Summerland at laterrace brings together Korea's largest outdoor water facilities — slides, splash zones, Jacuzzi spas, family pools, and beachside BBQ — all with the East Sea as your backdrop.
-        </p>
-        <div class="summerland__features">
-          <div class="summerland__feature">
-            <div class="summerland__feature-icon">
-              <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3">
-                <ellipse cx="20" cy="28" rx="14" ry="6"/>
-                <path d="M6 28 Q10 18 20 22 Q30 26 34 16"/>
-                <circle cx="20" cy="12" r="4"/>
-              </svg>
-            </div>
-            <span>Pool</span>
-          </div>
-          <div class="summerland__feature">
-            <div class="summerland__feature-icon">
-              <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3">
-                <path d="M8 32 Q12 20 20 24 Q28 28 32 16"/>
-                <circle cx="14" cy="14" r="3"/>
-                <circle cx="26" cy="10" r="2"/>
-                <path d="M14 17 Q16 22 20 24"/>
-              </svg>
-            </div>
-            <span>Kids Water Park</span>
-          </div>
-          <div class="summerland__feature">
-            <div class="summerland__feature-icon">
-              <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3">
-                <rect x="8" y="20" width="24" height="12" rx="3"/>
-                <path d="M12 20 Q14 10 20 12 Q26 14 28 20"/>
-                <path d="M16 26 Q18 22 20 26 Q22 30 24 26"/>
-              </svg>
-            </div>
-            <span>Jacuzzi Spa</span>
-          </div>
-          <div class="summerland__feature">
-            <div class="summerland__feature-icon">
-              <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3">
-                <rect x="6" y="26" width="28" height="6" rx="1"/>
-                <path d="M10 26 L12 16 L28 16 L30 26"/>
-                <path d="M16 16 L16 10 M24 16 L24 10"/>
-                <path d="M13 10 L27 10"/>
-                <circle cx="20" cy="8" r="2"/>
-              </svg>
-            </div>
-            <span>BBQ Zone</span>
-          </div>
-        </div>
-        <a href="#" class="btn btn--summer">EXPLORE SUMMERLAND &rarr;</a>
-      </div>
+<!-- ===== RESORTS (The House of Laterrace) ===== -->
+<section class="resorts" id="resorts">
+  <div class="resorts__header">
+    <div class="resorts__title-wrap">
+      <h2 class="resorts__title">The House<br>of Laterrace</h2>
     </div>
-  </section>
-
-  <!-- ============================================================
-       SECTION 7: LATEST OFFERS
-  ============================================================ -->
-  <section class="offers" id="offers">
-    <div class="offers__inner container">
-      <div class="offers__header reveal">
-        <p class="section-label">Latest Offers</p>
-        <h2 class="offers__heading">More for Less</h2>
-      </div>
-
-      <div class="offers__grid reveal delay-1">
-        <div class="offer-card">
-          <div class="offer-card__image" style="background-image:url('http://gonylab11.speedgabia.com/calacatta/main/facility/1.jpg'); background-size:cover; background-position:center; height:260px; border-radius:4px 4px 0 0;"></div>
-          <div class="offer-card__body">
-            <p class="offer-card__brand">CALACATTA</p>
-            <h3 class="offer-card__title">Premium Ocean Escape</h3>
-            <p class="offer-card__desc">Indulge in Calacatta's exclusive adult-only infinity pool suites. Complimentary upgrade and early check-in for direct bookings.</p>
-            <div class="offer-card__actions">
-              <a href="#" class="btn btn--outline-dark">VIEW OFFER</a>
-              <a href="#booking" class="btn btn--dark">BOOK NOW</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="offer-card">
-          <div class="offer-card__image" style="background-image:url('http://gonylab4.speedgabia.com/laterrace/facility/3/1.jpg'); background-size:cover; background-position:center; height:260px; border-radius:4px 4px 0 0;"></div>
-          <div class="offer-card__body">
-            <p class="offer-card__brand offer-card__brand--summer">LATERRACE / SUMMERLAND</p>
-            <h3 class="offer-card__title">Summerland Season Pass</h3>
-            <p class="offer-card__desc">Unlimited access to Summerland water park, family pool, and kids zone. Bundle with a resort stay for the ultimate summer package.</p>
-            <div class="offer-card__actions">
-              <a href="#" class="btn btn--outline-dark">VIEW OFFER</a>
-              <a href="#booking" class="btn btn--dark">BOOK NOW</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="offers__more reveal delay-2">
-        <a href="#" class="offers__more-link">VIEW ALL OFFERS &rarr;</a>
-      </div>
+    <div class="resorts__desc-wrap">
+      <p class="resorts__desc">라테라스 하우스에는 두 가지 독특한 카테고리 — 깔라까따와 라테라스 — 가 있습니다. 다양한 리조트 포트폴리오를 차별화하고 단순화하여 투숙객이 자신의 니즈에 가장 잘 맞는 리조트를 선택할 수 있도록 합니다.</p>
     </div>
-  </section>
+  </div>
 
-  <!-- ============================================================
-       SECTION 8: DUAL BRAND SHOWCASE
-  ============================================================ -->
-  <section class="brands" id="brands">
-    <div class="brands__inner container">
-      <div class="brands__header reveal">
-        <p class="section-label">Choose Your World</p>
-        <h2 class="brands__heading">Two Brands. One Extraordinary Location.</h2>
-      </div>
+  <div class="resorts__filters">
+    <ul class="resorts__filter-list">
+      <li class="resorts__filter active" data-filter="all">All Collections</li>
+      <li class="resorts__filter" data-filter="calacatta">깔라까따</li>
+      <li class="resorts__filter" data-filter="laterrace">라테라스</li>
+    </ul>
+  </div>
 
-      <div class="brands__grid">
-        <div class="brand-card brand-card--calacatta reveal" id="calacatta">
-          <div class="brand-card__image" style="background-image:url('http://gonylab11.speedgabia.com/calacatta/main/facility/1.jpg'); background-size:cover; background-position:center; height:380px;"></div>
-          <div class="brand-card__content">
-            <p class="brand-card__tag">For Adults &middot; Ocean Suites &middot; Infinity Pool</p>
-            <h3 class="brand-card__name">Calacatta<br />Hotel &amp; Resort</h3>
-            <p class="brand-card__desc">Calacatta is where sophistication meets the sea. Adult-preferred suites with private terraces, no-kids infinity pool, and curated luxury for those who seek the finest.</p>
-            <ul class="brand-card__rooms">
-              <li>The Suite</li>
-              <li>Young Suite</li>
-              <li>Young Suite Terrace</li>
-              <li>Premier Suite</li>
-            </ul>
-            <a href="#" class="btn btn--calacatta">EXPLORE CALACATTA &rarr;</a>
-          </div>
-        </div>
-
-        <div class="brand-card brand-card--laterrace reveal delay-1" id="laterrace">
-          <div class="brand-card__image" style="background-image:url('http://gonylab4.speedgabia.com/laterrace/room/1/5/1.jpg'); background-size:cover; background-position:center; height:380px;"></div>
-          <div class="brand-card__content">
-            <p class="brand-card__tag brand-card__tag--warm">Family &middot; Summerland &middot; Kids Programs</p>
-            <h3 class="brand-card__name brand-card__name--warm">laterrace<br />Boutique Resort &amp; Spa</h3>
-            <p class="brand-card__desc">laterrace is where families create forever memories. From the Summerland water park to kids programs, heated indoor pools, and oceanfront terraces — joy is unlimited here.</p>
-            <a href="#" class="btn btn--laterrace">EXPLORE LATERRACE &rarr;</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       SECTION 9: WINTER VILLAGE TEASER
-  ============================================================ -->
-  <section class="winter" id="winter">
-    <div class="winter__inner">
-      <div class="winter__bg" style="background-image:url('http://gonylab11.speedgabia.com/calacatta/main/6.jpg'); background-size:cover; background-position:center;"></div>
-      <div class="winter__overlay"></div>
-      <div class="winter__content reveal">
-        <p class="section-label section-label--light">Winter Season</p>
-        <h2 class="winter__heading">Winter Village<br />— Coming This December</h2>
-        <p class="winter__body">
-          When summer fades, the magic transforms. laterrace's Winter Village wraps the resort in warm lights, cozy heated pools, and festive spirit. Bookmark your season.
-        </p>
-        <a href="#" class="btn btn--outline-light">LEARN MORE &rarr;</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       SECTION 10: DINING HIGHLIGHT
-  ============================================================ -->
-  <section class="dining" id="dining">
-    <div class="dining__inner container">
-      <div class="dining__header reveal">
-        <p class="section-label">All-in Dining</p>
-        <h2 class="dining__heading">Dine Without Limits</h2>
-      </div>
-
-      <div class="dining__scroll-wrap">
-        <div class="dining__cards reveal delay-1">
-          <div class="dining-card">
-            <div class="dining-card__image" style="background-image:url('http://gonylab4.speedgabia.com/laterrace/dining/1/2.jpg'); background-size:cover; background-position:center;"></div>
-            <div class="dining-card__body">
-              <h3 class="dining-card__name">Mankai Dinner</h3>
-              <p class="dining-card__desc">Oceanfront fine dining with seasonal Korean-fusion cuisine.</p>
-            </div>
-          </div>
-          <div class="dining-card">
-            <div class="dining-card__image" style="background-image:url('http://gonylab4.speedgabia.com/laterrace/dining/2/1.jpg'); background-size:cover; background-position:center;"></div>
-            <div class="dining-card__body">
-              <h3 class="dining-card__name">Nangman Byeolsik</h3>
-              <p class="dining-card__desc">Romantic dining experience with curated menus for two.</p>
-            </div>
-          </div>
-          <div class="dining-card">
-            <div class="dining-card__image" style="background-image:url('http://gonylab4.speedgabia.com/laterrace/dining/3/1.jpg'); background-size:cover; background-position:center;"></div>
-            <div class="dining-card__body">
-              <h3 class="dining-card__name">BBQ</h3>
-              <p class="dining-card__desc">Beachside BBQ with ocean breezes and fresh grilled specialties.</p>
-            </div>
-          </div>
-          <div class="dining-card">
-            <div class="dining-card__image" style="background-image:url('http://gonylab4.speedgabia.com/laterrace/dining/4/1.jpg'); background-size:cover; background-position:center;"></div>
-            <div class="dining-card__body">
-              <h3 class="dining-card__name">BHC Chicken</h3>
-              <p class="dining-card__desc">Korea's beloved fried chicken brand, right at the resort.</p>
-            </div>
-          </div>
-          <div class="dining-card">
-            <div class="dining-card__image" style="background-image:url('http://gonylab4.speedgabia.com/laterrace/dining/6/1.jpg'); background-size:cover; background-position:center;"></div>
-            <div class="dining-card__body">
-              <h3 class="dining-card__name">laterrace The Beach</h3>
-              <p class="dining-card__desc">Casual beachfront bar and café with panoramic sea views.</p>
-            </div>
-          </div>
-          <div class="dining-card">
-            <div class="dining-card__image" style="background-image:url('http://gonylab4.speedgabia.com/laterrace/dining/7/1.jpg'); background-size:cover; background-position:center;"></div>
-            <div class="dining-card__body">
-              <h3 class="dining-card__name">CU Convenience Store</h3>
-              <p class="dining-card__desc">24/7 convenience for snacks, drinks, and daily essentials.</p>
-            </div>
-          </div>
-          <div class="dining-card">
-            <div class="dining-card__image" style="background-image:url('http://gonylab4.speedgabia.com/laterrace/dining/5/1.jpg'); background-size:cover; background-position:center;"></div>
-            <div class="dining-card__body">
-              <h3 class="dining-card__name">Hot Dog</h3>
-              <p class="dining-card__desc">Quick bites and snacks perfect for a day at the water park.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="dining__more reveal delay-2">
-        <a href="#" class="offers__more-link">VIEW ALL DINING &rarr;</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       SECTION 11: FACILITIES OVERVIEW
-  ============================================================ -->
-  <section class="facilities" id="facilities">
-    <div class="facilities__inner container">
-      <div class="facilities__header reveal">
-        <p class="section-label">Facilities</p>
-        <h2 class="facilities__heading">Everything You Need, All in One Place</h2>
-      </div>
-
-      <div class="facilities__grid reveal delay-1">
-        <div class="facility-item">
-          <div class="facility-item__image" style="background-image:url('http://gonylab4.speedgabia.com/laterrace/facility/1/1.jpg'); background-size:cover; background-position:center;"></div>
-          <div class="facility-item__icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3"><ellipse cx="20" cy="28" rx="14" ry="5"/><path d="M6 28 Q10 18 20 22 Q30 26 34 16"/></svg></div>
-          <span class="facility-item__name">Swimming Pool</span>
-        </div>
-        <div class="facility-item">
-          <div class="facility-item__image" style="background-image:url('http://gonylab4.speedgabia.com/laterrace/facility/3/1.jpg'); background-size:cover; background-position:center;"></div>
-          <div class="facility-item__icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="14" cy="14" r="3"/><path d="M8 32 Q12 20 20 24 Q28 28 32 16"/></svg></div>
-          <span class="facility-item__name">Kids Water Park</span>
-        </div>
-        <div class="facility-item">
-          <div class="facility-item__image" style="background-image:url('http://gonylab4.speedgabia.com/laterrace/facility/5/1.jpg'); background-size:cover; background-position:center;"></div>
-          <div class="facility-item__icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="8" y="20" width="24" height="12" rx="3"/><path d="M12 20 Q14 10 20 12 Q26 14 28 20"/></svg></div>
-          <span class="facility-item__name">Jacuzzi Spa</span>
-        </div>
-        <div class="facility-item">
-          <div class="facility-item__image" style="background-image:url('http://gonylab11.speedgabia.com/calacatta/main/facility/4.jpg'); background-size:cover; background-position:center;"></div>
-          <div class="facility-item__icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="8" y="8" width="10" height="24" rx="1"/><rect x="22" y="8" width="10" height="24" rx="1"/><circle cx="13" cy="20" r="1.5"/><circle cx="27" cy="20" r="1.5"/></svg></div>
-          <span class="facility-item__name">Locker &amp; Shower</span>
-        </div>
-        <div class="facility-item">
-          <div class="facility-item__image" style="background-image:url('http://gonylab4.speedgabia.com/laterrace/dining/3/1.jpg'); background-size:cover; background-position:center;"></div>
-          <div class="facility-item__icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="6" y="26" width="28" height="6" rx="1"/><path d="M10 26 L12 16 L28 16 L30 26"/><path d="M16 16 L16 10 M24 16 L24 10"/><path d="M13 10 L27 10"/></svg></div>
-          <span class="facility-item__name">BBQ</span>
-        </div>
-        <div class="facility-item">
-          <div class="facility-item__image" style="background-image:url('http://gonylab4.speedgabia.com/laterrace/dining/7/1.jpg'); background-size:cover; background-position:center;"></div>
-          <div class="facility-item__icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M8 16 L10 8 L30 8 L32 16 Z"/><rect x="8" y="16" width="24" height="16" rx="1"/><rect x="16" y="22" width="8" height="10" rx="1"/></svg></div>
-          <span class="facility-item__name">Store</span>
-        </div>
-      </div>
-
-      <div class="facilities__more reveal delay-2">
-        <a href="#" class="offers__more-link">VIEW ALL FACILITIES &rarr;</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       SECTION 12: SOCIAL PROOF / ATMOSPHERE GALLERY
-  ============================================================ -->
-  <section class="gallery" id="gallery">
-    <div class="gallery__inner container">
-      <div class="gallery__header reveal">
-        <p class="gallery__tagline">Feel the Yeosu Spirit — #laterrace #calacatta #summerland</p>
-        <a href="#" class="gallery__instagram">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20">
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-          </svg>
-          Follow on Instagram
-        </a>
-      </div>
-
-      <div class="gallery__grid reveal delay-1">
-        <div class="gallery__item gallery__item--large" style="background-image:url('http://gonylab11.speedgabia.com/calacatta/main/1.jpg'); background-size:cover; background-position:center;"></div>
-        <div class="gallery__item" style="background-image:url('http://gonylab4.speedgabia.com/laterrace/facility/1/1.jpg'); background-size:cover; background-position:center;"></div>
-        <div class="gallery__item" style="background-image:url('http://gonylab4.speedgabia.com/laterrace/facility/3/1.jpg'); background-size:cover; background-position:center;"></div>
-        <div class="gallery__item" style="background-image:url('http://gonylab11.speedgabia.com/calacatta/main/2.jpg'); background-size:cover; background-position:center;"></div>
-        <div class="gallery__item gallery__item--wide" style="background-image:url('http://gonylab4.speedgabia.com/laterrace/room/4/1/1.jpg'); background-size:cover; background-position:center;"></div>
-        <div class="gallery__item" style="background-image:url('http://gonylab4.speedgabia.com/laterrace/dining/1/1.jpg'); background-size:cover; background-position:center;"></div>
-        <div class="gallery__item" style="background-image:url('http://gonylab4.speedgabia.com/laterrace/room/1/5/1.jpg'); background-size:cover; background-position:center;"></div>
-        <div class="gallery__item" style="background-image:url('http://gonylab11.speedgabia.com/calacatta/main/3.jpg'); background-size:cover; background-position:center;"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       SECTION 13: FOOTER
-  ============================================================ -->
-  <footer class="footer" id="contact">
-    <div class="footer__inner container">
-      <div class="footer__top">
-        <div class="footer__brand">
-          <a href="#" class="footer__logo">
-            <span class="footer__logo-main">laterrace</span>
-            <span class="footer__logo-sub">Resort Group</span>
+  <div class="resorts__slider-outer">
+    <button class="resorts__arrow resorts__arrow--prev" id="resortsPrev" aria-label="이전">&#8592;</button>
+    <div class="resorts__slider-viewport">
+      <div class="resorts__slider" id="resortsSlider">
+        <div class="resort-card" data-collection="calacatta">
+          <a href="#" class="resort-card__img-link">
+            <img src="http://gonylab11.speedgabia.com/calacatta/main/4.jpg" alt="깔라까따 인피니티풀" class="resort-card__img" loading="lazy" />
+            <div class="resort-card__img-label">CALACATTA</div>
           </a>
-          <p class="footer__tagline">Yeosu's Premier Oceanfront Resort Collection</p>
-          <div class="footer__social">
-            <a href="#" class="footer__social-link" aria-label="Instagram">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-            </a>
-            <a href="#" class="footer__social-link" aria-label="YouTube">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
-            </a>
-            <a href="#" class="footer__social-link" aria-label="Naver Blog">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M16.273 12.845L7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727z"/></svg>
-            </a>
+          <div class="resort-card__body">
+            <h6 class="resort-card__subtitle">여수 바다를 품은<br>인피니티 럭셔리</h6>
+            <div class="resort-card__btns">
+              <a href="#" class="resort-card__btn resort-card__btn--outline">VIEW RESORT</a>
+              <a href="#booking" class="resort-card__btn resort-card__btn--fill">BOOK NOW</a>
+            </div>
           </div>
         </div>
-
-        <div class="footer__links">
-          <div class="footer__col">
-            <h4 class="footer__col-title">CALACATTA</h4>
-            <ul class="footer__col-list">
-              <li><a href="#">About Calacatta</a></li>
-              <li><a href="#">The Suite</a></li>
-              <li><a href="#">Young Suite</a></li>
-              <li><a href="#">Young Suite Terrace</a></li>
-              <li><a href="#">Premier Suite</a></li>
-              <li><a href="#">Infinity Pool</a></li>
-            </ul>
-          </div>
-          <div class="footer__col">
-            <h4 class="footer__col-title">LATERRACE</h4>
-            <ul class="footer__col-list">
-              <li><a href="#">About laterrace</a></li>
-              <li><a href="#">Rooms &amp; Suites</a></li>
-              <li><a href="#">Family Pool</a></li>
-              <li><a href="#">Kids Programs</a></li>
-              <li><a href="#">Indoor Heated Pool</a></li>
-              <li><a href="#">Spa &amp; Wellness</a></li>
-            </ul>
-          </div>
-          <div class="footer__col">
-            <h4 class="footer__col-title">SUMMERLAND</h4>
-            <ul class="footer__col-list">
-              <li><a href="#">Summerland 2026</a></li>
-              <li><a href="#">Water Slides</a></li>
-              <li><a href="#">Kids Water Zone</a></li>
-              <li><a href="#">Jacuzzi Spa</a></li>
-              <li><a href="#">BBQ &amp; Beach Bar</a></li>
-              <li><a href="#">Season Pass</a></li>
-            </ul>
-          </div>
-          <div class="footer__col">
-            <h4 class="footer__col-title">INFO</h4>
-            <ul class="footer__col-list">
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Dining</a></li>
-              <li><a href="#">Facilities</a></li>
-              <li><a href="#">Offers &amp; Packages</a></li>
-              <li><a href="#">Membership</a></li>
-              <li><a href="#">Contact Us</a></li>
-            </ul>
+        <div class="resort-card" data-collection="calacatta">
+          <a href="#" class="resort-card__img-link">
+            <img src="http://gonylab11.speedgabia.com/calacatta/main/5.jpg" alt="깔라까따 객실" class="resort-card__img" loading="lazy" />
+            <div class="resort-card__img-label">CALACATTA</div>
+          </a>
+          <div class="resort-card__body">
+            <h6 class="resort-card__subtitle">프라이빗 테라스와<br>오션뷰 스위트</h6>
+            <div class="resort-card__btns">
+              <a href="#" class="resort-card__btn resort-card__btn--outline">VIEW RESORT</a>
+              <a href="#booking" class="resort-card__btn resort-card__btn--fill">BOOK NOW</a>
+            </div>
           </div>
         </div>
-      </div>
-
-      <div class="footer__address">
-        <p>
-          <strong>laterrace Resort Group</strong><br />
-          전라남도 여수시 돌산읍 진모길 (Jinmo-gil, Dolsan-eup, Yeosu-si, Jeollanam-do, South Korea)<br />
-          Tel: +82-61-000-0000 &nbsp;|&nbsp; Email: info@laterrace-resort.com
-        </p>
-      </div>
-
-      <div class="footer__bottom">
-        <p class="footer__copyright">&copy; 2026 laterrace Resort Group. All rights reserved.</p>
-        <div class="footer__legal">
-          <a href="#">Privacy Policy</a>
-          <span>|</span>
-          <a href="#">Terms of Use</a>
+        <div class="resort-card" data-collection="laterrace">
+          <a href="#" class="resort-card__img-link">
+            <img src="http://gonylab4.speedgabia.com/laterrace/room/4/1/1.jpg" alt="라테라스 오션 스위트" class="resort-card__img" loading="lazy" />
+            <div class="resort-card__img-label">LATERRACE</div>
+          </a>
+          <div class="resort-card__body">
+            <h6 class="resort-card__subtitle">오션 스위트와<br>여수 야경</h6>
+            <div class="resort-card__btns">
+              <a href="#" class="resort-card__btn resort-card__btn--outline">VIEW RESORT</a>
+              <a href="#booking" class="resort-card__btn resort-card__btn--fill">BOOK NOW</a>
+            </div>
+          </div>
+        </div>
+        <div class="resort-card" data-collection="laterrace">
+          <a href="#" class="resort-card__img-link">
+            <img src="http://gonylab4.speedgabia.com/laterrace/room/5/1/1.jpg" alt="라테라스 코브 스위트" class="resort-card__img" loading="lazy" />
+            <div class="resort-card__img-label">LATERRACE</div>
+          </a>
+          <div class="resort-card__body">
+            <h6 class="resort-card__subtitle">코브 스위트와<br>프라이빗 풀</h6>
+            <div class="resort-card__btns">
+              <a href="#" class="resort-card__btn resort-card__btn--outline">VIEW RESORT</a>
+              <a href="#booking" class="resort-card__btn resort-card__btn--fill">BOOK NOW</a>
+            </div>
+          </div>
+        </div>
+        <div class="resort-card" data-collection="calacatta">
+          <a href="#" class="resort-card__img-link">
+            <img src="http://gonylab11.speedgabia.com/calacatta/main/3.jpg" alt="깔라까따 요트" class="resort-card__img" loading="lazy" />
+            <div class="resort-card__img-label">CALACATTA</div>
+          </a>
+          <div class="resort-card__body">
+            <h6 class="resort-card__subtitle">요트와 함께하는<br>여수 해상 투어</h6>
+            <div class="resort-card__btns">
+              <a href="#" class="resort-card__btn resort-card__btn--outline">VIEW RESORT</a>
+              <a href="#booking" class="resort-card__btn resort-card__btn--fill">BOOK NOW</a>
+            </div>
+          </div>
+        </div>
+        <div class="resort-card" data-collection="laterrace">
+          <a href="#" class="resort-card__img-link">
+            <img src="http://gonylab4.speedgabia.com/laterrace/facility/2/1.jpg" alt="라테라스 인피니티풀" class="resort-card__img" loading="lazy" />
+            <div class="resort-card__img-label">LATERRACE</div>
+          </a>
+          <div class="resort-card__body">
+            <h6 class="resort-card__subtitle">인피니티풀과<br>여수 바다 전망</h6>
+            <div class="resort-card__btns">
+              <a href="#" class="resort-card__btn resort-card__btn--outline">VIEW RESORT</a>
+              <a href="#booking" class="resort-card__btn resort-card__btn--fill">BOOK NOW</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </footer>
+    <button class="resorts__arrow resorts__arrow--next" id="resortsNext" aria-label="다음">&#8594;</button>
+  </div>
+</section>
 
-  <script src="script.js"></script>
+<!-- ===== BE REWARDED ===== -->
+<section class="rewards" id="rewards">
+  <div class="rewards__inner">
+    <div class="rewards__img-wrap">
+      <img src="http://gonylab4.speedgabia.com/laterrace/facility/2/1.jpg" alt="라테라스 인피니티풀" class="rewards__img" loading="lazy" />
+    </div>
+    <div class="rewards__content">
+      <p class="rewards__eyebrow">BE REWARDED</p>
+      <h2 class="rewards__heading">Get more<br>from your stay</h2>
+      <h3 class="rewards__sub">멤버십 혜택<span class="rewards__asterisk">*</span></h3>
+      <ul class="rewards__list">
+        <li class="rewards__item">
+          <span class="rewards__item-arrow">&#9658;</span>
+          <span>최저가 보장</span>
+        </li>
+        <li class="rewards__item">
+          <span class="rewards__item-arrow">&#9658;</span>
+          <span>얼리 체크인 우선 제공</span>
+        </li>
+        <li class="rewards__item">
+          <span class="rewards__item-arrow">&#9658;</span>
+          <span>무료 객실 업그레이드 (가용 시)</span>
+        </li>
+        <li class="rewards__item">
+          <span class="rewards__item-arrow">&#9658;</span>
+          <span>시즌 빌리지 전용 혜택</span>
+        </li>
+        <li class="rewards__item">
+          <span class="rewards__item-arrow">&#9658;</span>
+          <span>멤버 전용 다이닝 오퍼</span>
+        </li>
+        <li class="rewards__item">
+          <span class="rewards__item-arrow">&#9658;</span>
+          <span>무료 가입</span>
+        </li>
+      </ul>
+      <p class="rewards__note">*이용 약관 적용</p>
+      <div class="rewards__btns">
+        <a href="#" class="rewards__btn">SIGN UP</a>
+        <a href="#" class="rewards__btn">LOGIN</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LATEST OFFERS ===== -->
+<section class="offers" id="offers">
+  <div class="offers__header">
+    <p class="offers__eyebrow">LATEST OFFERS</p>
+    <h2 class="offers__heading">More for Less</h2>
+  </div>
+  <div class="offers__slider-outer">
+    <button class="offers__arrow offers__arrow--prev" id="offersPrev" aria-label="이전">&#8592;</button>
+    <div class="offers__slider-viewport">
+      <div class="offers__slider" id="offersSlider">
+        <div class="offer-card">
+          <div class="offer-card__img-wrap">
+            <img src="http://gonylab11.speedgabia.com/calacatta/main/4.jpg" alt="깔라까따 여름 오퍼" class="offer-card__img" loading="lazy" />
+          </div>
+          <div class="offer-card__body">
+            <p class="offer-card__tag">CALACATTA OFFERS</p>
+            <p class="offer-card__resort">CALACATTA</p>
+            <h6 class="offer-card__title">Summer Offer</h6>
+            <p class="offer-card__desc">깔라까따에서 최고의 여름을 보내세요! 최대 30% 할인 및 리조트 크레딧 제공, 조식 포함으로 매 순간이 완벽한 럭셔리 경험이 됩니다.</p>
+            <div class="offer-card__btns">
+              <a href="#" class="offer-card__btn">VIEW OFFER</a>
+              <a href="#booking" class="offer-card__btn">BOOK NOW</a>
+            </div>
+          </div>
+        </div>
+        <div class="offer-card">
+          <div class="offer-card__img-wrap">
+            <img src="http://gonylab4.speedgabia.com/laterrace/room/4/1/1.jpg" alt="라테라스 허니문 오퍼" class="offer-card__img" loading="lazy" />
+          </div>
+          <div class="offer-card__body">
+            <p class="offer-card__tag">LATERRACE OFFERS</p>
+            <p class="offer-card__resort">LATERRACE</p>
+            <h6 class="offer-card__title">Honeymoon Offer</h6>
+            <p class="offer-card__desc">모든 스위트에 프라이빗 풀이 딸린 이 부티크 풀 파라다이스에서 둘만의 특별한 시간을 만들어 드립니다. 허니문 패키지로 잊지 못할 추억을 선사합니다.</p>
+            <div class="offer-card__btns">
+              <a href="#" class="offer-card__btn">VIEW OFFER</a>
+              <a href="#booking" class="offer-card__btn">BOOK NOW</a>
+            </div>
+          </div>
+        </div>
+        <div class="offer-card">
+          <div class="offer-card__img-wrap">
+            <img src="http://gonylab4.speedgabia.com/laterrace/facility/3/1.jpg" alt="라테라스 패밀리 오퍼" class="offer-card__img" loading="lazy" />
+          </div>
+          <div class="offer-card__body">
+            <p class="offer-card__tag">LATERRACE OFFERS</p>
+            <p class="offer-card__resort">LATERRACE</p>
+            <h6 class="offer-card__title">Family Offer</h6>
+            <p class="offer-card__desc">꿈꿔왔던 가족 여행을 이제 타협 없이 즐기세요. 키즈 워터파크와 가족 전용 프로그램으로 온 가족이 행복한 여수 여행을 경험하세요.</p>
+            <div class="offer-card__btns">
+              <a href="#" class="offer-card__btn">VIEW OFFER</a>
+              <a href="#booking" class="offer-card__btn">BOOK NOW</a>
+            </div>
+          </div>
+        </div>
+        <div class="offer-card">
+          <div class="offer-card__img-wrap">
+            <img src="http://gonylab11.speedgabia.com/calacatta/main/5.jpg" alt="깔라까따 로맨스 오퍼" class="offer-card__img" loading="lazy" />
+          </div>
+          <div class="offer-card__body">
+            <p class="offer-card__tag">CALACATTA OFFERS</p>
+            <p class="offer-card__resort">CALACATTA</p>
+            <h6 class="offer-card__title">Romance Offer</h6>
+            <p class="offer-card__desc">로맨스 아일랜드에서 낭만적인 경험을 한층 업그레이드하세요. 커플 스파, 선셋 크루즈, 프라이빗 다이닝으로 완벽한 로맨스를 연출합니다.</p>
+            <div class="offer-card__btns">
+              <a href="#" class="offer-card__btn">VIEW OFFER</a>
+              <a href="#booking" class="offer-card__btn">BOOK NOW</a>
+            </div>
+          </div>
+        </div>
+        <div class="offer-card">
+          <div class="offer-card__img-wrap">
+            <img src="http://gonylab4.speedgabia.com/laterrace/room/5/1/1.jpg" alt="라테라스 얼리버드 오퍼" class="offer-card__img" loading="lazy" />
+          </div>
+          <div class="offer-card__body">
+            <p class="offer-card__tag">LATERRACE OFFERS</p>
+            <p class="offer-card__resort">LATERRACE</p>
+            <h6 class="offer-card__title">Early Bird Offer</h6>
+            <p class="offer-card__desc">일찍 예약할수록 더 큰 혜택을 드립니다. 30일 전 예약 시 최대 25% 할인, 무료 조식 및 레이트 체크아웃 혜택을 누리세요.</p>
+            <div class="offer-card__btns">
+              <a href="#" class="offer-card__btn">VIEW OFFER</a>
+              <a href="#booking" class="offer-card__btn">BOOK NOW</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="offers__arrow offers__arrow--next" id="offersNext" aria-label="다음">&#8594;</button>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer" id="contact">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <div class="footer__logo">
+        <span class="footer__logo-sup">laterrace</span>
+        <span class="footer__logo-main">resort</span>
+      </div>
+      <p class="footer__tagline">여수의 정신을 담은 프리미엄 리조트</p>
+      <div class="footer__social">
+        <a href="#" aria-label="Instagram" class="footer__social-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="#" aria-label="YouTube" class="footer__social-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer__links">
+      <div class="footer__col">
+        <h6 class="footer__col-title">RESORT</h6>
+        <ul>
+          <li><a href="#">깔라까따</a></li>
+          <li><a href="#">라테라스</a></li>
+          <li><a href="#">시설</a></li>
+          <li><a href="#">다이닝</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h6 class="footer__col-title">OFFERS</h6>
+        <ul>
+          <li><a href="#">여름 오퍼</a></li>
+          <li><a href="#">허니문 오퍼</a></li>
+          <li><a href="#">패밀리 오퍼</a></li>
+          <li><a href="#">로맨스 오퍼</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h6 class="footer__col-title">INFORMATION</h6>
+        <ul>
+          <li><a href="#">오시는 길</a></li>
+          <li><a href="#">이용약관</a></li>
+          <li><a href="#">개인정보처리방침</a></li>
+          <li><a href="#">고객센터</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <p class="footer__copy">&copy; 2025 laterrace Resort. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
