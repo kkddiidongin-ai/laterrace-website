@@ -1548,12 +1548,12 @@ input, select { font-family: inherit; }
     flex-direction: column;
     overflow: visible;
     border-bottom: none;
-    border-right: 1px solid rgba(42,32,24,0.12);
+    border-right: 1px solid rgba(42,32,24,0.15);
     padding: 0;
-    width: 170px;
-    min-width: 170px;
+    width: 60px;
+    min-width: 60px;
     flex-shrink: 0;
-    height: 100%; /* 슬라이더와 동일 높이 */
+    height: 100%;
     background: var(--color-sand);
   }
 }
@@ -1571,24 +1571,24 @@ input, select { font-family: inherit; }
 }
 @media (min-width: 768px) {
   .brands__tab {
-    padding: 0;
+    padding: 0 0 20px 0;
     white-space: normal;
     width: 100%;
-    flex: 1; /* 탭 4개가 동일하게 높이 분할 */
+    flex: 1;
     display: flex;
-    align-items: center;
+    align-items: flex-end; /* 하단 정렬 — 레퍼런스와 동일 */
     justify-content: center;
-    border-bottom: 1px solid rgba(42,32,24,0.1);
+    border-bottom: none;
   }
   .brands__tab:last-child { border-bottom: none; }
 }
 
 .brands__tab-text {
   font-family: var(--font-serif);
-  font-size: 0.82rem;
+  font-size: 0.75rem;
   font-weight: 400;
   font-style: italic;
-  color: rgba(42,32,24,0.3);
+  color: rgba(42,32,24,0.25);
   transition: color var(--transition), font-weight var(--transition);
   display: block;
   line-height: 1.3;
@@ -1598,18 +1598,19 @@ input, select { font-family: inherit; }
     writing-mode: vertical-rl;
     text-orientation: mixed;
     transform: rotate(180deg);
-    font-size: 0.88rem;
-    letter-spacing: 0.03em;
+    font-size: 0.72rem; /* 레퍼런스 ~10-11px */
+    letter-spacing: 0.02em;
   }
 }
 
-/* 활성 탭: 굵고 진한 색 */
+/* 활성 탭: 굵고 진한 색 — 레퍼런스와 동일 */
 .brands__tab--active .brands__tab-text {
   color: var(--color-text);
   font-weight: 700;
+  font-style: italic;
 }
 .brands__tab:hover .brands__tab-text {
-  color: rgba(42,32,24,0.7);
+  color: rgba(42,32,24,0.6);
 }
 
 /* 모바일: 활성 탭 하단 선 */
@@ -1623,13 +1624,15 @@ input, select { font-family: inherit; }
   background: var(--color-text);
 }
 @media (min-width: 768px) {
+  /* PC: 활성 탭 좌측 세로 선 — 레퍼런스와 동일 */
   .brands__tab--active::after {
     bottom: auto;
     top: 0;
     left: 0;
     right: auto;
-    width: 3px;
+    width: 2px;
     height: 100%;
+    background: var(--color-text);
   }
 }
 
