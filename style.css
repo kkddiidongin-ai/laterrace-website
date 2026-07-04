@@ -1131,10 +1131,14 @@ input, select { font-family: inherit; }
 
 /* Centered layout (Sun Siyam style) */
 .intro__inner--centered {
-  display: flex;
-  flex-direction: column;
+  display: flex !important;
+  grid-template-columns: unset !important;
+  flex-direction: column !important;
   align-items: center;
   gap: 0;
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
 }
 
 /* Legacy split layout (kept for reference) */
@@ -1148,28 +1152,35 @@ input, select { font-family: inherit; }
 /* Center top block */
 .intro__center-top {
   text-align: center;
+  width: 100%;
   max-width: 820px;
-  margin: 0 auto 72px;
+  margin: 0 auto 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .intro__heading {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(2.2rem, 3.8vw, 3.6rem);
+  font-size: clamp(2.4rem, 4vw, 4rem);
   font-weight: 400;
   font-style: italic;
   line-height: 1.15;
   color: var(--color-text);
-  margin-bottom: 32px;
+  margin-bottom: 36px;
   letter-spacing: -0.01em;
+  text-align: center;
+  width: 100%;
 }
 
 /* Centered variant */
 .intro__heading--centered {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(2rem, 3.5vw, 3.4rem);
+  font-size: clamp(2.4rem, 4vw, 4rem);
   font-weight: 400;
   font-style: italic;
   text-align: center;
+  width: 100%;
 }
 
 .intro__body {
@@ -1186,7 +1197,7 @@ input, select { font-family: inherit; }
   font-family: var(--font-sans);
   font-size: 1rem;
   font-weight: 300;
-  line-height: 1.5;
+  line-height: 1.75;
   color: rgb(43, 46, 52);
   max-width: 640px;
   margin: 0 auto;
@@ -1200,7 +1211,8 @@ input, select { font-family: inherit; }
   gap: 0;
   width: 100%;
   border-top: 1px solid rgba(42,32,24,0.15);
-  padding-top: 56px;
+  padding-top: 64px;
+  margin-top: 0;
 }
 
 .intro__pillar-col {
