@@ -33,7 +33,7 @@
   --color-winter:      #4a6a8f;
 
   --font-serif:  'Cormorant Garamond', Georgia, serif;
-  --font-sans:   'Jost', 'Inter', sans-serif;
+  --font-sans:   'DM Sans', sans-serif;
 
   --max-w:       1440px;
   --section-pad: 100px;
@@ -53,9 +53,10 @@ html {
 
 body {
   font-family: var(--font-sans);
+  font-weight: 300;
   color: var(--color-text);
   background: var(--color-sand);
-  line-height: 1.7;
+  line-height: 1.5;
   overflow-x: hidden;
 }
 
@@ -876,7 +877,7 @@ input, select { font-family: inherit; }
 }
 
 .hero__wordmark {
-  font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  font-family: 'Cormorant Garamond', Georgia, serif;
   font-size: clamp(15vw, 19vw, 22vw);
   font-weight: 300;
   font-style: italic;
