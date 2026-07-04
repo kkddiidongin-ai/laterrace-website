@@ -16,7 +16,7 @@
 <body class="sl-page">
 
   <!-- ============================================================
-       NAVIGATION BAR (현재 사이트와 동일한 구조)
+       NAVIGATION BAR
   ============================================================ -->
   <header class="navbar sl-navbar" id="sl-navbar">
     <div class="navbar__inner">
@@ -28,7 +28,7 @@
         <span class="navbar__logo-sub">laterrace</span>
       </a>
       <div class="navbar__right">
-        <a href="index.html#booking" class="sl-nav-book-btn">BOOK</a>
+        <a href="https://map.naver.com/p/entry/place/1026856541?placePath=%2Fticket" target="_blank" class="sl-nav-book-btn">티켓 예매</a>
         <button class="navbar__hamburger" id="sl-hamburgerBtn" aria-label="Open menu">
           <span></span><span></span><span></span>
         </button>
@@ -60,12 +60,15 @@
     <div class="mobile-menu__divider"></div>
     <nav class="mobile-menu__nav">
       <a href="index.html" class="mobile-menu__link">Home</a>
-      <a href="#sl-intro" class="mobile-menu__link mobile-menu__link--active"><span class="mobile-menu__arrow">&#9654;</span>Summerland</a>
-      <a href="#sl-gallery" class="mobile-menu__link">Gallery</a>
-      <a href="#sl-dining" class="mobile-menu__link">Dining</a>
-      <a href="#sl-ticket" class="mobile-menu__link">Ticket &amp; Guide</a>
-      <a href="index.html#offers" class="mobile-menu__link">Offers</a>
-      <a href="index.html#contact" class="mobile-menu__link">Contact</a>
+      <a href="#sl-about" class="mobile-menu__link mobile-menu__link--active"><span class="mobile-menu__arrow">&#9654;</span>소개</a>
+      <a href="#sl-operation" class="mobile-menu__link">운영상황</a>
+      <a href="#sl-guide" class="mobile-menu__link">이용안내</a>
+      <a href="#sl-price" class="mobile-menu__link">요금&amp;할인</a>
+      <a href="#sl-attraction" class="mobile-menu__link">어트랙션</a>
+      <a href="#sl-dining" class="mobile-menu__link">다이닝</a>
+      <a href="#sl-map" class="mobile-menu__link">가이드맵</a>
+      <a href="#sl-access" class="mobile-menu__link">오시는 길</a>
+      <a href="#sl-notice" class="mobile-menu__link">공지사항</a>
     </nav>
     <a href="https://map.naver.com/p/entry/place/1026856541?placePath=%2Fticket" target="_blank" class="mobile-menu__join">티켓 예매하기</a>
     <div class="mobile-menu__lang">
@@ -76,20 +79,26 @@
   </div>
 
   <!-- ============================================================
-       SUB NAVIGATION — 소노 oceanWorld 스타일 스티키 탭
+       SUB NAVIGATION — 소노 oceanWorld 스타일
+       메뉴: 운영상황 / 이용안내 / 요금&할인 / 오시는길 / 가이드맵 / 어트랙션 / 다이닝 / 소개 / 공지사항 / [예약하기]
   ============================================================ -->
   <nav class="sl-subnav" id="sl-subnav">
     <div class="sl-subnav__inner">
-      <a href="#sl-intro" class="sl-subnav__item sl-subnav__item--active">소개</a>
-      <a href="#sl-gallery" class="sl-subnav__item">갤러리</a>
-      <a href="#sl-dining" class="sl-subnav__item">다이닝</a>
-      <a href="#sl-ticket" class="sl-subnav__item">티켓 &amp; 이용안내</a>
-      <a href="#sl-notice" class="sl-subnav__item">유의사항</a>
+      <a href="#sl-operation" class="sl-subnav__item" data-target="sl-operation">운영상황</a>
+      <a href="#sl-guide" class="sl-subnav__item" data-target="sl-guide">이용안내</a>
+      <a href="#sl-price" class="sl-subnav__item" data-target="sl-price">요금&amp;할인</a>
+      <a href="#sl-access" class="sl-subnav__item" data-target="sl-access">오시는 길</a>
+      <a href="#sl-map" class="sl-subnav__item" data-target="sl-map">가이드맵</a>
+      <a href="#sl-attraction" class="sl-subnav__item" data-target="sl-attraction">어트랙션</a>
+      <a href="#sl-dining" class="sl-subnav__item" data-target="sl-dining">다이닝</a>
+      <a href="#sl-about" class="sl-subnav__item" data-target="sl-about">소개</a>
+      <a href="#sl-notice" class="sl-subnav__item" data-target="sl-notice">공지사항</a>
+      <a href="https://map.naver.com/p/entry/place/1026856541?placePath=%2Fticket" target="_blank" class="sl-subnav__book">예약하기</a>
     </div>
   </nav>
 
   <!-- ============================================================
-       HERO — 풀스크린 배경 이미지 + 텍스트
+       HERO
   ============================================================ -->
   <section class="sl-hero" id="sl-hero">
     <div class="sl-hero__bg" style="background-image:url('https://gonylab-image.com/cdn-cgi/image/width=2400,quality=90,format=auto/laterrace/summer/1.jpg')"></div>
@@ -107,149 +116,537 @@
   </section>
 
   <!-- ============================================================
-       INTRO — Why Summerland (소노 oceanWorld: 소개 섹션)
+       1. 운영상황
   ============================================================ -->
-  <section class="sl-intro" id="sl-intro">
+  <section class="sl-section sl-operation" id="sl-operation">
     <div class="sl-inner">
-      <div class="sl-intro__header sl-reveal">
-        <p class="section-label">Why Summer Land</p>
-        <h2 class="sl-intro__heading">이번 썸머랜드의<br>특별한 점이 무엇인가요?</h2>
-        <p class="sl-intro__desc">여수 바다 위 발리 감성 워터파크 — 라테라스만의 오션뷰 풀사이드에서<br>이국적인 자연과 짜릿한 어드벤처를 동시에 경험하세요.</p>
+      <div class="sl-section__header sl-reveal">
+        <p class="section-label">Operation Status</p>
+        <h2 class="sl-section__heading">운영상황</h2>
+        <p class="sl-section__desc">라테라스 썸머랜드의 현재 운영 상황을 확인하세요.</p>
       </div>
+      <div class="sl-operation__grid">
+        <div class="sl-op-card sl-reveal">
+          <div class="sl-op-card__icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="24" cy="24" r="20"/>
+              <path d="M24 12v12l8 4"/>
+            </svg>
+          </div>
+          <h3 class="sl-op-card__title">운영 기간</h3>
+          <p class="sl-op-card__value">2026. 06. 20 ~ 08. 31</p>
+          <p class="sl-op-card__desc">성수기 기간 중 매일 운영<br>(기상 상황에 따라 변경 가능)</p>
+        </div>
+        <div class="sl-op-card sl-reveal">
+          <div class="sl-op-card__icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="8" y="10" width="32" height="32" rx="3"/>
+              <path d="M8 20h32M16 6v8M32 6v8"/>
+            </svg>
+          </div>
+          <h3 class="sl-op-card__title">운영 시간</h3>
+          <p class="sl-op-card__value">10:00 ~ 18:00</p>
+          <p class="sl-op-card__desc">입장 마감: 17:00<br>퇴장 마감: 18:00</p>
+        </div>
+        <div class="sl-op-card sl-reveal">
+          <div class="sl-op-card__icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M24 4C13 4 4 13 4 24s9 20 20 20 20-9 20-20S35 4 24 4z"/>
+              <path d="M24 14v10l7 7"/>
+            </svg>
+          </div>
+          <h3 class="sl-op-card__title">현재 상태</h3>
+          <p class="sl-op-card__value sl-op-card__value--open">정상 운영 중</p>
+          <p class="sl-op-card__desc">모든 시설 정상 운영<br>날씨: 맑음 / 기온 28°C</p>
+        </div>
+        <div class="sl-op-card sl-reveal">
+          <div class="sl-op-card__icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M6 36s4-8 18-8 18 8 18 8"/>
+              <path d="M6 28s4-8 18-8 18 8 18 8"/>
+              <path d="M6 20s4-8 18-8 18 8 18 8"/>
+            </svg>
+          </div>
+          <h3 class="sl-op-card__title">수온 / 수질</h3>
+          <p class="sl-op-card__value">26°C / 적합</p>
+          <p class="sl-op-card__desc">수질 검사 매일 실시<br>안전 기준 충족</p>
+        </div>
+      </div>
+      <!-- 운영 일정 테이블 -->
+      <div class="sl-op-table-wrap sl-reveal">
+        <table class="sl-op-table">
+          <thead>
+            <tr>
+              <th>구분</th>
+              <th>평일</th>
+              <th>주말 · 공휴일</th>
+              <th>성수기 (7~8월)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>운영 시간</td>
+              <td>10:00 ~ 18:00</td>
+              <td>09:00 ~ 19:00</td>
+              <td>09:00 ~ 20:00</td>
+            </tr>
+            <tr>
+              <td>입장 마감</td>
+              <td>17:00</td>
+              <td>18:00</td>
+              <td>19:00</td>
+            </tr>
+            <tr>
+              <td>라커룸</td>
+              <td>09:30 ~ 18:30</td>
+              <td>08:30 ~ 19:30</td>
+              <td>08:30 ~ 20:30</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
 
-      <!-- 4가지 특징 카드 -->
-      <div class="sl-feat-grid">
-        <div class="sl-feat-card sl-reveal">
-          <div class="sl-feat-card__img-wrap">
-            <img src="https://gonylab-image.com/laterrace/etc/summerland/1.jpg" alt="이국적 공간" class="sl-feat-card__img" />
-          </div>
-          <div class="sl-feat-card__body">
-            <span class="sl-feat-card__num">01</span>
-            <h3 class="sl-feat-card__title">여름의 에너지를<br>가장 뜨겁게 즐기는 곳</h3>
-            <p class="sl-feat-card__sub">태양과 열정이 가득한<br>이국적인 공간</p>
-            <p class="sl-feat-card__desc">발리 감성의 이국적인 분위기 속에서 여름을 만끽하세요.</p>
-          </div>
-        </div>
-        <div class="sl-feat-card sl-reveal">
-          <div class="sl-feat-card__img-wrap">
-            <img src="https://gonylab-image.com/laterrace/summer/2.jpg" alt="휴양 감성" class="sl-feat-card__img" />
-          </div>
-          <div class="sl-feat-card__body">
-            <span class="sl-feat-card__num">02</span>
-            <h3 class="sl-feat-card__title">머무는 순간마저<br>힐링이 되는 곳</h3>
-            <p class="sl-feat-card__sub">여유롭고 편안한<br>휴양의 감성을 담은 공간</p>
-            <p class="sl-feat-card__desc">일상의 피로를 내려놓고 진정한 휴식을 경험하세요.</p>
+  <!-- ============================================================
+       2. 이용안내
+  ============================================================ -->
+  <section class="sl-section sl-guide-sec" id="sl-guide">
+    <div class="sl-inner">
+      <div class="sl-section__header sl-reveal">
+        <p class="section-label">Guide</p>
+        <h2 class="sl-section__heading">이용안내</h2>
+        <p class="sl-section__desc">즐거운 썸머랜드 이용을 위한 안내사항입니다.</p>
+      </div>
+      <!-- 티켓 사용 3단계 -->
+      <div class="sl-steps sl-reveal">
+        <div class="sl-step">
+          <span class="sl-step__num">01</span>
+          <div class="sl-step__body">
+            <h3 class="sl-step__title">티켓 구매</h3>
+            <p class="sl-step__desc">네이버 예약 또는 현장에서 티켓을 구매합니다.</p>
           </div>
         </div>
-        <div class="sl-feat-card sl-reveal">
-          <div class="sl-feat-card__img-wrap">
-            <img src="https://gonylab-image.com/laterrace/main/3.jpg" alt="청량한 블루" class="sl-feat-card__img" />
-          </div>
-          <div class="sl-feat-card__body">
-            <span class="sl-feat-card__num">03</span>
-            <h3 class="sl-feat-card__title">눈부신 여름 풍경을<br>만나는 곳</h3>
-            <p class="sl-feat-card__sub">청량한 블루와 낭만이<br>어우러진 공간</p>
-            <p class="sl-feat-card__desc">여수의 푸른 바다와 하늘이 수영장과 하나가 됩니다.</p>
+        <div class="sl-step">
+          <span class="sl-step__num">02</span>
+          <div class="sl-step__body">
+            <h3 class="sl-step__title">현장 티켓 발급</h3>
+            <p class="sl-step__desc">현장 방문 후 키오스크에서 실물 티켓으로 교환합니다.</p>
           </div>
         </div>
-        <div class="sl-feat-card sl-reveal">
-          <div class="sl-feat-card__img-wrap">
-            <img src="https://gonylab-image.com/laterrace/pool/6_kids/2.jpg" alt="어드벤처" class="sl-feat-card__img" />
+        <div class="sl-step">
+          <span class="sl-step__num">03</span>
+          <div class="sl-step__body">
+            <h3 class="sl-step__title">워터파크 입장</h3>
+            <p class="sl-step__desc">라테라스 워터파크에 입장하여 즐겨보세요.</p>
           </div>
-          <div class="sl-feat-card__body">
-            <span class="sl-feat-card__num">04</span>
-            <h3 class="sl-feat-card__title">이국적인 정글 모드 속<br>모험이 펼쳐지는 곳</h3>
-            <p class="sl-feat-card__sub">정글 속 코코넛 전사들이<br>깨어나는 공간</p>
-            <p class="sl-feat-card__desc">아이들과 함께하는 짜릿한 워터파크 어드벤처.</p>
+        </div>
+      </div>
+      <!-- 이용수칙 그리드 -->
+      <div class="sl-guide-grid">
+        <div class="sl-guide-card sl-reveal">
+          <div class="sl-guide-card__icon">
+            <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M20 4l3 9h9l-7 5 3 9-8-6-8 6 3-9-7-5h9z"/>
+            </svg>
           </div>
+          <h3 class="sl-guide-card__title">안전 수칙</h3>
+          <ul class="sl-guide-card__list">
+            <li>어린이 구명조끼 착용 필수</li>
+            <li>다이빙 등 위험 행동 금지</li>
+            <li>안전요원 지시 준수</li>
+            <li>음주 후 입장 금지</li>
+          </ul>
+        </div>
+        <div class="sl-guide-card sl-reveal">
+          <div class="sl-guide-card__icon">
+            <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="8" y="8" width="24" height="24" rx="3"/>
+              <path d="M14 20h12M20 14v12"/>
+            </svg>
+          </div>
+          <h3 class="sl-guide-card__title">준비물</h3>
+          <ul class="sl-guide-card__list">
+            <li>수영복 (래시가드 포함)</li>
+            <li>수영모 (실내풀 필수)</li>
+            <li>개인 타월</li>
+            <li>아쿠아슈즈 권장</li>
+          </ul>
+        </div>
+        <div class="sl-guide-card sl-reveal">
+          <div class="sl-guide-card__icon">
+            <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="20" cy="20" r="14"/>
+              <path d="M20 12v8l6 3"/>
+            </svg>
+          </div>
+          <h3 class="sl-guide-card__title">편의시설</h3>
+          <ul class="sl-guide-card__list">
+            <li>라커룸 (유료)</li>
+            <li>샤워실 운영</li>
+            <li>구명조끼 무료 대여</li>
+            <li>튜브 유료 대여</li>
+          </ul>
+        </div>
+        <div class="sl-guide-card sl-reveal">
+          <div class="sl-guide-card__icon">
+            <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M8 32s4-8 12-8 12 8 12 8"/>
+              <circle cx="20" cy="16" r="6"/>
+            </svg>
+          </div>
+          <h3 class="sl-guide-card__title">연령별 안내</h3>
+          <ul class="sl-guide-card__list">
+            <li>12개월 미만 무료 (증빙 필수)</li>
+            <li>36개월 미만 보호자 동반</li>
+            <li>키 110cm 미만 일부 제한</li>
+            <li>65세 이상 경로 할인</li>
+          </ul>
+        </div>
+      </div>
+      <!-- 구매 전 유의사항 -->
+      <div class="sl-notice-box sl-reveal">
+        <p class="sl-notice-box__text">⚠ 구매 전 꼭 확인해 주세요! — 본 상품은 예약 취소까지 다소 시간이 소요되기 때문에 원활한 입장을 위해 시간 여유 있게 구매 바랍니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       3. 요금&할인
+  ============================================================ -->
+  <section class="sl-section sl-price" id="sl-price">
+    <div class="sl-inner">
+      <div class="sl-section__header sl-reveal">
+        <p class="section-label">Ticket &amp; Price</p>
+        <h2 class="sl-section__heading">요금&amp;할인</h2>
+        <p class="sl-section__desc">라테라스 썸머랜드 입장권 요금 안내입니다.</p>
+      </div>
+      <!-- 요금표 -->
+      <div class="sl-price-cards">
+        <div class="sl-price-card sl-reveal">
+          <div class="sl-price-card__header">
+            <span class="sl-price-card__badge">성인</span>
+            <h3 class="sl-price-card__title">대인</h3>
+            <p class="sl-price-card__age">만 13세 이상</p>
+          </div>
+          <div class="sl-price-card__body">
+            <p class="sl-price-card__price">55,000<span>원</span></p>
+            <p class="sl-price-card__sub">주말 · 공휴일</p>
+            <p class="sl-price-card__price-alt">49,000<span>원</span></p>
+            <p class="sl-price-card__sub">평일</p>
+          </div>
+        </div>
+        <div class="sl-price-card sl-price-card--featured sl-reveal">
+          <div class="sl-price-card__header">
+            <span class="sl-price-card__badge sl-price-card__badge--gold">소인</span>
+            <h3 class="sl-price-card__title">소인</h3>
+            <p class="sl-price-card__age">만 3세 ~ 12세</p>
+          </div>
+          <div class="sl-price-card__body">
+            <p class="sl-price-card__price">42,000<span>원</span></p>
+            <p class="sl-price-card__sub">주말 · 공휴일</p>
+            <p class="sl-price-card__price-alt">36,000<span>원</span></p>
+            <p class="sl-price-card__sub">평일</p>
+          </div>
+        </div>
+        <div class="sl-price-card sl-reveal">
+          <div class="sl-price-card__header">
+            <span class="sl-price-card__badge">경로</span>
+            <h3 class="sl-price-card__title">경로 · 장애인</h3>
+            <p class="sl-price-card__age">만 65세 이상 / 장애인</p>
+          </div>
+          <div class="sl-price-card__body">
+            <p class="sl-price-card__price">38,000<span>원</span></p>
+            <p class="sl-price-card__sub">주말 · 공휴일</p>
+            <p class="sl-price-card__price-alt">32,000<span>원</span></p>
+            <p class="sl-price-card__sub">평일</p>
+          </div>
+        </div>
+        <div class="sl-price-card sl-reveal">
+          <div class="sl-price-card__header">
+            <span class="sl-price-card__badge">무료</span>
+            <h3 class="sl-price-card__title">무료 입장</h3>
+            <p class="sl-price-card__age">만 36개월 미만</p>
+          </div>
+          <div class="sl-price-card__body">
+            <p class="sl-price-card__price">FREE</p>
+            <p class="sl-price-card__sub">증빙서류 지참 필수</p>
+            <p class="sl-price-card__desc-sm">보호자 1인 동반 필수</p>
+          </div>
+        </div>
+      </div>
+      <!-- 할인 혜택 -->
+      <div class="sl-discount-wrap sl-reveal">
+        <h3 class="sl-discount__title">할인 혜택</h3>
+        <div class="sl-discount-list">
+          <div class="sl-discount-item">
+            <span class="sl-discount-item__label">라테라스 투숙객</span>
+            <span class="sl-discount-item__value">20% 할인</span>
+          </div>
+          <div class="sl-discount-item">
+            <span class="sl-discount-item__label">깔라까따 투숙객</span>
+            <span class="sl-discount-item__value">20% 할인</span>
+          </div>
+          <div class="sl-discount-item">
+            <span class="sl-discount-item__label">멤버십 회원</span>
+            <span class="sl-discount-item__value">15% 할인</span>
+          </div>
+          <div class="sl-discount-item">
+            <span class="sl-discount-item__label">단체 (20인 이상)</span>
+            <span class="sl-discount-item__value">10% 할인</span>
+          </div>
+          <div class="sl-discount-item">
+            <span class="sl-discount-item__label">조기 예약 (7일 전)</span>
+            <span class="sl-discount-item__value">10% 할인</span>
+          </div>
+        </div>
+      </div>
+      <!-- 취소/환불 -->
+      <div class="sl-refund-wrap sl-reveal">
+        <h3 class="sl-refund__title">취소 · 환불 안내</h3>
+        <table class="sl-op-table">
+          <thead>
+            <tr><th>취소 시점</th><th>환불 금액</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>유효기간 내 미사용</td><td>100% 환불</td></tr>
+            <tr><td>유효기간 만료 후</td><td>환불 불가</td></tr>
+            <tr><td>사용 후</td><td>환불 불가</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="sl-ticket__cta sl-reveal">
+        <a href="https://map.naver.com/p/entry/place/1026856541?placePath=%2Fticket" target="_blank" class="sl-ticket__btn">네이버 예약하기</a>
+        <p class="sl-ticket__cta-desc">고객센터: 1661-3624 (평일 10:00~17:00)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       4. 오시는 길
+  ============================================================ -->
+  <section class="sl-section sl-access" id="sl-access">
+    <div class="sl-inner">
+      <div class="sl-section__header sl-reveal">
+        <p class="section-label">Access</p>
+        <h2 class="sl-section__heading">오시는 길</h2>
+        <p class="sl-section__desc">라테라스 리조트 그룹으로 오시는 다양한 방법을 안내해 드립니다.</p>
+      </div>
+      <!-- 지도 영역 -->
+      <div class="sl-map-embed sl-reveal">
+        <iframe
+          src="https://map.naver.com/p/entry/place/1026856541?placePath=%2Fhome&c=15.00,0,0,0,dh"
+          width="100%"
+          height="420"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          title="라테라스 리조트 위치">
+        </iframe>
+      </div>
+      <!-- 교통편 안내 -->
+      <div class="sl-access-grid">
+        <div class="sl-access-card sl-reveal">
+          <div class="sl-access-card__icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="8" y="16" width="32" height="22" rx="4"/>
+              <path d="M16 16V12a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v4"/>
+              <circle cx="16" cy="32" r="3"/>
+              <circle cx="32" cy="32" r="3"/>
+              <path d="M8 26h32"/>
+            </svg>
+          </div>
+          <h3 class="sl-access-card__title">자가용</h3>
+          <p class="sl-access-card__addr">전라남도 여수시 돌산읍 진모1길 29-26</p>
+          <ul class="sl-access-card__list">
+            <li>내비게이션: "라테라스 리조트" 검색</li>
+            <li>여수 IC → 돌산도 방향 → 진모리</li>
+            <li>주차장 무료 운영 (리조트 투숙객)</li>
+          </ul>
+        </div>
+        <div class="sl-access-card sl-reveal">
+          <div class="sl-access-card__icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="10" y="8" width="28" height="32" rx="4"/>
+              <path d="M10 20h28M10 32h28"/>
+              <circle cx="18" cy="38" r="2"/>
+              <circle cx="30" cy="38" r="2"/>
+            </svg>
+          </div>
+          <h3 class="sl-access-card__title">버스</h3>
+          <p class="sl-access-card__addr">여수 시외버스터미널 → 돌산행 버스</p>
+          <ul class="sl-access-card__list">
+            <li>여수 시외버스터미널 → 진모리 하차</li>
+            <li>돌산 111번 버스 이용</li>
+            <li>약 40~50분 소요</li>
+          </ul>
+        </div>
+        <div class="sl-access-card sl-reveal">
+          <div class="sl-access-card__icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M10 36l6-20 8 10 8-10 6 20"/>
+              <circle cx="24" cy="12" r="5"/>
+            </svg>
+          </div>
+          <h3 class="sl-access-card__title">KTX · 기차</h3>
+          <p class="sl-access-card__addr">여수엑스포역 → 택시 이용</p>
+          <ul class="sl-access-card__list">
+            <li>여수엑스포역 하차</li>
+            <li>택시 이용 약 30분</li>
+            <li>리조트 셔틀버스 운행 (사전 예약)</li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       MAP — 전체 안내도
+       5. 가이드맵
   ============================================================ -->
-  <section class="sl-map" id="sl-map">
+  <section class="sl-section sl-map-sec" id="sl-map">
     <div class="sl-inner">
-      <div class="sl-map__header sl-reveal">
+      <div class="sl-section__header sl-reveal">
         <p class="section-label">Park Map</p>
-        <h2 class="sl-map__heading">썸머랜드 전체 안내도</h2>
+        <h2 class="sl-section__heading">가이드맵</h2>
+        <p class="sl-section__desc">썸머랜드 전체 안내도로 시설 위치를 확인하세요.</p>
       </div>
       <div class="sl-map__img-wrap sl-reveal">
         <img src="https://gonylab-image.com/cdn-cgi/image/width=2400,quality=90,format=auto/laterrace/pool/info/map/4.jpg" alt="썸머랜드 전체 안내도" class="sl-map__img" />
       </div>
+      <!-- 시설 범례 -->
+      <div class="sl-map-legend sl-reveal">
+        <div class="sl-map-legend__item">
+          <span class="sl-map-legend__dot" style="background:#5a8fa0"></span>
+          <span>야외 수영장</span>
+        </div>
+        <div class="sl-map-legend__item">
+          <span class="sl-map-legend__dot" style="background:#7a9a60"></span>
+          <span>키즈풀 · 패밀리풀</span>
+        </div>
+        <div class="sl-map-legend__item">
+          <span class="sl-map-legend__dot" style="background:#c8a060"></span>
+          <span>다이닝 · 풀사이드 바</span>
+        </div>
+        <div class="sl-map-legend__item">
+          <span class="sl-map-legend__dot" style="background:#a07060"></span>
+          <span>라커룸 · 샤워실</span>
+        </div>
+        <div class="sl-map-legend__item">
+          <span class="sl-map-legend__dot" style="background:#6a6a8a"></span>
+          <span>안전요원 배치</span>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- ============================================================
-       GALLERY — 수영장 사진 그리드 (소노 oceanWorld: 갤러리 섹션)
+       6. 어트랙션
   ============================================================ -->
-  <section class="sl-gallery" id="sl-gallery">
+  <section class="sl-section sl-attraction" id="sl-attraction">
     <div class="sl-inner">
-      <div class="sl-gallery__header sl-reveal">
-        <p class="section-label">Gallery</p>
-        <h2 class="sl-gallery__heading">썸머랜드의<br>모든 순간</h2>
+      <div class="sl-section__header sl-reveal">
+        <p class="section-label">Attractions</p>
+        <h2 class="sl-section__heading">어트랙션</h2>
+        <p class="sl-section__desc">라테라스 썸머랜드의 다양한 어트랙션을 즐겨보세요.</p>
       </div>
-    </div>
-    <div class="sl-gallery__grid">
-      <div class="sl-gallery__item sl-gallery__item--wide sl-reveal">
-        <img src="https://gonylab-image.com/cdn-cgi/image/width=2400,quality=90,format=auto/laterrace/summer/1.jpg" alt="섬머랜드" />
+      <div class="sl-attraction-grid">
+        <div class="sl-attr-card sl-reveal">
+          <div class="sl-attr-card__img-wrap">
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=900,quality=88,format=auto/laterrace/pool/1_pool_cala/1.jpg" alt="깔라까따 야외수영장" class="sl-attr-card__img" />
+          </div>
+          <div class="sl-attr-card__body">
+            <p class="sl-attr-card__tag">Outdoor Pool</p>
+            <h3 class="sl-attr-card__title">깔라까따 야외수영장</h3>
+            <p class="sl-attr-card__desc">오션뷰 인피니티 풀. 성인 전용 공간으로 여수 바다를 바라보며 즐기는 프리미엄 수영장.</p>
+            <ul class="sl-attr-card__info">
+              <li><span>이용 연령</span> 성인 전용 (만 18세 이상)</li>
+              <li><span>운영 시간</span> 10:00 ~ 18:00</li>
+            </ul>
+          </div>
+        </div>
+        <div class="sl-attr-card sl-reveal">
+          <div class="sl-attr-card__img-wrap">
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=900,quality=88,format=auto/laterrace/pool/2_pool_late/2.jpg" alt="라테라스 야외수영장" class="sl-attr-card__img" />
+          </div>
+          <div class="sl-attr-card__body">
+            <p class="sl-attr-card__tag">Outdoor Pool</p>
+            <h3 class="sl-attr-card__title">라테라스 야외수영장</h3>
+            <p class="sl-attr-card__desc">발리 감성의 이국적인 야외 수영장. 선베드와 파라솔이 완비된 리조트 풀.</p>
+            <ul class="sl-attr-card__info">
+              <li><span>이용 연령</span> 전 연령 (보호자 동반)</li>
+              <li><span>운영 시간</span> 10:00 ~ 18:00</li>
+            </ul>
+          </div>
+        </div>
+        <div class="sl-attr-card sl-reveal">
+          <div class="sl-attr-card__img-wrap">
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=900,quality=88,format=auto/laterrace/pool/3_familypool/1.jpg" alt="패밀리풀" class="sl-attr-card__img" />
+          </div>
+          <div class="sl-attr-card__body">
+            <p class="sl-attr-card__tag">Family Pool</p>
+            <h3 class="sl-attr-card__title">패밀리풀</h3>
+            <p class="sl-attr-card__desc">가족 모두가 함께 즐길 수 있는 패밀리 전용 수영장. 얕은 수심으로 안전하게 이용 가능.</p>
+            <ul class="sl-attr-card__info">
+              <li><span>이용 연령</span> 전 연령</li>
+              <li><span>수심</span> 0.6m ~ 1.2m</li>
+            </ul>
+          </div>
+        </div>
+        <div class="sl-attr-card sl-reveal">
+          <div class="sl-attr-card__img-wrap">
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=900,quality=88,format=auto/laterrace/pool/6_kids/2.jpg" alt="키즈풀" class="sl-attr-card__img" />
+          </div>
+          <div class="sl-attr-card__body">
+            <p class="sl-attr-card__tag">Kids Zone</p>
+            <h3 class="sl-attr-card__title">키즈풀 &amp; 어드벤처존</h3>
+            <p class="sl-attr-card__desc">정글 테마의 키즈 전용 워터파크. 워터슬라이드, 물총, 버킷 덤프 등 다양한 놀이 시설.</p>
+            <ul class="sl-attr-card__info">
+              <li><span>이용 연령</span> 만 12세 이하</li>
+              <li><span>수심</span> 0.3m ~ 0.6m</li>
+            </ul>
+          </div>
+        </div>
+        <div class="sl-attr-card sl-reveal">
+          <div class="sl-attr-card__img-wrap">
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=900,quality=88,format=auto/laterrace/pool/4_inpool_cala/3.jpg" alt="깔라까따 실내수영장" class="sl-attr-card__img" />
+          </div>
+          <div class="sl-attr-card__body">
+            <p class="sl-attr-card__tag">Indoor Pool</p>
+            <h3 class="sl-attr-card__title">깔라까따 실내수영장</h3>
+            <p class="sl-attr-card__desc">연중 이용 가능한 온수 실내 수영장. 날씨에 관계없이 쾌적한 수영 환경 제공.</p>
+            <ul class="sl-attr-card__info">
+              <li><span>수온</span> 연중 28°C 유지</li>
+              <li><span>수영모</span> 착용 필수</li>
+            </ul>
+          </div>
+        </div>
+        <div class="sl-attr-card sl-reveal">
+          <div class="sl-attr-card__img-wrap">
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=900,quality=88,format=auto/laterrace/pool/5_inpool_late/2.jpg" alt="라테라스 실내수영장" class="sl-attr-card__img" />
+          </div>
+          <div class="sl-attr-card__body">
+            <p class="sl-attr-card__tag">Indoor Pool</p>
+            <h3 class="sl-attr-card__title">라테라스 실내수영장</h3>
+            <p class="sl-attr-card__desc">자연 채광이 가득한 실내 수영장. 스파 자쿠지와 연결된 프리미엄 웰니스 공간.</p>
+            <ul class="sl-attr-card__info">
+              <li><span>수온</span> 연중 28°C 유지</li>
+              <li><span>자쿠지</span> 별도 운영</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="sl-gallery__item sl-reveal">
-        <img src="https://gonylab-image.com/cdn-cgi/image/width=2400,quality=90,format=auto/laterrace/pool/1_pool_cala/1.jpg" alt="깔라까따 야외수영장" />
-        <div class="sl-gallery__caption">깔라까따 야외수영장</div>
-      </div>
-      <div class="sl-gallery__item sl-reveal">
-        <img src="https://gonylab-image.com/cdn-cgi/image/width=2400,quality=90,format=auto/laterrace/summer/2.jpg" alt="섬머랜드" />
-      </div>
-      <div class="sl-gallery__item sl-reveal">
-        <img src="https://gonylab-image.com/cdn-cgi/image/width=2400,quality=90,format=auto/laterrace/pool/2_pool_late/2.jpg" alt="라테라스 야외수영장" />
-        <div class="sl-gallery__caption">라테라스 야외수영장</div>
-      </div>
-      <div class="sl-gallery__item sl-reveal">
-        <img src="https://gonylab-image.com/cdn-cgi/image/width=2400,quality=90,format=auto/laterrace/summer/3.jpg" alt="섬머랜드" />
-      </div>
-      <div class="sl-gallery__item sl-reveal">
-        <img src="https://gonylab-image.com/cdn-cgi/image/width=2400,quality=90,format=auto/laterrace/pool/3_familypool/1.jpg" alt="패밀리풀" />
-        <div class="sl-gallery__caption">패밀리풀</div>
-      </div>
-      <div class="sl-gallery__item sl-reveal">
-        <img src="https://gonylab-image.com/cdn-cgi/image/width=2400,quality=90,format=auto/laterrace/summer/4.jpg" alt="섬머랜드" />
-      </div>
-      <div class="sl-gallery__item sl-reveal">
-        <img src="https://gonylab-image.com/cdn-cgi/image/width=2400,quality=90,format=auto/laterrace/pool/4_inpool_cala/3.jpg" alt="깔라까따 실내수영장" />
-        <div class="sl-gallery__caption">깔라까따 실내수영장</div>
-      </div>
-      <div class="sl-gallery__item sl-reveal">
-        <img src="https://gonylab-image.com/cdn-cgi/image/width=2400,quality=90,format=auto/laterrace/summer/5.jpg" alt="섬머랜드" />
-      </div>
-      <div class="sl-gallery__item sl-reveal">
-        <img src="https://gonylab-image.com/cdn-cgi/image/width=2400,quality=90,format=auto/laterrace/pool/5_inpool_late/2.jpg" alt="라테라스 실내수영장" />
-        <div class="sl-gallery__caption">라테라스 실내수영장</div>
-      </div>
-      <div class="sl-gallery__item sl-reveal">
-        <img src="https://gonylab-image.com/cdn-cgi/image/width=2400,quality=90,format=auto/laterrace/summer/6.jpg" alt="섬머랜드" />
-      </div>
-      <div class="sl-gallery__item sl-reveal">
-        <img src="https://gonylab-image.com/cdn-cgi/image/width=2400,quality=90,format=auto/laterrace/pool/6_kids/2.jpg" alt="키즈풀" />
-        <div class="sl-gallery__caption">키즈풀</div>
-      </div>
-    </div>
-    <div class="sl-gallery__cta sl-reveal">
-      <a href="index.html#gallery" class="sl-cta-link">수영장 보러가기 &rarr;</a>
     </div>
   </section>
 
   <!-- ============================================================
-       DINING — 다이닝 섹션 (소노 oceanWorld: 식음료 섹션)
+       7. 다이닝
   ============================================================ -->
-  <section class="sl-dining" id="sl-dining">
+  <section class="sl-section sl-dining" id="sl-dining">
     <div class="sl-inner">
-      <div class="sl-dining__header sl-reveal">
+      <div class="sl-section__header sl-reveal">
         <p class="section-label">Dining</p>
-        <h2 class="sl-dining__heading">All-in Dining!</h2>
-        <p class="sl-dining__desc">여수의 바다를 바라보며 즐기는 라테라스 더 비치 레스토랑.<br>발리 감성의 이국적인 공간에서 화덕 피자와 신선한 해산물 요리를 경험하세요.<br>풀사이드와 오션뷰를 동시에 즐길 수 있는 라테라스만의 특별한 다이닝입니다.</p>
+        <h2 class="sl-section__heading">다이닝</h2>
+        <p class="sl-section__desc">여수의 바다를 바라보며 즐기는 라테라스만의 특별한 다이닝 경험.</p>
       </div>
       <div class="sl-dining__cards">
         <div class="sl-dcard sl-reveal">
@@ -259,6 +656,7 @@
           <div class="sl-dcard__body">
             <p class="sl-dcard__tag">Restaurant</p>
             <h3 class="sl-dcard__title">라테라스<br>더 비치 레스토랑</h3>
+            <p class="sl-dcard__desc">오션뷰 레스토랑에서 신선한 해산물과 지중해 요리를 즐기세요.</p>
           </div>
         </div>
         <div class="sl-dcard sl-reveal">
@@ -268,6 +666,7 @@
           <div class="sl-dcard__body">
             <p class="sl-dcard__tag">Dining</p>
             <h3 class="sl-dcard__title">이자카야 만카이<br>일본 정통 다이닝</h3>
+            <p class="sl-dcard__desc">정통 일본 이자카야에서 즐기는 신선한 사시미와 야키토리.</p>
           </div>
         </div>
         <div class="sl-dcard sl-reveal">
@@ -277,6 +676,7 @@
           <div class="sl-dcard__body">
             <p class="sl-dcard__tag">Food</p>
             <h3 class="sl-dcard__title">발리 감성의<br>화덕 피자</h3>
+            <p class="sl-dcard__desc">발리 감성의 이국적인 공간에서 즐기는 화덕 피자와 파스타.</p>
           </div>
         </div>
         <div class="sl-dcard sl-reveal">
@@ -286,6 +686,7 @@
           <div class="sl-dcard__body">
             <p class="sl-dcard__tag">Poolside</p>
             <h3 class="sl-dcard__title">풀사이드<br>음료 &amp; 스낵</h3>
+            <p class="sl-dcard__desc">수영장 옆에서 즐기는 열대 음료와 가벼운 스낵.</p>
           </div>
         </div>
         <div class="sl-dcard sl-reveal">
@@ -295,108 +696,179 @@
           <div class="sl-dcard__body">
             <p class="sl-dcard__tag">BBQ</p>
             <h3 class="sl-dcard__title">오션뷰<br>야외 바베큐</h3>
+            <p class="sl-dcard__desc">여수 바다를 바라보며 즐기는 야외 바베큐 파티.</p>
           </div>
         </div>
       </div>
       <div class="sl-dining__cta sl-reveal">
-        <a href="index.html#dining" class="sl-cta-link">다이닝 보러가기 &rarr;</a>
+        <a href="index.html#dining" class="sl-cta-link">전체 다이닝 보기 &rarr;</a>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       TICKET & GUIDE — 티켓 사용법 (소노 oceanWorld: 이용안내 섹션)
+       8. 소개 (About)
   ============================================================ -->
-  <section class="sl-ticket" id="sl-ticket">
+  <section class="sl-section sl-about" id="sl-about">
     <div class="sl-inner">
-      <div class="sl-ticket__header sl-reveal">
-        <p class="section-label">Ticket &amp; Guide</p>
-        <h2 class="sl-ticket__heading">티켓 사용법</h2>
+      <div class="sl-section__header sl-reveal">
+        <p class="section-label">About Summerland</p>
+        <h2 class="sl-section__heading">소개</h2>
+        <p class="sl-section__desc">라테라스 썸머랜드만의 특별한 이야기.</p>
       </div>
-      <div class="sl-steps">
-        <div class="sl-step sl-reveal">
-          <span class="sl-step__num">01</span>
-          <div class="sl-step__body">
-            <h3 class="sl-step__title">유효한 티켓 구매</h3>
-            <p class="sl-step__desc">네이버 예약 또는 현장에서 티켓을 구매합니다.</p>
+      <div class="sl-about-layout">
+        <div class="sl-about__img-col sl-reveal">
+          <img src="https://gonylab-image.com/cdn-cgi/image/width=1200,quality=90,format=auto/laterrace/summer/2.jpg" alt="썸머랜드 소개" class="sl-about__img" />
+        </div>
+        <div class="sl-about__text-col sl-reveal">
+          <h3 class="sl-about__sub-heading">여수 바다 위 발리 감성 워터파크</h3>
+          <p class="sl-about__body">라테라스만의 오션뷰 풀사이드에서 이국적인 자연과 짜릿한 어드벤처를 동시에 경험하세요. 발리 감성의 이국적인 분위기 속에서 여수의 청량한 바다와 하늘이 수영장과 하나가 됩니다.</p>
+          <p class="sl-about__body">2026년 새롭게 확장된 썸머랜드는 더욱 넓어진 규모와 다양한 어트랙션으로 온 가족이 함께 즐길 수 있는 프리미엄 워터파크로 거듭났습니다.</p>
+          <div class="sl-about__features">
+            <div class="sl-about__feat">
+              <span class="sl-about__feat-num">6+</span>
+              <span class="sl-about__feat-label">수영장 &amp; 풀</span>
+            </div>
+            <div class="sl-about__feat">
+              <span class="sl-about__feat-num">5+</span>
+              <span class="sl-about__feat-label">다이닝 옵션</span>
+            </div>
+            <div class="sl-about__feat">
+              <span class="sl-about__feat-num">ALL</span>
+              <span class="sl-about__feat-label">오션뷰</span>
+            </div>
           </div>
         </div>
-        <div class="sl-step sl-reveal">
-          <span class="sl-step__num">02</span>
-          <div class="sl-step__body">
-            <h3 class="sl-step__title">현장 티켓 발급</h3>
-            <p class="sl-step__desc">현장 방문 후 키오스크에서 실물 티켓으로 교환합니다.</p>
+      </div>
+      <!-- 4가지 특징 카드 -->
+      <div class="sl-feat-grid" style="margin-top:60px;">
+        <div class="sl-feat-card sl-reveal">
+          <div class="sl-feat-card__img-wrap">
+            <img src="https://gonylab-image.com/laterrace/etc/summerland/1.jpg" alt="이국적 공간" class="sl-feat-card__img" />
+          </div>
+          <div class="sl-feat-card__body">
+            <span class="sl-feat-card__num">01</span>
+            <h3 class="sl-feat-card__title">태양과 열정이 가득한<br>이국적인 공간</h3>
+            <p class="sl-feat-card__desc">발리 감성의 이국적인 분위기 속에서 여름을 만끽하세요.</p>
           </div>
         </div>
-        <div class="sl-step sl-reveal">
-          <span class="sl-step__num">03</span>
-          <div class="sl-step__body">
-            <h3 class="sl-step__title">워터파크 입장</h3>
-            <p class="sl-step__desc">라테라스 워터파크에 입장하여 즐겨보세요.</p>
+        <div class="sl-feat-card sl-reveal">
+          <div class="sl-feat-card__img-wrap">
+            <img src="https://gonylab-image.com/laterrace/summer/2.jpg" alt="휴양 감성" class="sl-feat-card__img" />
+          </div>
+          <div class="sl-feat-card__body">
+            <span class="sl-feat-card__num">02</span>
+            <h3 class="sl-feat-card__title">여유롭고 편안한<br>휴양의 감성</h3>
+            <p class="sl-feat-card__desc">일상의 피로를 내려놓고 진정한 휴식을 경험하세요.</p>
           </div>
         </div>
-      </div>
-
-      <!-- 구매 전 유의사항 -->
-      <div class="sl-notice-box sl-reveal">
-        <p class="sl-notice-box__text">⚠ 구매 전 꼭 확인해 주세요!<br>본 상품은 예약 취소까지 다소 시간이 소요되기 때문에 원활한 입장을 위해 시간 여유 있게 구매 바랍니다.</p>
-      </div>
-
-      <!-- 네이버 예약 CTA -->
-      <div class="sl-ticket__cta sl-reveal">
-        <a href="https://map.naver.com/p/entry/place/1026856541?placePath=%2Fticket" target="_blank" class="sl-ticket__btn">네이버 예약하기</a>
-        <p class="sl-ticket__cta-desc">네이버 예약을 통해 간편하게 티켓을 구매하실 수 있습니다.</p>
+        <div class="sl-feat-card sl-reveal">
+          <div class="sl-feat-card__img-wrap">
+            <img src="https://gonylab-image.com/laterrace/main/3.jpg" alt="청량한 블루" class="sl-feat-card__img" />
+          </div>
+          <div class="sl-feat-card__body">
+            <span class="sl-feat-card__num">03</span>
+            <h3 class="sl-feat-card__title">청량한 블루와 낭만이<br>어우러진 공간</h3>
+            <p class="sl-feat-card__desc">여수의 푸른 바다와 하늘이 수영장과 하나가 됩니다.</p>
+          </div>
+        </div>
+        <div class="sl-feat-card sl-reveal">
+          <div class="sl-feat-card__img-wrap">
+            <img src="https://gonylab-image.com/laterrace/pool/6_kids/2.jpg" alt="어드벤처" class="sl-feat-card__img" />
+          </div>
+          <div class="sl-feat-card__body">
+            <span class="sl-feat-card__num">04</span>
+            <h3 class="sl-feat-card__title">정글 속 코코넛 전사들이<br>깨어나는 공간</h3>
+            <p class="sl-feat-card__desc">아이들과 함께하는 짜릿한 워터파크 어드벤처.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       NOTICE — 유의사항 (소노 oceanWorld: 이용안내 상세)
+       9. 공지사항
   ============================================================ -->
-  <section class="sl-notice" id="sl-notice">
+  <section class="sl-section sl-notice-sec" id="sl-notice">
     <div class="sl-inner">
-      <div class="sl-notice__header sl-reveal">
-        <p class="section-label">Information</p>
-        <h2 class="sl-notice__heading">이용안내</h2>
+      <div class="sl-section__header sl-reveal">
+        <p class="section-label">Notice</p>
+        <h2 class="sl-section__heading">공지사항</h2>
+        <p class="sl-section__desc">라테라스 썸머랜드의 최신 공지사항을 확인하세요.</p>
       </div>
-      <div class="sl-info-grid">
+      <div class="sl-notice-list sl-reveal">
+        <div class="sl-notice-item">
+          <span class="sl-notice-item__badge sl-notice-item__badge--new">NEW</span>
+          <div class="sl-notice-item__content">
+            <p class="sl-notice-item__date">2026. 06. 15</p>
+            <h3 class="sl-notice-item__title">2026 썸머랜드 개장 안내</h3>
+            <p class="sl-notice-item__desc">라테라스 썸머랜드 2026이 6월 20일부터 운영을 시작합니다. 올해는 새로운 어트랙션과 함께 더욱 풍성한 프로그램으로 여러분을 맞이합니다.</p>
+          </div>
+        </div>
+        <div class="sl-notice-item">
+          <span class="sl-notice-item__badge">공지</span>
+          <div class="sl-notice-item__content">
+            <p class="sl-notice-item__date">2026. 06. 10</p>
+            <h3 class="sl-notice-item__title">성수기 운영 시간 변경 안내 (7~8월)</h3>
+            <p class="sl-notice-item__desc">7월 1일부터 8월 31일까지 성수기 기간 동안 운영 시간이 09:00~20:00으로 연장됩니다.</p>
+          </div>
+        </div>
+        <div class="sl-notice-item">
+          <span class="sl-notice-item__badge">안내</span>
+          <div class="sl-notice-item__content">
+            <p class="sl-notice-item__date">2026. 05. 28</p>
+            <h3 class="sl-notice-item__title">투숙객 할인 혜택 안내</h3>
+            <p class="sl-notice-item__desc">라테라스 및 깔라까따 투숙객은 썸머랜드 입장권 20% 할인 혜택을 받으실 수 있습니다. 프론트에서 객실 키 제시 후 이용하세요.</p>
+          </div>
+        </div>
+        <div class="sl-notice-item">
+          <span class="sl-notice-item__badge">안내</span>
+          <div class="sl-notice-item__content">
+            <p class="sl-notice-item__date">2026. 05. 20</p>
+            <h3 class="sl-notice-item__title">안전 수칙 강화 안내</h3>
+            <p class="sl-notice-item__desc">모든 이용객의 안전을 위해 어린이 구명조끼 착용이 의무화되었습니다. 무료 대여 가능하오니 입장 전 반드시 착용해 주세요.</p>
+          </div>
+        </div>
+      </div>
+      <!-- 유의사항 4열 그리드 -->
+      <div class="sl-info-grid" style="margin-top:60px;">
         <div class="sl-info-block sl-reveal">
           <h3 class="sl-info-block__title">유의사항</h3>
           <ul class="sl-info-block__list">
             <li>당일 구매 당일 사용 가능합니다.</li>
-            <li>12개월 이상부터 요금이 적용됩니다. (12개월 미만 무료, 증빙서류 지참 필수)</li>
-            <li>기상 상황 및 현장 운영 상황에 따라 일부 시설 이용이 제한될 수 있습니다.</li>
-            <li>안전을 위해 음주 후 입장이 금지됩니다.</li>
-            <li>워터파크 내 음식물 반입은 금지됩니다.</li>
+            <li>12개월 이상부터 요금이 적용됩니다.</li>
+            <li>기상 상황에 따라 운영이 제한될 수 있습니다.</li>
+            <li>음주 후 입장이 금지됩니다.</li>
+            <li>워터파크 내 음식물 반입 금지.</li>
           </ul>
         </div>
         <div class="sl-info-block sl-reveal">
           <h3 class="sl-info-block__title">이용수칙</h3>
           <ul class="sl-info-block__list">
-            <li>어린이는 구명조끼 착용이 필수이며, 입장 전 반드시 착용합니다.</li>
-            <li>음주 또는 과도한 음식 섭취 후 입장이 금지됩니다.</li>
-            <li>다이빙 등 위험한 행동은 엄격히 금지됩니다.</li>
-            <li>안전요원의 지시에 반드시 따라야 합니다.</li>
-            <li>시설 내 흡연은 지정된 장소에서만 가능합니다.</li>
+            <li>어린이 구명조끼 착용 필수.</li>
+            <li>음주 또는 과도한 음식 섭취 후 입장 금지.</li>
+            <li>다이빙 등 위험한 행동 엄격히 금지.</li>
+            <li>안전요원의 지시에 반드시 따를 것.</li>
+            <li>지정 흡연 구역 외 흡연 금지.</li>
           </ul>
         </div>
         <div class="sl-info-block sl-reveal">
           <h3 class="sl-info-block__title">취소 · 환불</h3>
           <ul class="sl-info-block__list">
-            <li>유효기간 내 미사용의 경우 100% 환불 가능합니다.</li>
-            <li>유효기간 만료 후 미사용 티켓은 환불 불가합니다.</li>
-            <li>사용된 티켓은 환불 불가합니다.</li>
-            <li>취소 처리까지 다소 시간이 소요될 수 있습니다.</li>
+            <li>유효기간 내 미사용: 100% 환불.</li>
+            <li>유효기간 만료 후: 환불 불가.</li>
+            <li>사용된 티켓: 환불 불가.</li>
+            <li>취소 처리까지 시간이 소요됩니다.</li>
           </ul>
         </div>
         <div class="sl-info-block sl-reveal">
           <h3 class="sl-info-block__title">고객센터</h3>
           <ul class="sl-info-block__list">
-            <li>티켓(발송/취소) 관련 문의: 예이치투오코리아 주식회사</li>
+            <li>티켓 문의: 예이치투오코리아</li>
             <li>☎ 1661-3624</li>
-            <li>운영시간: 10:00 ~ 17:00 (점심 12:30~13:30)</li>
-            <li>라테라스 리조트: Tel. 061-643-3500</li>
-            <li>깔라까따: Tel. 061-643-5005</li>
+            <li>운영: 10:00~17:00 (평일)</li>
+            <li>라테라스: 061-643-3500</li>
+            <li>깔라까따: 061-643-5005</li>
           </ul>
         </div>
       </div>
@@ -404,7 +876,7 @@
   </section>
 
   <!-- ============================================================
-       BOOKING CTA — 예약 섹션 (소노 oceanWorld: 예약 섹션)
+       BOOKING CTA
   ============================================================ -->
   <section class="sl-booking-cta">
     <div class="sl-booking-cta__bg" style="background-image:url('https://gonylab-image.com/cdn-cgi/image/width=2400,quality=90,format=auto/laterrace/summer/3.jpg')"></div>
@@ -423,7 +895,7 @@
   </section>
 
   <!-- ============================================================
-       FOOTER (현재 사이트와 동일한 구조)
+       FOOTER
   ============================================================ -->
   <footer class="footer" id="sl-contact">
     <div class="footer__inner container">
@@ -450,11 +922,15 @@
           <div class="footer__col">
             <h4 class="footer__col-title">SUMMERLAND</h4>
             <ul class="footer__col-list">
-              <li><a href="#sl-intro">소개</a></li>
-              <li><a href="#sl-gallery">갤러리</a></li>
+              <li><a href="#sl-about">소개</a></li>
+              <li><a href="#sl-operation">운영상황</a></li>
+              <li><a href="#sl-guide">이용안내</a></li>
+              <li><a href="#sl-price">요금&amp;할인</a></li>
+              <li><a href="#sl-attraction">어트랙션</a></li>
               <li><a href="#sl-dining">다이닝</a></li>
-              <li><a href="#sl-ticket">티켓 &amp; 이용안내</a></li>
-              <li><a href="#sl-notice">유의사항</a></li>
+              <li><a href="#sl-map">가이드맵</a></li>
+              <li><a href="#sl-access">오시는 길</a></li>
+              <li><a href="#sl-notice">공지사항</a></li>
             </ul>
           </div>
           <div class="footer__col">

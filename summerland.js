@@ -1,5 +1,8 @@
 /* ============================================================
-   SUMMERLAND PAGE JS
+   SUMMERLAND PAGE JS — 소노 oceanWorld 메뉴 구조 적용
+   섹션 ID: sl-operation / sl-guide / sl-price / sl-access /
+             sl-map / sl-attraction / sl-dining / sl-about /
+             sl-notice
 ============================================================ */
 
 (function () {
@@ -15,9 +18,8 @@
   const reveals = document.querySelectorAll('.sl-reveal');
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          // 같은 부모 내 순서에 따라 딜레이
           const siblings = entry.target.parentElement
             ? Array.from(entry.target.parentElement.querySelectorAll('.sl-reveal'))
             : [];
@@ -37,16 +39,26 @@
 
   /* ── 3. 서브 네비게이션 활성화 (스크롤 위치 기반) ── */
   const subnavItems = document.querySelectorAll('.sl-subnav__item');
-  const sections = ['sl-intro', 'sl-gallery', 'sl-dining', 'sl-ticket', 'sl-notice'].map(id => document.getElementById(id));
+  const sectionIds = [
+    'sl-operation', 'sl-guide', 'sl-price', 'sl-access',
+    'sl-map', 'sl-attraction', 'sl-dining', 'sl-about', 'sl-notice'
+  ];
+  const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
 
   function updateSubnav() {
-    const scrollY = window.scrollY + 120;
-    let current = 0;
-    sections.forEach((sec, i) => {
-      if (sec && sec.offsetTop <= scrollY) current = i;
+    const navbar = document.getElementById('sl-navbar');
+    const subnav = document.getElementById('sl-subnav');
+    const navH = navbar ? navbar.offsetHeight : 0;
+    const subH = subnav ? subnav.offsetHeight : 0;
+    const offset = navH + subH + 24;
+    const scrollY = window.scrollY + offset;
+    let current = '';
+    sections.forEach(sec => {
+      if (sec.offsetTop <= scrollY) current = sec.id;
     });
-    subnavItems.forEach((item, i) => {
-      item.classList.toggle('sl-subnav__item--active', i === current);
+    subnavItems.forEach(item => {
+      const t = item.getAttribute('data-target');
+      item.classList.toggle('sl-subnav__item--active', t === current);
     });
   }
   window.addEventListener('scroll', updateSubnav, { passive: true });
@@ -60,7 +72,11 @@
         e.preventDefault();
         const target = document.querySelector(href);
         if (target) {
-          const offset = 110; // navbar + subnav 높이
+          const navbar = document.getElementById('sl-navbar');
+          const subnav = document.getElementById('sl-subnav');
+          const navH = navbar ? navbar.offsetHeight : 0;
+          const subH = subnav ? subnav.offsetHeight : 0;
+          const offset = navH + subH + 8;
           const top = target.getBoundingClientRect().top + window.scrollY - offset;
           window.scrollTo({ top, behavior: 'smooth' });
         }
@@ -68,7 +84,18 @@
     });
   });
 
-  /* ── 5. 모바일 메뉴 ── */
+  /* ── 5. 서브네비 top 위치 = 네비바 높이 ── */
+  function setSubnavTop() {
+    const navbar = document.getElementById('sl-navbar');
+    const subnav = document.getElementById('sl-subnav');
+    if (subnav && navbar) {
+      subnav.style.top = navbar.offsetHeight + 'px';
+    }
+  }
+  setSubnavTop();
+  window.addEventListener('resize', setSubnavTop);
+
+  /* ── 6. 모바일 메뉴 ── */
   const hamburger = document.getElementById('sl-hamburgerBtn');
   const mobileMenu = document.getElementById('sl-mobileMenu');
   const mobileClose = document.getElementById('sl-mobileClose');
@@ -85,7 +112,6 @@
       document.body.style.overflow = '';
     });
   }
-  // 모바일 메뉴 링크 클릭 시 닫기
   if (mobileMenu) {
     mobileMenu.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
@@ -95,7 +121,7 @@
     });
   }
 
-  /* ── 6. 다이닝 카드 드래그 스크롤 ── */
+  /* ── 7. 다이닝 카드 드래그 스크롤 ── */
   const diningCards = document.querySelector('.sl-dining__cards');
   if (diningCards) {
     let isDown = false, startX, scrollLeft;
@@ -115,7 +141,7 @@
     });
   }
 
-  /* ── 7. 네비바 스크롤 시 배경 처리 ── */
+  /* ── 8. 네비바 스크롤 시 배경 처리 ── */
   const navbar = document.getElementById('sl-navbar');
   if (navbar) {
     function updateNavbar() {
