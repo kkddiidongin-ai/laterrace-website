@@ -1473,6 +1473,47 @@ input, select { font-family: inherit; }
   overflow: hidden;
 }
 
+/* ---- 원형 엠블럼 행 (레퍼런스 4번 사진: 양쪽 수평선 + 중앙 엠블럼) ---- */
+.brands__emblem-row {
+  display: flex;
+  align-items: center;
+  padding: 48px 24px 0;
+  gap: 0;
+}
+@media (min-width: 768px) {
+  .brands__emblem-row { padding: 64px 60px 0; }
+}
+.brands__emblem-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(42,32,24,0.35);
+  display: block;
+}
+.brands__emblem {
+  width: 110px;
+  height: 110px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 16px;
+}
+.brands__emblem img {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+}
+.brands__emblem-svg {
+  width: 110px;
+  height: 110px;
+  align-items: center;
+  justify-content: center;
+}
+.brands__emblem-svg svg {
+  width: 110px;
+  height: 110px;
+}
+
 /* ---- 상단 소개 텍스트 (레퍼런스: 모바일 세로 스택, PC 좌우 2단) ---- */
 .brands__intro {
   padding: 56px 24px 40px;
@@ -1488,26 +1529,26 @@ input, select { font-family: inherit; }
 }
 .brands__heading {
   font-family: var(--font-serif);
-  font-size: clamp(2.4rem, 10vw, 3.2rem);
+  font-size: clamp(2rem, 8vw, 2.6rem);  /* 레퍼런스: ~32-36px */
   font-weight: 700;
   font-style: italic;
-  color: var(--color-text);
-  line-height: 1.1;
-  margin: 0 0 24px;
+  color: #1a1410;  /* 레퍼런스: 매우 진한 어두운 색 */
+  line-height: 1.15;
+  margin: 0 0 28px;
   flex: 0 0 auto;
 }
 @media (min-width: 768px) {
   .brands__heading {
-    font-size: clamp(2.4rem, 3.5vw, 3.4rem);
+    font-size: clamp(2.2rem, 3vw, 3rem);
     flex: 0 0 42%;
     margin-bottom: 0;
   }
 }
 .brands__desc {
-  font-size: 1rem;
-  font-weight: 300;
-  line-height: 1.9;
-  color: var(--color-text-muted);
+  font-size: 1.05rem;  /* 레퍼런스: ~16-17px */
+  font-weight: 400;    /* 레퍼런스: regular weight, 얼마 안 가는 진한 색 */
+  line-height: 1.85;
+  color: #1a1410;      /* 레퍼런스: 헤딩과 동일한 진한 색 */
   margin: 0;
   flex: 1;
 }
@@ -1592,10 +1633,10 @@ input, select { font-family: inherit; }
 /* 탭 텍스트 */
 .brands__tab-text {
   font-family: var(--font-serif);
-  font-size: 1.3rem;   /* 레퍼런스 ~20-22px */
+  font-size: 1.45rem;  /* 레퍼런스: ~22-24px */
   font-weight: 400;
   font-style: italic;
-  color: rgba(42,32,24,0.35);
+  color: rgba(26,20,16,0.3);  /* 레퍼런스: 연한 회색 */
   transition: color var(--transition), font-weight var(--transition);
   display: block;
   line-height: 1.3;
@@ -1610,14 +1651,14 @@ input, select { font-family: inherit; }
   }
 }
 
-/* 활성 탭 — All Collections: 굵고 진한 색 */
+/* 활성 탭 — 레퍼런스: 진한 어두운 색 + 굵게 */
 .brands__tab--active .brands__tab-text {
-  color: var(--color-text);
+  color: #1a1410;
   font-weight: 700;
   font-style: italic;
 }
 .brands__tab:hover .brands__tab-text {
-  color: rgba(42,32,24,0.65);
+  color: rgba(26,20,16,0.65);
 }
 
 /* 모바일: 활성 탭 표시 (밑줄 제거, 텍스트 굵기로만 구분 — 레퍼런스와 동일) */
