@@ -32,8 +32,8 @@
   --color-summer-lt:   #e8906a;
   --color-winter:      #4a6a8f;
 
-  --font-serif:  'Cormorant Garamond', Georgia, serif;
-  --font-sans:   'DM Sans', sans-serif;
+  --font-serif:  'Zodiak', Georgia, serif;
+  --font-sans:   'Satoshi', sans-serif;
 
   --max-w:       1440px;
   --section-pad: 100px;
@@ -523,7 +523,7 @@ input, select { font-family: inherit; }
 
 /* Each menu link — large serif, Sun Siyam style */
 .mobile-menu__link {
-  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-family: var(--font-serif);
   font-size: 2.6rem;
   font-weight: 700;
   font-style: normal;
@@ -877,7 +877,7 @@ input, select { font-family: inherit; }
 }
 
 .hero__wordmark {
-  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-family: var(--font-serif);
   font-size: clamp(15vw, 19vw, 22vw);
   font-weight: 300;
   font-style: italic;
@@ -1162,7 +1162,7 @@ input, select { font-family: inherit; }
 }
 
 .intro__heading {
-  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-family: var(--font-serif);
   font-size: clamp(2.4rem, 4vw, 4rem);
   font-weight: 400;
   font-style: italic;
@@ -1176,7 +1176,7 @@ input, select { font-family: inherit; }
 
 /* Centered variant */
 .intro__heading--centered {
-  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-family: var(--font-serif);
   font-size: clamp(2.4rem, 4vw, 4rem);
   font-weight: 400;
   font-style: italic;
