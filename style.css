@@ -1103,7 +1103,7 @@ input, select { font-family: inherit; }
 }
 @media (min-width: 768px) {
   .be-rewarded {
-    padding: 72px var(--section-px) 80px;
+    padding: 165px var(--section-px) 0;
   }
 }
 .be-rewarded__inner {
@@ -1141,7 +1141,7 @@ input, select { font-family: inherit; }
 @media (min-width: 768px) {
   .be-rewarded__body {
     flex-direction: row;
-    align-items: flex-start;
+    align-items: flex-end; /* 이미지 하단 정렬 */
     gap: clamp(60px, 8vw, 120px);
   }
 }
@@ -1154,19 +1154,21 @@ input, select { font-family: inherit; }
 }
 @media (min-width: 768px) {
   .be-rewarded__photo-wrap {
-    width: clamp(320px, 38vw, 560px);
+    width: clamp(320px, 38vw, 520px);
     max-width: none;
+    align-self: flex-end; /* 이미지 하단 정렬 — 레퍼런스와 동일 */
   }
 }
 .be-rewarded__photo {
   width: 100%;
-  aspect-ratio: 4/3.5;
+  aspect-ratio: 3/4;
   object-fit: cover;
   display: block;
 }
 @media (min-width: 768px) {
   .be-rewarded__photo {
-    aspect-ratio: 7/6;
+    aspect-ratio: auto;
+    height: clamp(480px, 55vw, 760px);
   }
 }
 /* FREE 배지 — 레퍼런스: 원형 테두리 + 텍스트 'RELAX WITH REWARD · FREE · MEMBERSHIP PROGRAM' */
