@@ -645,14 +645,22 @@ document.addEventListener('DOMContentLoaded', () => {
       s.style.order   = i;
     });
 
-    // 슬라이드 너비 계산 (첫 번째 visible 슬라이드 기준)
+    // 슬라이드 너비 계산 (첫 번째 visible 슬라이드 기준, gap=4px 포함)
     if (visibleSlides.length === 0) return;
-    const slideWidth = visibleSlides[0].offsetWidth + 12; // gap 포함
+    const GAP = 4;
+    const slideWidth = visibleSlides[0].offsetWidth + GAP;
     slider.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
 
     // 화살표 상태
-    if (prevBtn) prevBtn.style.opacity = currentIndex === 0 ? '0.3' : '1';
-    if (nextBtn) nextBtn.style.opacity = currentIndex >= visibleSlides.length - 1 ? '0.3' : '1';
+    if (prevBtn) {
+      prevBtn.style.opacity = currentIndex === 0 ? '0.35' : '1';
+      prevBtn.style.pointerEvents = currentIndex === 0 ? 'none' : 'auto';
+    }
+    if (nextBtn) {
+      const maxIndex = visibleSlides.length - 1;
+      nextBtn.style.opacity = currentIndex >= maxIndex ? '0.35' : '1';
+      nextBtn.style.pointerEvents = currentIndex >= maxIndex ? 'none' : 'auto';
+    }
   }
 
   /* ── 탭 클릭 → 필터링 ── */

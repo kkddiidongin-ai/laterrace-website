@@ -1517,15 +1517,16 @@ input, select { font-family: inherit; }
 }
 
 /* ---- 메인 영역: 좌측 탭 + 우측 슬라이더 ---- */
+/* 레퍼런스: 탭이 슬라이더와 동일한 세로 높이, 슬라이더는 overflow visible로 우측 카드가 잌리는 효과 */
 .brands__main {
   display: flex;
   flex-direction: column;
-  min-height: 520px;
 }
 @media (min-width: 768px) {
   .brands__main {
     flex-direction: row;
-    min-height: 600px;
+    align-items: stretch;
+    height: 720px; /* 탭과 슬라이더 동일 높이 */
   }
 }
 
@@ -1537,7 +1538,7 @@ input, select { font-family: inherit; }
   scrollbar-width: none;
   background: var(--color-sand);
   border-bottom: 1px solid rgba(42,32,24,0.12);
-  padding: 0 16px;
+  padding: 0;
   gap: 0;
   flex-shrink: 0;
 }
@@ -1545,13 +1546,14 @@ input, select { font-family: inherit; }
 @media (min-width: 768px) {
   .brands__tabs {
     flex-direction: column;
-    overflow-x: visible;
+    overflow: visible;
     border-bottom: none;
     border-right: 1px solid rgba(42,32,24,0.12);
     padding: 0;
-    width: 180px;
-    min-width: 180px;
-    justify-content: flex-start;
+    width: 170px;
+    min-width: 170px;
+    flex-shrink: 0;
+    height: 100%; /* 슬라이더와 동일 높이 */
     background: var(--color-sand);
   }
 }
@@ -1560,11 +1562,11 @@ input, select { font-family: inherit; }
   background: none;
   border: none;
   cursor: pointer;
-  padding: 14px 16px;
+  padding: 12px 20px;
   white-space: nowrap;
   text-align: left;
   position: relative;
-  transition: color var(--transition);
+  transition: all var(--transition);
   flex-shrink: 0;
 }
 @media (min-width: 768px) {
@@ -1572,7 +1574,7 @@ input, select { font-family: inherit; }
     padding: 0;
     white-space: normal;
     width: 100%;
-    height: 100px;
+    flex: 1; /* 탭 4개가 동일하게 높이 분할 */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1583,27 +1585,31 @@ input, select { font-family: inherit; }
 
 .brands__tab-text {
   font-family: var(--font-serif);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 400;
   font-style: italic;
-  color: rgba(42,32,24,0.35);
-  transition: color var(--transition);
+  color: rgba(42,32,24,0.3);
+  transition: color var(--transition), font-weight var(--transition);
   display: block;
+  line-height: 1.3;
 }
 @media (min-width: 768px) {
   .brands__tab-text {
     writing-mode: vertical-rl;
     text-orientation: mixed;
     transform: rotate(180deg);
-    font-size: 0.9rem;
-    letter-spacing: 0.04em;
+    font-size: 0.88rem;
+    letter-spacing: 0.03em;
   }
 }
 
-.brands__tab--active .brands__tab-text,
-.brands__tab:hover .brands__tab-text {
+/* 활성 탭: 굵고 진한 색 */
+.brands__tab--active .brands__tab-text {
   color: var(--color-text);
   font-weight: 700;
+}
+.brands__tab:hover .brands__tab-text {
+  color: rgba(42,32,24,0.7);
 }
 
 /* 모바일: 활성 탭 하단 선 */
@@ -1611,8 +1617,8 @@ input, select { font-family: inherit; }
   content: '';
   position: absolute;
   bottom: 0;
-  left: 16px;
-  right: 16px;
+  left: 20px;
+  right: 20px;
   height: 2px;
   background: var(--color-text);
 }
@@ -1628,35 +1634,50 @@ input, select { font-family: inherit; }
 }
 
 /* ---- 우측 슬라이더 영역 ---- */
+/* 중요: overflow visible — 레퍼런스와 동일하게 우측 카드가 잌리는 효과 */
 .brands__slider-wrap {
   flex: 1;
   position: relative;
-  overflow: hidden;
-  min-height: 460px;
+  overflow: hidden; /* 슬라이더 컨테이너는 hidden */
+  min-height: 500px;
 }
 @media (min-width: 768px) {
-  .brands__slider-wrap { min-height: 600px; }
+  .brands__slider-wrap {
+    min-height: 720px;
+    height: 720px;
+    overflow: hidden;
+  }
 }
 
 .brands__slider {
   display: flex;
   height: 100%;
-  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
 }
 
 /* ---- 개별 슬라이드 카드 ---- */
+/* 레퍼런스: 세로로 긴 portrait 비율, 카드 간 gap 거의 없음(4px) */
 .brand-slide {
   position: relative;
-  flex: 0 0 85%;
-  height: 460px;
+  flex: 0 0 80vw; /* 모바일: 화면의 80% */
+  height: 500px;
   overflow: hidden;
-  margin-right: 12px;
+  margin-right: 4px;
 }
 @media (min-width: 600px) {
-  .brand-slide { flex: 0 0 50%; height: 520px; }
+  .brand-slide {
+    flex: 0 0 48%;
+    height: 560px;
+  }
 }
 @media (min-width: 768px) {
-  .brand-slide { flex: 0 0 50%; height: 600px; margin-right: 0; }
+  .brand-slide {
+    flex: 0 0 calc(50% - 2px); /* 정확히 2장씩 보임 */
+    height: 720px;
+    margin-right: 4px;
+  }
+  .brand-slide:last-child { margin-right: 0; }
 }
 
 .brand-slide__img {
