@@ -81,6 +81,20 @@
 /* ── Reset & Base ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* ── Section Divider — 전체 섹션 구분선 ── */
+.intro,
+.brands,
+.be-rewarded,
+.summerland,
+.offers,
+.winter,
+.dining,
+.facilities,
+.gallery,
+.footer {
+  border-top: 1px solid rgba(42,32,24,0.18);
+}
+
 html {
   scroll-behavior: smooth;
   font-size: 16px;
