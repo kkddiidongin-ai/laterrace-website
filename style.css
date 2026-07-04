@@ -42,7 +42,8 @@
 
   /* Mobile-first spacing */
   --section-pad: 60px;
-  --container-px: 20px;
+  --container-px: 20px;   /* 모바일 좌우 여백 */
+  --section-px: 20px;    /* 섹션 좌우 여백 (주요 여백 변수) */
 
   --max-w: 1440px;
   --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
@@ -53,6 +54,7 @@
   :root {
     --section-pad: 80px;
     --container-px: 40px;
+    --section-px: 40px;
   }
 }
 
@@ -60,6 +62,19 @@
   :root {
     --section-pad: 100px;
     --container-px: 60px;
+    --section-px: 60px;
+  }
+}
+
+/* 레퍼런스 실측: 1536px 화면에서 좌측 여백 ~270px (17.6%) */
+@media (min-width: 1280px) {
+  :root {
+    --section-px: clamp(80px, 12vw, 200px);
+  }
+}
+@media (min-width: 1440px) {
+  :root {
+    --section-px: clamp(120px, 14vw, 240px);
   }
 }
 
@@ -90,7 +105,7 @@ input, select { font-family: inherit; }
 .container {
   max-width: var(--max-w);
   margin: 0 auto;
-  padding: 0 var(--container-px);
+  padding: 0 var(--section-px);
 }
 
 /* ── Section Label ── */
@@ -1738,7 +1753,7 @@ input, select { font-family: inherit; }
   display: flex;
   flex-direction: column;   /* 모바일도 세로 */
   background: var(--color-sand);
-  padding: 0 24px;
+  padding: 0 var(--section-px);
   flex-shrink: 0;
 }
 @media (min-width: 768px) {
@@ -2120,15 +2135,9 @@ input, select { font-family: inherit; }
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-  padding: 0 20px;
-  margin: 0 -20px;
+  padding: 0 var(--section-px);
+  margin: 0 calc(-1 * var(--section-px));
   cursor: grab;
-}
-@media (min-width: 768px) {
-  .dining__scroll-wrap { padding: 0 40px; margin: 0 -40px; }
-}
-@media (min-width: 1024px) {
-  .dining__scroll-wrap { padding: 0 60px; margin: 0 -60px; }
 }
 .dining__scroll-wrap::-webkit-scrollbar { display: none; }
 .dining__scroll-wrap:active { cursor: grabbing; }
@@ -2136,14 +2145,11 @@ input, select { font-family: inherit; }
 .dining__cards {
   display: flex;
   gap: 16px;
-  padding: 0 20px;
+  padding: 0 var(--section-px);
   width: max-content;
 }
 @media (min-width: 768px) {
-  .dining__cards { gap: 24px; padding: 0 40px; }
-}
-@media (min-width: 1024px) {
-  .dining__cards { padding: 0 60px; }
+  .dining__cards { gap: 24px; }
 }
 
 .dining-card {
