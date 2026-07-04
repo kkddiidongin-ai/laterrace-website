@@ -37,7 +37,7 @@
   --color-summer-lt:   #e8906a;
   --color-winter:      #4a6a8f;
 
-  --font-serif:  'Zodiak', Georgia, serif;
+  --font-serif:  'Cormorant Garamond', Georgia, serif;
   --font-sans:   'Satoshi', 'Noto Sans KR', sans-serif;
 
   /* Mobile-first spacing */
@@ -334,7 +334,7 @@ input, select { font-family: inherit; }
 .navbar__logo-main {
   font-family: var(--font-serif);
   font-size: 1.5rem;
-  font-weight: 500;
+  font-weight: 700;
   color: var(--color-white);
   letter-spacing: 0.04em;
   transition: color var(--transition);
@@ -721,7 +721,7 @@ input, select { font-family: inherit; }
 .hero__video-heading {
   font-family: var(--font-serif);
   font-size: clamp(1.6rem, 7vw, 2.2rem);
-  font-weight: 500;
+  font-weight: 700;
   font-style: italic;
   color: var(--color-white);
   line-height: 1.2;
@@ -774,7 +774,7 @@ input, select { font-family: inherit; }
 .hero__wordmark {
   font-family: var(--font-serif);
   font-size: 28vw;
-  font-weight: 300;
+  font-weight: 700;
   font-style: italic;
   line-height: 0.88;
   color: var(--color-white);
@@ -960,7 +960,7 @@ input, select { font-family: inherit; }
 .intro__heading {
   font-family: var(--font-serif);
   font-size: clamp(2rem, 8vw, 3rem);
-  font-weight: 400;
+  font-weight: 700;
   font-style: italic;
   line-height: 1.15;
   color: var(--color-text);
@@ -976,7 +976,7 @@ input, select { font-family: inherit; }
 .intro__heading--centered {
   font-family: var(--font-serif);
   font-size: clamp(2rem, 8vw, 3rem);
-  font-weight: 400;
+  font-weight: 700;
   font-style: italic;
   text-align: center;
   width: 100%;
@@ -1100,7 +1100,7 @@ input, select { font-family: inherit; }
 .rewards__heading {
   font-family: var(--font-serif);
   font-size: clamp(2rem, 8vw, 2.8rem);
-  font-weight: 300;
+  font-weight: 700;
   color: var(--color-white);
   margin-bottom: 32px;
   line-height: 1.2;
@@ -1204,7 +1204,7 @@ input, select { font-family: inherit; }
 .summerland__heading {
   font-family: var(--font-serif);
   font-size: clamp(2.2rem, 9vw, 3.5rem);
-  font-weight: 400;
+  font-weight: 700;
   color: var(--color-navy);
   line-height: 1;
   margin-bottom: 12px;
@@ -1297,7 +1297,7 @@ input, select { font-family: inherit; }
 .offers__heading {
   font-family: var(--font-serif);
   font-size: clamp(2rem, 8vw, 3rem);
-  font-weight: 400;
+  font-weight: 700;
   color: var(--color-text);
   line-height: 1.2;
 }
@@ -1345,7 +1345,7 @@ input, select { font-family: inherit; }
 
 .offer-card__title {
   font-family: var(--font-serif);
-  font-size: 1.4rem; font-weight: 500;
+  font-size: 1.4rem; font-weight: 700;
   color: var(--color-navy); margin-bottom: 12px;
 }
 @media (min-width: 768px) {
@@ -1395,7 +1395,7 @@ input, select { font-family: inherit; }
 .brands__heading {
   font-family: var(--font-serif);
   font-size: clamp(1.8rem, 7vw, 2.8rem);
-  font-weight: 400; color: var(--color-text); line-height: 1.2;
+  font-weight: 700; color: var(--color-text); line-height: 1.2;
 }
 @media (min-width: 768px) {
   .brands__heading { font-size: clamp(2rem, 3.5vw, 3rem); }
@@ -1442,7 +1442,7 @@ input, select { font-family: inherit; }
 
 .brand-card__name {
   font-family: var(--font-serif);
-  font-size: 1.6rem; font-weight: 400;
+  font-size: 1.6rem; font-weight: 700;
   color: var(--color-white); line-height: 1.15; margin-bottom: 14px;
 }
 @media (min-width: 768px) {
@@ -1512,7 +1512,7 @@ input, select { font-family: inherit; }
 .winter__heading {
   font-family: var(--font-serif);
   font-size: clamp(1.8rem, 7vw, 2.8rem);
-  font-weight: 300; color: var(--color-white);
+  font-weight: 700; color: var(--color-white);
   line-height: 1.2; margin-bottom: 16px;
 }
 @media (min-width: 768px) {
@@ -1544,7 +1544,7 @@ input, select { font-family: inherit; }
 .dining__heading {
   font-family: var(--font-serif);
   font-size: clamp(2rem, 8vw, 3rem);
-  font-weight: 400; color: var(--color-text);
+  font-weight: 700; color: var(--color-text);
 }
 @media (min-width: 768px) {
   .dining__heading { font-size: clamp(2.2rem, 4vw, 3.5rem); }
@@ -1609,7 +1609,7 @@ input, select { font-family: inherit; }
 
 .dining-card__name {
   font-family: var(--font-serif);
-  font-size: 1rem; font-weight: 500; color: var(--color-text); margin-bottom: 6px;
+  font-size: 1rem; font-weight: 700; color: var(--color-text); margin-bottom: 6px;
 }
 @media (min-width: 768px) {
   .dining-card__name { font-size: 1.1rem; }
@@ -1641,7 +1641,7 @@ input, select { font-family: inherit; }
 .facilities__heading {
   font-family: var(--font-serif);
   font-size: clamp(1.8rem, 7vw, 2.8rem);
-  font-weight: 400; color: var(--color-text);
+  font-weight: 700; color: var(--color-text);
 }
 @media (min-width: 768px) {
   .facilities__heading { font-size: clamp(2rem, 3.5vw, 3rem); }
@@ -1734,7 +1734,7 @@ input, select { font-family: inherit; }
 
 .gallery__tagline {
   font-family: var(--font-serif);
-  font-size: 1.2rem; font-weight: 400;
+  font-size: 1.2rem; font-weight: 700;
   color: var(--color-text); font-style: italic;
 }
 @media (min-width: 768px) {
@@ -1818,7 +1818,7 @@ input, select { font-family: inherit; }
 .footer__logo { display: flex; flex-direction: column; line-height: 1.1; margin-bottom: 14px; }
 .footer__logo-main {
   font-family: var(--font-serif);
-  font-size: 1.4rem; font-weight: 400;
+  font-size: 1.4rem; font-weight: 700;
   color: var(--color-white); letter-spacing: 0.04em;
 }
 @media (min-width: 768px) {
