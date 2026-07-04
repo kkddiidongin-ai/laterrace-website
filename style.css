@@ -1526,24 +1526,23 @@ input, select { font-family: inherit; }
   }
 }
 
-/* ---- 탭 메뉴 (모바일: 가로 스크롤 / PC: 좌측 세로) ---- */
-/* 레퍼런스 모바일: All Collections(굵고+하단 밑줄) / 나머지(연한 회색 이탈릭) */
+/* ============================================================
+   BRANDS 탭 메뉴
+   레퍼런스 모바일: 세로 목록 — 위 구분선 → All Collections(굵게) → 구분선 → 항목들(연한 이탤릭)
+   레퍼런스 PC: 좌측 세로 탭 (writing-mode vertical)
+============================================================ */
+
+/* 모바일: 세로 목록 / PC: 좌측 세로 탭 */
 .brands__tabs {
   display: flex;
-  flex-direction: row;
-  overflow-x: auto;
-  scrollbar-width: none;
+  flex-direction: column;   /* 모바일도 세로 */
   background: var(--color-sand);
   padding: 0 24px;
-  gap: 0;
   flex-shrink: 0;
-  border-bottom: none;
 }
-.brands__tabs::-webkit-scrollbar { display: none; }
 @media (min-width: 768px) {
   .brands__tabs {
     flex-direction: column;
-    overflow: visible;
     padding: 0;
     width: 60px;
     min-width: 60px;
@@ -1554,38 +1553,46 @@ input, select { font-family: inherit; }
   }
 }
 
-/* 모바일 탭 항목 */
+/* 탭 항목 — 모바일: 구분선 + 텍스트 */
 .brands__tab {
   background: none;
   border: none;
+  border-top: 1px solid rgba(42,32,24,0.18); /* 각 항목 위 구분선 */
   cursor: pointer;
-  padding: 14px 0;
-  margin-right: 28px;
-  white-space: nowrap;
+  padding: 16px 0;
   text-align: left;
   position: relative;
   transition: all var(--transition);
-  flex-shrink: 0;
+  width: 100%;
 }
-.brands__tab:last-child { margin-right: 0; }
+/* 첫 번째 탭 위에 추가 구분선 (레퍼런스: 탭 목록 최상단에 선) */
+.brands__tab:first-child {
+  border-top: 1px solid rgba(42,32,24,0.4);
+}
+/* 마지막 탭 아래 구분선 */
+.brands__tab:last-child {
+  border-bottom: 1px solid rgba(42,32,24,0.18);
+}
 
 @media (min-width: 768px) {
   .brands__tab {
+    border-top: none;
+    border-bottom: none;
     padding: 0 0 20px 0;
-    margin-right: 0;
-    white-space: normal;
     width: 100%;
     flex: 1;
     display: flex;
     align-items: flex-end;
     justify-content: center;
   }
+  .brands__tab:first-child { border-top: none; }
+  .brands__tab:last-child { border-bottom: none; }
 }
 
 /* 탭 텍스트 */
 .brands__tab-text {
   font-family: var(--font-serif);
-  font-size: 0.95rem; /* 모바일: 레퍼런스 ~15-16px */
+  font-size: 1.3rem;   /* 레퍼런스 ~20-22px */
   font-weight: 400;
   font-style: italic;
   color: rgba(42,32,24,0.35);
@@ -1603,7 +1610,7 @@ input, select { font-family: inherit; }
   }
 }
 
-/* 활성 탭 — 레퍼런스: 굵고 진한 색 */
+/* 활성 탭 — All Collections: 굵고 진한 색 */
 .brands__tab--active .brands__tab-text {
   color: var(--color-text);
   font-weight: 700;
@@ -1613,22 +1620,15 @@ input, select { font-family: inherit; }
   color: rgba(42,32,24,0.65);
 }
 
-/* 모바일: 활성 탭 하단 밑줄 (레퍼런스와 동일) */
-.brands__tab--active::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: var(--color-text);
-}
+/* 모바일: 활성 탭 표시 (밑줄 제거, 텍스트 굵기로만 구분 — 레퍼런스와 동일) */
+.brands__tab--active::after { display: none; }
 @media (min-width: 768px) {
   .brands__tab--active::after {
-    bottom: auto;
+    content: '';
+    display: block;
+    position: absolute;
     top: 0;
     left: 0;
-    right: auto;
     width: 2px;
     height: 100%;
     background: var(--color-text);
