@@ -614,3 +614,107 @@ function initWordmarkFadeIn() {
     wordmarkWrap.classList.add('is-visible');
   }, 300);
 }
+
+/* ============================================================
+   17. BRANDS COLLECTION SLIDER
+   — 좌측 탭 클릭 → 컬렉션 필터링
+   — 좌우 화살표 → 슬라이드 이동
+============================================================ */
+document.addEventListener('DOMContentLoaded', () => {
+  const slider      = document.getElementById('brandsSlider');
+  const prevBtn     = document.getElementById('brandsPrev');
+  const nextBtn     = document.getElementById('brandsNext');
+  const tabs        = document.querySelectorAll('.brands__tab');
+
+  if (!slider) return;
+
+  let allSlides     = Array.from(slider.querySelectorAll('.brand-slide'));
+  let visibleSlides = [...allSlides]; // 현재 보이는 슬라이드 목록
+  let currentIndex  = 0;
+
+  /* ── 슬라이드 위치 업데이트 ── */
+  function updateSlider() {
+    // 모든 슬라이드 숨기기
+    allSlides.forEach(s => {
+      s.style.display = 'none';
+      s.style.order   = '';
+    });
+    // 보이는 슬라이드만 표시 + 순서 지정
+    visibleSlides.forEach((s, i) => {
+      s.style.display = '';
+      s.style.order   = i;
+    });
+
+    // 슬라이드 너비 계산 (첫 번째 visible 슬라이드 기준)
+    if (visibleSlides.length === 0) return;
+    const slideWidth = visibleSlides[0].offsetWidth + 12; // gap 포함
+    slider.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+
+    // 화살표 상태
+    if (prevBtn) prevBtn.style.opacity = currentIndex === 0 ? '0.3' : '1';
+    if (nextBtn) nextBtn.style.opacity = currentIndex >= visibleSlides.length - 1 ? '0.3' : '1';
+  }
+
+  /* ── 탭 클릭 → 필터링 ── */
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // 활성 탭 변경
+      tabs.forEach(t => t.classList.remove('brands__tab--active'));
+      tab.classList.add('brands__tab--active');
+
+      const col = tab.dataset.collection;
+      currentIndex = 0;
+
+      if (col === 'all') {
+        visibleSlides = [...allSlides];
+      } else {
+        visibleSlides = allSlides.filter(s => s.dataset.collection === col);
+      }
+
+      updateSlider();
+    });
+  });
+
+  /* ── 화살표 클릭 ── */
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateSlider();
+      }
+    });
+  }
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      if (currentIndex < visibleSlides.length - 1) {
+        currentIndex++;
+        updateSlider();
+      }
+    });
+  }
+
+  /* ── 터치/스와이프 지원 ── */
+  let touchStartX = 0;
+  slider.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].clientX;
+  }, { passive: true });
+  slider.addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0 && currentIndex < visibleSlides.length - 1) {
+        currentIndex++;
+      } else if (diff < 0 && currentIndex > 0) {
+        currentIndex--;
+      }
+      updateSlider();
+    }
+  }, { passive: true });
+
+  /* ── 리사이즈 시 재계산 ── */
+  window.addEventListener('resize', () => {
+    updateSlider();
+  }, { passive: true });
+
+  /* ── 초기화 ── */
+  updateSlider();
+});
