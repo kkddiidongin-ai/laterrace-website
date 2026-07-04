@@ -1577,10 +1577,8 @@ input, select { font-family: inherit; }
   .brands__main {
     flex-direction: row;
     align-items: stretch;
-    /* 레퍼런스: 카드가 화면 높이의 약 80-90%를 채움 */
-    height: 80vh;
-    min-height: 500px;
-    max-height: 800px;
+    /* 레퍼런스 실측: 카드 높이 665px */
+    height: 665px;
   }
 }
 
@@ -1632,14 +1630,14 @@ input, select { font-family: inherit; }
 
 @media (min-width: 768px) {
   .brands__tab {
-    /* 레퍼런스: 각 탭이 세로 나열, 우측에 세로 구분선 */
+    /* 레퍼런스 실측: 탭 너비 74.83px, 높이 665px */
     border-top: none;
     border-bottom: none;
     border-left: none;
     border-right: 1px solid rgba(42,32,24,0.15);  /* 탭 사이 세로 구분선 */
     padding: 0;
-    width: 44px;      /* 레퍼런스: 각 탭 너비 ~40-45px */
-    min-width: 44px;
+    width: 75px;      /* 레퍼런스 실측: 74.83px */
+    min-width: 75px;
     height: 100%;
     flex-shrink: 0;
     display: flex;
@@ -1665,11 +1663,12 @@ input, select { font-family: inherit; }
 }
 @media (min-width: 768px) {
   .brands__tab-text {
-    writing-mode: vertical-rl;
+    /* 레퍼런스 실측: 36px Dahlia, 위에서 아래 방향 */
+    writing-mode: vertical-lr;  /* 위에서 아래로 */
     text-orientation: mixed;
-    transform: rotate(180deg);
-    font-size: 0.8rem;     /* 레퍼런스: 세로 텍스트 ~11-12px */
-    letter-spacing: 0.06em;
+    transform: none;            /* rotate 제거 — 위에서 아래 방향 */
+    font-size: 2.25rem;         /* 레퍼런스 실측: 36px */
+    letter-spacing: 0.02em;
     line-height: 1;
     font-style: italic;
   }
