@@ -1436,14 +1436,14 @@ input, select { font-family: inherit; }
 }
 
 .summerland__content {
-  padding: 44px 20px;
+  padding: 44px var(--section-px);
   display: flex;
   flex-direction: column;
   justify-content: center;
   background: var(--color-cream);
 }
 @media (min-width: 768px) {
-  .summerland__content { padding: 80px 60px; }
+  .summerland__content { padding: 80px var(--section-px); }
 }
 
 .summerland__heading {
@@ -1637,11 +1637,11 @@ input, select { font-family: inherit; }
 .brands__emblem-row {
   display: flex;
   align-items: center;
-  padding: 48px 24px 0;
+  padding: 48px var(--section-px) 0;
   gap: 0;
 }
 @media (min-width: 768px) {
-  .brands__emblem-row { padding: 64px 60px 0; }
+  .brands__emblem-row { padding: 64px var(--section-px) 0; }
 }
 .brands__emblem-line {
   flex: 1;
@@ -1676,7 +1676,7 @@ input, select { font-family: inherit; }
 
 /* ---- 상단 소개 텍스트 (레퍼런스: 모바일 세로 스택, PC 좌우 2단) ---- */
 .brands__intro {
-  padding: 48px 24px 36px;
+  padding: 48px var(--section-px) 36px;
 }
 @media (min-width: 768px) {
   .brands__intro {
@@ -1684,12 +1684,12 @@ input, select { font-family: inherit; }
     flex-direction: row;
     align-items: flex-start;
     gap: 80px;
-    padding: 60px 60px 48px;  /* 레퍼런스: 상단 패딩 적절히 */
+    padding: 60px var(--section-px) 48px;
   }
 }
 @media (min-width: 1440px) {
   .brands__intro {
-    padding: 80px 100px 60px;
+    padding: 80px var(--section-px) 60px;
     gap: 120px;
   }
 }
@@ -2084,10 +2084,10 @@ input, select { font-family: inherit; }
 .winter__content {
   position: relative; z-index: 2;
   max-width: 100%;
-  padding: 48px 20px;
+  padding: 48px var(--section-px);
 }
 @media (min-width: 768px) {
-  .winter__content { max-width: 560px; padding: 80px 60px; }
+  .winter__content { max-width: 640px; padding: 80px var(--section-px); }
 }
 
 .winter__heading {
