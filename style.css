@@ -1577,17 +1577,10 @@ input, select { font-family: inherit; }
   .brands__main {
     flex-direction: row;
     align-items: stretch;
-    height: 600px;
-  }
-}
-@media (min-width: 1024px) {
-  .brands__main {
-    height: 700px;
-  }
-}
-@media (min-width: 1440px) {
-  .brands__main {
-    height: 780px;
+    /* 레퍼런스: 카드가 화면 높이의 약 80-90%를 채움 */
+    height: 80vh;
+    min-height: 500px;
+    max-height: 800px;
   }
 }
 
@@ -1607,14 +1600,12 @@ input, select { font-family: inherit; }
 }
 @media (min-width: 768px) {
   .brands__tabs {
-    flex-direction: column;
+    flex-direction: row;   /* PC: 탭이 가로로 나열 (각 탭이 세로 텍스트) */
     padding: 0;
-    width: 44px;        /* 레퍼런스: 매우 좁은 탭 (~40-45px) */
-    min-width: 44px;
+    width: auto;
     flex-shrink: 0;
     height: 100%;
     background: var(--color-sand);
-    border-right: 1px solid rgba(42,32,24,0.12);
   }
 }
 
@@ -1641,18 +1632,24 @@ input, select { font-family: inherit; }
 
 @media (min-width: 768px) {
   .brands__tab {
+    /* 레퍼런스: 각 탭이 세로 나열, 우측에 세로 구분선 */
     border-top: none;
     border-bottom: none;
+    border-left: none;
+    border-right: 1px solid rgba(42,32,24,0.15);  /* 탭 사이 세로 구분선 */
     padding: 0;
-    width: 100%;
-    flex: 1;
+    width: 44px;      /* 레퍼런스: 각 탭 너비 ~40-45px */
+    min-width: 44px;
+    height: 100%;
+    flex-shrink: 0;
     display: flex;
     align-items: flex-end;   /* 레퍼런스: 텍스트 하단 정렬 */
     justify-content: center;
-    padding-bottom: 16px;
+    padding-bottom: 20px;
+    position: relative;
   }
-  .brands__tab:first-child { border-top: none; }
-  .brands__tab:last-child { border-bottom: none; }
+  .brands__tab:first-child { border-left: none; }
+  .brands__tab:last-child { border-right: none; }
 }
 
 /* 탭 텍스트 */
@@ -1671,9 +1668,10 @@ input, select { font-family: inherit; }
     writing-mode: vertical-rl;
     text-orientation: mixed;
     transform: rotate(180deg);
-    font-size: 0.72rem;    /* 레퍼런스: 매우 작은 세로 텍스트 */
-    letter-spacing: 0.04em;
+    font-size: 0.8rem;     /* 레퍼런스: 세로 텍스트 ~11-12px */
+    letter-spacing: 0.06em;
     line-height: 1;
+    font-style: italic;
   }
 }
 
@@ -1687,19 +1685,14 @@ input, select { font-family: inherit; }
   color: rgba(26,20,16,0.65);
 }
 
-/* 모바일: 활성 탭 표시 (밑줄 제거, 텍스트 굵기로만 구분 — 레퍼런스와 동일) */
+/* 모바일: 활성 탭 표시 (레퍼런스: 텍스트 굵기로만 구분) */
 .brands__tab--active::after { display: none; }
+/* PC: 활성 탭 좌측에 진한 세로 선 (레퍼런스와 동일) */
 @media (min-width: 768px) {
-  .brands__tab--active::after {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 2px;
-    height: 100%;
-    background: var(--color-text);
+  .brands__tab--active {
+    border-left: 2px solid #1a1410 !important;
   }
+  .brands__tab--active::after { display: none; }
 }
 
 /* ---- 우측 슬라이더 영역 ---- */
