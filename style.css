@@ -1516,41 +1516,55 @@ input, select { font-family: inherit; }
 
 /* ---- 상단 소개 텍스트 (레퍼런스: 모바일 세로 스택, PC 좌우 2단) ---- */
 .brands__intro {
-  padding: 56px 24px 40px;
+  padding: 48px 24px 36px;
 }
 @media (min-width: 768px) {
   .brands__intro {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    gap: 60px;
-    padding: 80px 60px 64px;
+    gap: 80px;
+    padding: 60px 60px 48px;  /* 레퍼런스: 상단 패딩 적절히 */
+  }
+}
+@media (min-width: 1440px) {
+  .brands__intro {
+    padding: 80px 100px 60px;
+    gap: 120px;
   }
 }
 .brands__heading {
   font-family: var(--font-serif);
-  font-size: clamp(2rem, 8vw, 2.6rem);  /* 레퍼런스: ~32-36px */
+  font-size: clamp(2rem, 8vw, 2.6rem);
   font-weight: 700;
   font-style: italic;
-  color: #1a1410;  /* 레퍼런스: 매우 진한 어두운 색 */
+  color: #1a1410;
   line-height: 1.15;
   margin: 0 0 28px;
   flex: 0 0 auto;
 }
 @media (min-width: 768px) {
   .brands__heading {
-    font-size: clamp(2.2rem, 3vw, 3rem);
-    flex: 0 0 42%;
+    font-size: clamp(2rem, 2.8vw, 3.2rem);  /* 레퍼런스: PC에서 큰 이탈릭 헤딩 */
+    flex: 0 0 35%;
     margin-bottom: 0;
+    line-height: 1.1;
   }
 }
 .brands__desc {
-  font-size: 1.05rem;  /* 레퍼런스: ~16-17px */
-  font-weight: 400;    /* 레퍼런스: regular weight, 얼마 안 가는 진한 색 */
-  line-height: 1.85;
-  color: #1a1410;      /* 레퍼런스: 헤딩과 동일한 진한 색 */
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.75;
+  color: #1a1410;
   margin: 0;
   flex: 1;
+}
+@media (min-width: 768px) {
+  .brands__desc {
+    font-size: 1rem;
+    line-height: 1.7;
+    padding-top: 4px;  /* 레퍼런스: 본문이 헤딩 상단과 좌우 정렬 */
+  }
 }
 
 /* ---- 메인 영역: 좌측 탭 + 우측 슬라이더 ---- */
@@ -1563,7 +1577,17 @@ input, select { font-family: inherit; }
   .brands__main {
     flex-direction: row;
     align-items: stretch;
-    height: 720px; /* 탭과 슬라이더 동일 높이 */
+    height: 600px;
+  }
+}
+@media (min-width: 1024px) {
+  .brands__main {
+    height: 700px;
+  }
+}
+@media (min-width: 1440px) {
+  .brands__main {
+    height: 780px;
   }
 }
 
@@ -1585,12 +1609,12 @@ input, select { font-family: inherit; }
   .brands__tabs {
     flex-direction: column;
     padding: 0;
-    width: 60px;
-    min-width: 60px;
+    width: 44px;        /* 레퍼런스: 매우 좁은 탭 (~40-45px) */
+    min-width: 44px;
     flex-shrink: 0;
     height: 100%;
     background: var(--color-sand);
-    border-right: 1px solid rgba(42,32,24,0.15);
+    border-right: 1px solid rgba(42,32,24,0.12);
   }
 }
 
@@ -1619,12 +1643,13 @@ input, select { font-family: inherit; }
   .brands__tab {
     border-top: none;
     border-bottom: none;
-    padding: 0 0 20px 0;
+    padding: 0;
     width: 100%;
     flex: 1;
     display: flex;
-    align-items: flex-end;
+    align-items: flex-end;   /* 레퍼런스: 텍스트 하단 정렬 */
     justify-content: center;
+    padding-bottom: 16px;
   }
   .brands__tab:first-child { border-top: none; }
   .brands__tab:last-child { border-bottom: none; }
@@ -1646,8 +1671,9 @@ input, select { font-family: inherit; }
     writing-mode: vertical-rl;
     text-orientation: mixed;
     transform: rotate(180deg);
-    font-size: 0.75rem;
-    letter-spacing: 0.02em;
+    font-size: 0.72rem;    /* 레퍼런스: 매우 작은 세로 텍스트 */
+    letter-spacing: 0.04em;
+    line-height: 1;
   }
 }
 
@@ -1686,8 +1712,8 @@ input, select { font-family: inherit; }
 }
 @media (min-width: 768px) {
   .brands__slider-wrap {
-    min-height: 720px;
-    height: 720px;
+    min-height: 0;
+    height: 100%;
     overflow: hidden;
   }
 }
@@ -1707,6 +1733,7 @@ input, select { font-family: inherit; }
   height: 500px;
   overflow: hidden;
   margin-right: 4px;
+  flex-shrink: 0;
 }
 @media (min-width: 600px) {
   .brand-slide {
@@ -1716,8 +1743,10 @@ input, select { font-family: inherit; }
 }
 @media (min-width: 768px) {
   .brand-slide {
-    flex: 0 0 calc(50% - 2px); /* 정확히 2장씩 보임 */
-    height: 720px;
+    /* 레퍼런스: 2장 완전히 보이고 3번째 카드 일부 잘림 */
+    /* 슬라이더 wrap 너비의 절반 - gap */
+    flex: 0 0 calc(50% - 2px);
+    height: 100%;
     margin-right: 4px;
   }
   .brand-slide:last-child { margin-right: 0; }
