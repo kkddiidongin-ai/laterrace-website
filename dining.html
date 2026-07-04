@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dining — laterrace Resort Group</title>
+  <meta name="description" content="여수 바다를 바라보며 즐기는 라테라스의 다양한 다이닝. 만카이 디너부터 BBQ, 카페까지." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="subpage.css" />
+</head>
+<body class="sl-page">
+
+  <!-- NAVBAR -->
+  <header class="navbar scrolled" id="navbar">
+    <div class="navbar__inner">
+      <div class="navbar__left">
+        <a href="index.html#offers" class="navbar__pill">OFFERS</a>
+        <a href="index.html#booking" class="navbar__pill">BOOK</a>
+      </div>
+      <a href="index.html" class="navbar__logo">
+        <span class="navbar__logo-sub">laterrace</span>
+      </a>
+      <div class="navbar__right">
+        <div class="navbar__lang">
+          <button class="navbar__lang-btn active" data-lang="en">EN</button>
+          <svg class="navbar__lang-arrow" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <button class="navbar__hamburger" id="hamburgerBtn" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <div class="navbar__mobile-menu" id="mobileMenu">
+    <div class="mobile-menu__header">
+      <div class="mobile-menu__ornament" aria-hidden="true">
+        <svg viewBox="0 0 80 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(40,25)">
+            <circle cx="0" cy="0" r="18" stroke="currentColor" stroke-width="1" fill="none"/>
+            <circle cx="0" cy="-18" r="3" fill="currentColor"/>
+            <circle cx="0" cy="18" r="3" fill="currentColor"/>
+            <circle cx="18" cy="0" r="3" fill="currentColor"/>
+            <circle cx="-18" cy="0" r="3" fill="currentColor"/>
+            <path d="M-8 -8 Q0 -14 8 -8 Q14 0 8 8 Q0 14 -8 8 Q-14 0 -8 -8Z" stroke="currentColor" stroke-width="1" fill="none"/>
+          </g>
+        </svg>
+      </div>
+      <button class="mobile-menu__close" id="mobileClose" aria-label="Close menu">&times;</button>
+    </div>
+    <div class="mobile-menu__divider"></div>
+    <nav class="mobile-menu__nav">
+      <a href="index.html" class="mobile-menu__link">Home</a>
+      <a href="calacatta.html" class="mobile-menu__link">Calacatta</a>
+      <a href="rooms_late.html" class="mobile-menu__link">laterrace</a>
+      <a href="summerland.html" class="mobile-menu__link">Summerland</a>
+      <a href="index.html#offers" class="mobile-menu__link">Offers</a>
+      <a href="dining.html" class="mobile-menu__link mobile-menu__link--active"><span class="mobile-menu__arrow">&#9654;</span>Dining</a>
+      <a href="facilities.html" class="mobile-menu__link">Facilities</a>
+      <a href="index.html#contact" class="mobile-menu__link">Contact</a>
+    </nav>
+    <a href="https://hub.hotelstory.com/aG90ZWxzdG9yeQ/rooms?v_Use=MTAwMjU2Mw" target="_blank" class="mobile-menu__join">BOOK NOW</a>
+    <div class="mobile-menu__lang">
+      <button class="mobile-menu__lang-btn active" data-lang="en">EN</button>
+      <span class="mobile-menu__lang-sep">|</span>
+      <button class="mobile-menu__lang-btn" data-lang="ko">KO</button>
+    </div>
+  </div>
+
+  <!-- HERO BANNER -->
+  <section class="sp-hero">
+    <div class="sp-hero__bg" style="background-image:url('https://gonylab-image.com/cdn-cgi/image/width=2400,quality=90,format=auto/laterrace/dining/1/1.jpg')"></div>
+    <div class="sp-hero__overlay"></div>
+    <div class="sp-hero__content">
+      <p class="sp-hero__eyebrow reveal">ALL-IN DINING</p>
+      <h1 class="sp-hero__title reveal">Dine Without<br>Limits</h1>
+      <p class="sp-hero__subtitle reveal">여수 바다를 바라보며 즐기는<br>라테라스의 특별한 다이닝 경험</p>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="sp-intro">
+    <div class="sp-intro__inner container">
+      <p class="sp-intro__label reveal">ALL-IN DINING · La Terrace &amp; Calacatta</p>
+      <h2 class="sp-intro__heading reveal">투숙 기간 동안 제한 없이 즐기는<br>다양한 레스토랑과 카페.</h2>
+    </div>
+  </section>
+
+  <!-- DINING LIST -->
+  <section class="sp-dining-list">
+
+    <!-- 1. 만카이 디너 -->
+    <div class="sp-pool-item reveal" id="dining-mankai">
+      <div class="sp-pool-item__gallery">
+        <div class="sp-room__slider">
+          <div class="sp-room__slides">
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=1400,quality=90,format=auto/laterrace/dining/1/1.jpg" alt="만카이 디너" class="sp-room__slide active" />
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=1400,quality=90,format=auto/laterrace/dining/1/2.jpg" alt="만카이 디너" class="sp-room__slide" />
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=1400,quality=90,format=auto/laterrace/dining/1/3.jpg" alt="만카이 디너" class="sp-room__slide" />
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=1400,quality=90,format=auto/laterrace/dining/1/4.jpg" alt="만카이 디너" class="sp-room__slide" />
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=1400,quality=90,format=auto/laterrace/dining/1/5.jpg" alt="만카이 디너" class="sp-room__slide" />
+          </div>
+          <button class="sp-room__prev">&#8249;</button>
+          <button class="sp-room__next">&#8250;</button>
+          <div class="sp-room__counter"><span class="sp-room__current">1</span> / <span class="sp-room__total">5</span></div>
+        </div>
+      </div>
+      <div class="sp-pool-item__info">
+        <p class="sp-pool-item__tag">FINE DINING</p>
+        <h3 class="sp-pool-item__name">Mankai Dinner</h3>
+        <p class="sp-pool-item__name-ko">만카이 디너</p>
+        <p class="sp-pool-item__desc">해변가에 위치한 파인 다이닝 레스토랑. 계절 식재료를 활용한 한국-퓨전 코스 요리와 여수 바다의 전망이 어우러진 특별한 저녁 식사를 경험하세요. 로맨틱한 분위기 속에서 잊지 못할 미식 여행을 선사합니다.</p>
+        <div class="sp-dining-meta">
+          <div class="sp-dining-meta__item"><span>운영시간</span><span>18:00 — 22:00</span></div>
+          <div class="sp-dining-meta__item"><span>위치</span><span>깔라까따 1층</span></div>
+          <div class="sp-dining-meta__item"><span>예약</span><span>필수</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. 낭만 별식 -->
+    <div class="sp-pool-item sp-pool-item--reverse reveal" id="dining-nangman">
+      <div class="sp-pool-item__gallery">
+        <div class="sp-room__slider">
+          <div class="sp-room__slides">
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=1400,quality=90,format=auto/laterrace/dining/2/1.jpg" alt="낭만 별식" class="sp-room__slide active" />
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=1400,quality=90,format=auto/laterrace/dining/2/2.jpg" alt="낭만 별식" class="sp-room__slide" />
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=1400,quality=90,format=auto/laterrace/dining/2/3.jpg" alt="낭만 별식" class="sp-room__slide" />
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=1400,quality=90,format=auto/laterrace/dining/2/4.jpg" alt="낭만 별식" class="sp-room__slide" />
+          </div>
+          <button class="sp-room__prev">&#8249;</button>
+          <button class="sp-room__next">&#8250;</button>
+          <div class="sp-room__counter"><span class="sp-room__current">1</span> / <span class="sp-room__total">4</span></div>
+        </div>
+      </div>
+      <div class="sp-pool-item__info">
+        <p class="sp-pool-item__tag">ROMANTIC DINING</p>
+        <h3 class="sp-pool-item__name">Nangman Byeolsik</h3>
+        <p class="sp-pool-item__name-ko">낭만 별식</p>
+        <p class="sp-pool-item__desc">두 사람만을 위한 낭만적인 다이닝 공간. 큐레이티드 메뉴와 함께 여수의 바다를 바라보며 특별한 시간을 보내세요. 프로포즈, 기념일, 생일 등 소중한 순간을 더욱 빛나게 해드립니다.</p>
+        <div class="sp-dining-meta">
+          <div class="sp-dining-meta__item"><span>운영시간</span><span>17:00 — 22:00</span></div>
+          <div class="sp-dining-meta__item"><span>위치</span><span>라테라스 B동</span></div>
+          <div class="sp-dining-meta__item"><span>예약</span><span>필수</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. BBQ -->
+    <div class="sp-pool-item reveal" id="dining-bbq">
+      <div class="sp-pool-item__gallery">
+        <div class="sp-room__slider">
+          <div class="sp-room__slides">
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=1400,quality=90,format=auto/laterrace/dining/3/1.jpg" alt="BBQ" class="sp-room__slide active" />
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=1400,quality=90,format=auto/laterrace/dining/3/2.jpg" alt="BBQ" class="sp-room__slide" />
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=1400,quality=90,format=auto/laterrace/dining/3/3.jpg" alt="BBQ" class="sp-room__slide" />
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=1400,quality=90,format=auto/laterrace/dining/3/4.jpg" alt="BBQ" class="sp-room__slide" />
+          </div>
+          <button class="sp-room__prev">&#8249;</button>
+          <button class="sp-room__next">&#8250;</button>
+          <div class="sp-room__counter"><span class="sp-room__current">1</span> / <span class="sp-room__total">4</span></div>
+        </div>
+      </div>
+      <div class="sp-pool-item__info">
+        <p class="sp-pool-item__tag">OUTDOOR BBQ</p>
+        <h3 class="sp-pool-item__name">BBQ</h3>
+        <p class="sp-pool-item__name-ko">비비큐</p>
+        <p class="sp-pool-item__desc">해변의 바닷바람을 맞으며 즐기는 야외 BBQ. 신선한 해산물과 육류를 직화로 구워 먹는 특별한 경험. 여수의 아름다운 석양을 배경으로 가족, 친구, 연인과 함께 잊지 못할 추억을 만들어 드립니다.</p>
+        <div class="sp-dining-meta">
+          <div class="sp-dining-meta__item"><span>운영시간</span><span>17:00 — 21:00</span></div>
+          <div class="sp-dining-meta__item"><span>위치</span><span>라테라스 야외</span></div>
+          <div class="sp-dining-meta__item"><span>예약</span><span>권장</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. BHC 치킨 -->
+    <div class="sp-pool-item sp-pool-item--reverse reveal" id="dining-bhc">
+      <div class="sp-pool-item__gallery">
+        <div class="sp-room__slider">
+          <div class="sp-room__slides">
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=1400,quality=90,format=auto/laterrace/dining/4/1.jpg" alt="BHC 치킨" class="sp-room__slide active" />
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=1400,quality=90,format=auto/laterrace/dining/4/2.jpg" alt="BHC 치킨" class="sp-room__slide" />
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=1400,quality=90,format=auto/laterrace/dining/4/3.jpg" alt="BHC 치킨" class="sp-room__slide" />
+          </div>
+          <button class="sp-room__prev">&#8249;</button>
+          <button class="sp-room__next">&#8250;</button>
+          <div class="sp-room__counter"><span class="sp-room__current">1</span> / <span class="sp-room__total">3</span></div>
+        </div>
+      </div>
+      <div class="sp-pool-item__info">
+        <p class="sp-pool-item__tag">CASUAL DINING</p>
+        <h3 class="sp-pool-item__name">BHC Chicken</h3>
+        <p class="sp-pool-item__name-ko">BHC 치킨</p>
+        <p class="sp-pool-item__desc">리조트 내에서 즐기는 한국의 대표 치킨 브랜드 BHC. 바삭하고 맛있는 치킨을 여수 바다 전망과 함께 즐기세요. 가족 모두가 만족할 수 있는 캐주얼 다이닝 공간입니다.</p>
+        <div class="sp-dining-meta">
+          <div class="sp-dining-meta__item"><span>운영시간</span><span>11:00 — 22:00</span></div>
+          <div class="sp-dining-meta__item"><span>위치</span><span>라테라스 1층</span></div>
+          <div class="sp-dining-meta__item"><span>예약</span><span>불필요</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. 카페 -->
+    <div class="sp-pool-item reveal" id="dining-cafe">
+      <div class="sp-pool-item__gallery">
+        <div class="sp-room__slider">
+          <div class="sp-room__slides">
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=1400,quality=90,format=auto/laterrace/dining/5/1.jpg" alt="카페" class="sp-room__slide active" />
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=1400,quality=90,format=auto/laterrace/dining/5/2.jpg" alt="카페" class="sp-room__slide" />
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=1400,quality=90,format=auto/laterrace/dining/5/3.jpg" alt="카페" class="sp-room__slide" />
+          </div>
+          <button class="sp-room__prev">&#8249;</button>
+          <button class="sp-room__next">&#8250;</button>
+          <div class="sp-room__counter"><span class="sp-room__current">1</span> / <span class="sp-room__total">3</span></div>
+        </div>
+      </div>
+      <div class="sp-pool-item__info">
+        <p class="sp-pool-item__tag">CAFÉ &amp; BAR</p>
+        <h3 class="sp-pool-item__name">Café &amp; Bar</h3>
+        <p class="sp-pool-item__name-ko">카페 &amp; 바</p>
+        <p class="sp-pool-item__desc">여수 바다를 바라보며 즐기는 커피와 음료. 아침의 첫 커피부터 저녁의 칵테일까지, 하루의 모든 순간을 더욱 특별하게 만들어 드립니다. 다양한 디저트와 스낵도 함께 즐기세요.</p>
+        <div class="sp-dining-meta">
+          <div class="sp-dining-meta__item"><span>운영시간</span><span>08:00 — 22:00</span></div>
+          <div class="sp-dining-meta__item"><span>위치</span><span>깔라까따 로비</span></div>
+          <div class="sp-dining-meta__item"><span>예약</span><span>불필요</span></div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- BOOKING CTA -->
+  <section class="sp-cta">
+    <div class="sp-cta__inner">
+      <p class="sp-cta__eyebrow reveal">DINE WITHOUT LIMITS</p>
+      <h2 class="sp-cta__heading reveal">모든 식사가 포함된<br>올인클루시브 패키지</h2>
+      <div class="sp-cta__btns reveal">
+        <a href="https://hub.hotelstory.com/aG90ZWxzdG9yeQ/rooms?v_Use=MTAwMjQ0OQ" target="_blank" class="sp-cta__btn sp-cta__btn--primary">깔라까따 예약</a>
+        <a href="https://hub.hotelstory.com/aG90ZWxzdG9yeQ/rooms?v_Use=MTAwMjU2Mw" target="_blank" class="sp-cta__btn sp-cta__btn--outline">라테라스 예약</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="contact">
+    <div class="footer__inner container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo">
+            <span class="footer__logo-main">laterrace</span>
+            <span class="footer__logo-sub">Resort Group</span>
+          </a>
+          <p class="footer__tagline">Yeosu's Premier Oceanfront Resort Collection</p>
+        </div>
+        <div class="footer__links">
+          <div class="footer__col">
+            <h4 class="footer__col-title">CALACATTA</h4>
+            <ul class="footer__col-list">
+              <li><a href="calacatta.html">Calacatta Rooms</a></li>
+              <li><a href="pool.html">Infinity Pool</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4 class="footer__col-title">LATERRACE</h4>
+            <ul class="footer__col-list">
+              <li><a href="rooms_late.html">laterrace Rooms</a></li>
+              <li><a href="pool.html">Swimming Pool</a></li>
+              <li><a href="dining.html">Dining</a></li>
+              <li><a href="facilities.html">Facilities</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4 class="footer__col-title">SUMMERLAND</h4>
+            <ul class="footer__col-list">
+              <li><a href="summerland.html">Summerland 2026</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4 class="footer__col-title">INFO</h4>
+            <ul class="footer__col-list">
+              <li><a href="index.html#offers">Offers</a></li>
+              <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer__address">
+        <p>
+          <strong>laterrace Resort Group</strong><br />
+          전라남도 여수시 돌산읍 진모1길 29-26<br />
+          CALACATTA Tel. 061-643-5005 &nbsp;|&nbsp; LATERRACE Tel. 061-643-3500 &nbsp;|&nbsp; E-mail. la-terrace@naver.com
+        </p>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copyright">&copy; 2026 laterrace Resort Group. All rights reserved.</p>
+        <div class="footer__legal">
+          <a href="#">Privacy Policy</a><span>|</span><a href="#">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="subpage.js"></script>
+</body>
+</html>

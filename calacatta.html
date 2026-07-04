@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calacatta Rooms — laterrace Resort Group</title>
+  <meta name="description" content="깔라까따 호텔 & 리조트의 프리미엄 스위트 객실. 여수 바다를 품은 특별한 휴식 공간." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="subpage.css" />
+</head>
+<body class="sl-page">
+
+  <!-- NAVBAR -->
+  <header class="navbar scrolled" id="navbar">
+    <div class="navbar__inner">
+      <div class="navbar__left">
+        <a href="index.html#offers" class="navbar__pill">OFFERS</a>
+        <a href="index.html#booking" class="navbar__pill">BOOK</a>
+      </div>
+      <a href="index.html" class="navbar__logo">
+        <span class="navbar__logo-sub">laterrace</span>
+      </a>
+      <div class="navbar__right">
+        <div class="navbar__lang">
+          <button class="navbar__lang-btn active" data-lang="en">EN</button>
+          <svg class="navbar__lang-arrow" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <button class="navbar__hamburger" id="hamburgerBtn" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <div class="navbar__mobile-menu" id="mobileMenu">
+    <div class="mobile-menu__header">
+      <div class="mobile-menu__ornament" aria-hidden="true">
+        <svg viewBox="0 0 80 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(40,25)">
+            <circle cx="0" cy="0" r="18" stroke="currentColor" stroke-width="1" fill="none"/>
+            <circle cx="0" cy="-18" r="3" fill="currentColor"/>
+            <circle cx="0" cy="18" r="3" fill="currentColor"/>
+            <circle cx="18" cy="0" r="3" fill="currentColor"/>
+            <circle cx="-18" cy="0" r="3" fill="currentColor"/>
+            <path d="M-8 -8 Q0 -14 8 -8 Q14 0 8 8 Q0 14 -8 8 Q-14 0 -8 -8Z" stroke="currentColor" stroke-width="1" fill="none"/>
+          </g>
+        </svg>
+      </div>
+      <button class="mobile-menu__close" id="mobileClose" aria-label="Close menu">&times;</button>
+    </div>
+    <div class="mobile-menu__divider"></div>
+    <nav class="mobile-menu__nav">
+      <a href="index.html" class="mobile-menu__link">Home</a>
+      <a href="calacatta.html" class="mobile-menu__link mobile-menu__link--active"><span class="mobile-menu__arrow">&#9654;</span>Calacatta</a>
+      <a href="rooms_late.html" class="mobile-menu__link">laterrace</a>
+      <a href="summerland.html" class="mobile-menu__link">Summerland</a>
+      <a href="index.html#offers" class="mobile-menu__link">Offers</a>
+      <a href="dining.html" class="mobile-menu__link">Dining</a>
+      <a href="facilities.html" class="mobile-menu__link">Facilities</a>
+      <a href="index.html#contact" class="mobile-menu__link">Contact</a>
+    </nav>
+    <a href="https://hub.hotelstory.com/aG90ZWxzdG9yeQ/rooms?v_Use=MTAwMjQ0OQ" target="_blank" class="mobile-menu__join">BOOK NOW</a>
+    <div class="mobile-menu__lang">
+      <button class="mobile-menu__lang-btn active" data-lang="en">EN</button>
+      <span class="mobile-menu__lang-sep">|</span>
+      <button class="mobile-menu__lang-btn" data-lang="ko">KO</button>
+    </div>
+  </div>
+
+  <!-- HERO BANNER -->
+  <section class="sp-hero">
+    <div class="sp-hero__bg" style="background-image:url('https://gonylab-image.com/cdn-cgi/image/width=2400,quality=90,format=auto/laterrace/room_cala/banner.jpg')"></div>
+    <div class="sp-hero__overlay"></div>
+    <div class="sp-hero__content">
+      <p class="sp-hero__eyebrow reveal">ACCOMMODATION</p>
+      <h1 class="sp-hero__title reveal">Calacatta<br>Rooms</h1>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="sp-intro">
+    <div class="sp-intro__inner container">
+      <p class="sp-intro__label reveal">CALACATTA ROOMS</p>
+      <h2 class="sp-intro__heading reveal">깔라까따의 프리미엄 스위트에서<br>여수 바다와 함께하는 특별한 휴식을 경험하세요.</h2>
+      <div class="sp-intro__inclusions reveal">
+        <p class="sp-intro__inclusions-title">ALL ROOMS &amp; SUITES INCLUSIONS</p>
+        <ul class="sp-intro__inclusions-list">
+          <li>조식 포함</li>
+          <li>수영장 이용</li>
+          <li>웰컴 어메니티</li>
+          <li>무료 Wi-Fi</li>
+          <li>주차 무료</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROOM TABS -->
+  <section class="sp-rooms" id="rooms">
+    <div class="sp-rooms__tabs-wrap">
+      <div class="sp-rooms__tabs">
+        <button class="sp-rooms__tab active" data-room="suite1">더 스위트</button>
+        <button class="sp-rooms__tab" data-room="suite2">영 스위트</button>
+        <button class="sp-rooms__tab" data-room="suite3">영 스위트 테라스</button>
+        <button class="sp-rooms__tab" data-room="suite4">더 스위트 VIP</button>
+        <button class="sp-rooms__tab" data-room="suite5">프리미어 스위트</button>
+        <button class="sp-rooms__tab" data-room="suite6">프리미어 스위트 VIP</button>
+      </div>
+    </div>
+
+    <!-- THE SUITE -->
+    <div class="sp-room" id="suite1">
+      <div class="sp-room__gallery">
+        <div class="sp-room__slider">
+          <div class="sp-room__slides">
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=1600,quality=90,format=auto/laterrace/room_cala/1/1.jpg" alt="더 스위트" class="sp-room__slide active" />
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=1600,quality=90,format=auto/laterrace/room_cala/1/2.jpg" alt="더 스위트" class="sp-room__slide" />
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=1600,quality=90,format=auto/laterrace/room_cala/1/3.jpg" alt="더 스위트" class="sp-room__slide" />
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=1600,quality=90,format=auto/laterrace/room_cala/1/4.jpg" alt="더 스위트" class="sp-room__slide" />
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=1600,quality=90,format=auto/laterrace/room_cala/1/5.jpg" alt="더 스위트" class="sp-room__slide" />
+          </div>
+          <button class="sp-room__prev" aria-label="Previous">&#8249;</button>
+          <button class="sp-room__next" aria-label="Next">&#8250;</button>
+          <div class="sp-room__counter"><span class="sp-room__current">1</span> / <span class="sp-room__total">5</span></div>
+        </div>
+      </div>
+      <div class="sp-room__info">
+        <h3 class="sp-room__name">The Suite</h3>
+        <p class="sp-room__name-ko">더 스위트</p>
+        <div class="sp-room__meta">
+          <div class="sp-room__meta-item"><span class="sp-room__meta-label">체크인</span><span class="sp-room__meta-val">15:00</span></div>
+          <div class="sp-room__meta-item"><span class="sp-room__meta-label">체크아웃</span><span class="sp-room__meta-val">11:00</span></div>
+          <div class="sp-room__meta-item"><span class="sp-room__meta-label">이용인원</span><span class="sp-room__meta-val">기준 2인 / 최대 2인</span></div>
+        </div>
+        <div class="sp-room__details">
+          <div class="sp-room__detail-row"><span class="sp-room__detail-label">객실 면적</span><span>15평</span></div>
+          <div class="sp-room__detail-row"><span class="sp-room__detail-label">객실 구조</span><span>오션뷰, 침실1(슈퍼킹1), 화장실</span></div>
+        </div>
+        <p class="sp-room__desc">탁 트인 통유리 너머로 펼쳐지는 오션뷰에서 만날 수 있는 전망이 아름답습니다. 여유로운 크기의 유리창을 통해 자연과의 일체감을 경험할 수 있습니다.</p>
+        <ul class="sp-room__amenities">
+          <li>TV</li><li>에어컨</li><li>냉장고</li><li>다이닝 테이블</li>
+          <li>드라이기</li><li>Wi-Fi</li><li>커피잔</li><li>무료 티(TEA)</li>
+          <li>욕실어메니티</li>
+        </ul>
+        <a href="https://hub.hotelstory.com/aG90ZWxzdG9yeQ/rooms?v_Use=MTAwMjQ0OQ" target="_blank" class="sp-room__book-btn">BOOK NOW</a>
+      </div>
+    </div>
+
+    <!-- YOUNG SUITE -->
+    <div class="sp-room hidden" id="suite2">
+      <div class="sp-room__gallery">
+        <div class="sp-room__slider">
+          <div class="sp-room__slides">
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=1600,quality=90,format=auto/laterrace/room_cala/2/1.jpg" alt="영 스위트" class="sp-room__slide active" />
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=1600,quality=90,format=auto/laterrace/room_cala/2/2.jpg" alt="영 스위트" class="sp-room__slide" />
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=1600,quality=90,format=auto/laterrace/room_cala/2/3.jpg" alt="영 스위트" class="sp-room__slide" />
+          </div>
+          <button class="sp-room__prev" aria-label="Previous">&#8249;</button>
+          <button class="sp-room__next" aria-label="Next">&#8250;</button>
+          <div class="sp-room__counter"><span class="sp-room__current">1</span> / <span class="sp-room__total">3</span></div>
+        </div>
+      </div>
+      <div class="sp-room__info">
+        <h3 class="sp-room__name">Young Suite</h3>
+        <p class="sp-room__name-ko">영 스위트</p>
+        <div class="sp-room__meta">
+          <div class="sp-room__meta-item"><span class="sp-room__meta-label">체크인</span><span class="sp-room__meta-val">15:00</span></div>
+          <div class="sp-room__meta-item"><span class="sp-room__meta-label">체크아웃</span><span class="sp-room__meta-val">11:00</span></div>
+          <div class="sp-room__meta-item"><span class="sp-room__meta-label">이용인원</span><span class="sp-room__meta-val">기준 2인 / 최대 2인</span></div>
+        </div>
+        <div class="sp-room__details">
+          <div class="sp-room__detail-row"><span class="sp-room__detail-label">객실 면적</span><span>13평</span></div>
+          <div class="sp-room__detail-row"><span class="sp-room__detail-label">객실 구조</span><span>오션뷰, 침실1(슈퍼킹1), 화장실</span></div>
+        </div>
+        <p class="sp-room__desc">여수 바다를 바라보며 즐기는 모던하고 세련된 스위트. 깔라까따의 감성을 담은 인테리어와 함께 특별한 여수의 하루를 경험하세요.</p>
+        <ul class="sp-room__amenities">
+          <li>TV</li><li>에어컨</li><li>냉장고</li><li>드라이기</li>
+          <li>Wi-Fi</li><li>커피잔</li><li>무료 티(TEA)</li><li>욕실어메니티</li>
+        </ul>
+        <a href="https://hub.hotelstory.com/aG90ZWxzdG9yeQ/rooms?v_Use=MTAwMjQ0OQ" target="_blank" class="sp-room__book-btn">BOOK NOW</a>
+      </div>
+    </div>
+
+    <!-- YOUNG SUITE TERRACE -->
+    <div class="sp-room hidden" id="suite3">
+      <div class="sp-room__gallery">
+        <div class="sp-room__slider">
+          <div class="sp-room__slides">
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=1600,quality=90,format=auto/laterrace/room_cala/3/1.jpg" alt="영 스위트 테라스" class="sp-room__slide active" />
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=1600,quality=90,format=auto/laterrace/room_cala/3/2.jpg" alt="영 스위트 테라스" class="sp-room__slide" />
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=1600,quality=90,format=auto/laterrace/room_cala/3/3.jpg" alt="영 스위트 테라스" class="sp-room__slide" />
+          </div>
+          <button class="sp-room__prev" aria-label="Previous">&#8249;</button>
+          <button class="sp-room__next" aria-label="Next">&#8250;</button>
+          <div class="sp-room__counter"><span class="sp-room__current">1</span> / <span class="sp-room__total">3</span></div>
+        </div>
+      </div>
+      <div class="sp-room__info">
+        <h3 class="sp-room__name">Young Suite Terrace</h3>
+        <p class="sp-room__name-ko">영 스위트 테라스</p>
+        <div class="sp-room__meta">
+          <div class="sp-room__meta-item"><span class="sp-room__meta-label">체크인</span><span class="sp-room__meta-val">15:00</span></div>
+          <div class="sp-room__meta-item"><span class="sp-room__meta-label">체크아웃</span><span class="sp-room__meta-val">11:00</span></div>
+          <div class="sp-room__meta-item"><span class="sp-room__meta-label">이용인원</span><span class="sp-room__meta-val">기준 2인 / 최대 2인</span></div>
+        </div>
+        <div class="sp-room__details">
+          <div class="sp-room__detail-row"><span class="sp-room__detail-label">객실 면적</span><span>15평 + 테라스</span></div>
+          <div class="sp-room__detail-row"><span class="sp-room__detail-label">객실 구조</span><span>오션뷰, 침실1(슈퍼킹1), 화장실, 전용 테라스</span></div>
+        </div>
+        <p class="sp-room__desc">프라이빗 테라스에서 여수의 바다와 하늘을 온전히 즐기세요. 아침 커피 한 잔과 함께 맞이하는 오션뷰는 잊지 못할 추억이 됩니다.</p>
+        <ul class="sp-room__amenities">
+          <li>TV</li><li>에어컨</li><li>냉장고</li><li>드라이기</li>
+          <li>Wi-Fi</li><li>커피잔</li><li>무료 티(TEA)</li><li>욕실어메니티</li><li>전용 테라스</li>
+        </ul>
+        <a href="https://hub.hotelstory.com/aG90ZWxzdG9yeQ/rooms?v_Use=MTAwMjQ0OQ" target="_blank" class="sp-room__book-btn">BOOK NOW</a>
+      </div>
+    </div>
+
+    <!-- THE SUITE VIP -->
+    <div class="sp-room hidden" id="suite4">
+      <div class="sp-room__gallery">
+        <div class="sp-room__slider">
+          <div class="sp-room__slides">
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=1600,quality=90,format=auto/laterrace/room_cala/4/1.jpg" alt="더 스위트 VIP" class="sp-room__slide active" />
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=1600,quality=90,format=auto/laterrace/room_cala/4/2.jpg" alt="더 스위트 VIP" class="sp-room__slide" />
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=1600,quality=90,format=auto/laterrace/room_cala/4/3.jpg" alt="더 스위트 VIP" class="sp-room__slide" />
+          </div>
+          <button class="sp-room__prev" aria-label="Previous">&#8249;</button>
+          <button class="sp-room__next" aria-label="Next">&#8250;</button>
+          <div class="sp-room__counter"><span class="sp-room__current">1</span> / <span class="sp-room__total">3</span></div>
+        </div>
+      </div>
+      <div class="sp-room__info">
+        <h3 class="sp-room__name">The Suite VIP</h3>
+        <p class="sp-room__name-ko">더 스위트 VIP</p>
+        <div class="sp-room__meta">
+          <div class="sp-room__meta-item"><span class="sp-room__meta-label">체크인</span><span class="sp-room__meta-val">15:00</span></div>
+          <div class="sp-room__meta-item"><span class="sp-room__meta-label">체크아웃</span><span class="sp-room__meta-val">11:00</span></div>
+          <div class="sp-room__meta-item"><span class="sp-room__meta-label">이용인원</span><span class="sp-room__meta-val">기준 2인 / 최대 4인</span></div>
+        </div>
+        <div class="sp-room__details">
+          <div class="sp-room__detail-row"><span class="sp-room__detail-label">객실 면적</span><span>20평</span></div>
+          <div class="sp-room__detail-row"><span class="sp-room__detail-label">객실 구조</span><span>오션뷰, 침실1(슈퍼킹1), 거실, 화장실</span></div>
+        </div>
+        <p class="sp-room__desc">더 넓고 프라이빗한 공간에서 VIP 서비스를 경험하세요. 거실과 침실이 분리된 구조로 더욱 여유로운 휴식을 제공합니다.</p>
+        <ul class="sp-room__amenities">
+          <li>TV</li><li>에어컨</li><li>냉장고</li><li>다이닝 테이블</li>
+          <li>드라이기</li><li>Wi-Fi</li><li>커피잔</li><li>무료 티(TEA)</li>
+          <li>욕실어메니티</li><li>거실 공간</li>
+        </ul>
+        <a href="https://hub.hotelstory.com/aG90ZWxzdG9yeQ/rooms?v_Use=MTAwMjQ0OQ" target="_blank" class="sp-room__book-btn">BOOK NOW</a>
+      </div>
+    </div>
+
+    <!-- PREMIER SUITE -->
+    <div class="sp-room hidden" id="suite5">
+      <div class="sp-room__gallery">
+        <div class="sp-room__slider">
+          <div class="sp-room__slides">
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=1600,quality=90,format=auto/laterrace/room_cala/5/1.jpg" alt="프리미어 스위트" class="sp-room__slide active" />
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=1600,quality=90,format=auto/laterrace/room_cala/5/2.jpg" alt="프리미어 스위트" class="sp-room__slide" />
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=1600,quality=90,format=auto/laterrace/room_cala/5/3.jpg" alt="프리미어 스위트" class="sp-room__slide" />
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=1600,quality=90,format=auto/laterrace/room_cala/5/4.jpg" alt="프리미어 스위트" class="sp-room__slide" />
+          </div>
+          <button class="sp-room__prev" aria-label="Previous">&#8249;</button>
+          <button class="sp-room__next" aria-label="Next">&#8250;</button>
+          <div class="sp-room__counter"><span class="sp-room__current">1</span> / <span class="sp-room__total">4</span></div>
+        </div>
+      </div>
+      <div class="sp-room__info">
+        <h3 class="sp-room__name">Premier Suite</h3>
+        <p class="sp-room__name-ko">프리미어 스위트</p>
+        <div class="sp-room__meta">
+          <div class="sp-room__meta-item"><span class="sp-room__meta-label">체크인</span><span class="sp-room__meta-val">15:00</span></div>
+          <div class="sp-room__meta-item"><span class="sp-room__meta-label">체크아웃</span><span class="sp-room__meta-val">11:00</span></div>
+          <div class="sp-room__meta-item"><span class="sp-room__meta-label">이용인원</span><span class="sp-room__meta-val">기준 2인 / 최대 2인</span></div>
+        </div>
+        <div class="sp-room__details">
+          <div class="sp-room__detail-row"><span class="sp-room__detail-label">객실 면적</span><span>25평</span></div>
+          <div class="sp-room__detail-row"><span class="sp-room__detail-label">객실 구조</span><span>오션뷰, 침실1(슈퍼킹1), 거실, 화장실2</span></div>
+        </div>
+        <p class="sp-room__desc">깔라까따 최고급 스위트. 파노라마 오션뷰와 프리미엄 인테리어가 어우러진 최상의 공간에서 여수 바다의 아름다움을 만끽하세요.</p>
+        <ul class="sp-room__amenities">
+          <li>TV</li><li>에어컨</li><li>냉장고</li><li>다이닝 테이블</li>
+          <li>드라이기</li><li>Wi-Fi</li><li>커피잔</li><li>무료 티(TEA)</li>
+          <li>욕실어메니티</li><li>거실 공간</li><li>화장실 2개</li>
+        </ul>
+        <a href="https://hub.hotelstory.com/aG90ZWxzdG9yeQ/rooms?v_Use=MTAwMjQ0OQ" target="_blank" class="sp-room__book-btn">BOOK NOW</a>
+      </div>
+    </div>
+
+    <!-- PREMIER SUITE VIP -->
+    <div class="sp-room hidden" id="suite6">
+      <div class="sp-room__gallery">
+        <div class="sp-room__slider">
+          <div class="sp-room__slides">
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=1600,quality=90,format=auto/laterrace/room_cala/6/1.jpg" alt="프리미어 스위트 VIP" class="sp-room__slide active" />
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=1600,quality=90,format=auto/laterrace/room_cala/6/2.jpg" alt="프리미어 스위트 VIP" class="sp-room__slide" />
+            <img src="https://gonylab-image.com/cdn-cgi/image/width=1600,quality=90,format=auto/laterrace/room_cala/6/3.jpg" alt="프리미어 스위트 VIP" class="sp-room__slide" />
+          </div>
+          <button class="sp-room__prev" aria-label="Previous">&#8249;</button>
+          <button class="sp-room__next" aria-label="Next">&#8250;</button>
+          <div class="sp-room__counter"><span class="sp-room__current">1</span> / <span class="sp-room__total">3</span></div>
+        </div>
+      </div>
+      <div class="sp-room__info">
+        <h3 class="sp-room__name">Premier Suite VIP</h3>
+        <p class="sp-room__name-ko">프리미어 스위트 VIP</p>
+        <div class="sp-room__meta">
+          <div class="sp-room__meta-item"><span class="sp-room__meta-label">체크인</span><span class="sp-room__meta-val">15:00</span></div>
+          <div class="sp-room__meta-item"><span class="sp-room__meta-label">체크아웃</span><span class="sp-room__meta-val">11:00</span></div>
+          <div class="sp-room__meta-item"><span class="sp-room__meta-label">이용인원</span><span class="sp-room__meta-val">기준 2인 / 최대 4인</span></div>
+        </div>
+        <div class="sp-room__details">
+          <div class="sp-room__detail-row"><span class="sp-room__detail-label">객실 면적</span><span>30평</span></div>
+          <div class="sp-room__detail-row"><span class="sp-room__detail-label">객실 구조</span><span>오션뷰, 침실1(슈퍼킹1), 거실, 화장실2, 전용 테라스</span></div>
+        </div>
+        <p class="sp-room__desc">깔라까따에서 가장 특별한 공간. 전용 테라스에서 즐기는 여수 바다의 일몰은 평생 잊지 못할 경험이 됩니다. 최고의 서비스와 함께 완벽한 휴식을 선사합니다.</p>
+        <ul class="sp-room__amenities">
+          <li>TV</li><li>에어컨</li><li>냉장고</li><li>다이닝 테이블</li>
+          <li>드라이기</li><li>Wi-Fi</li><li>커피잔</li><li>무료 티(TEA)</li>
+          <li>욕실어메니티</li><li>거실 공간</li><li>화장실 2개</li><li>전용 테라스</li>
+        </ul>
+        <a href="https://hub.hotelstory.com/aG90ZWxzdG9yeQ/rooms?v_Use=MTAwMjQ0OQ" target="_blank" class="sp-room__book-btn">BOOK NOW</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING CTA -->
+  <section class="sp-cta">
+    <div class="sp-cta__inner">
+      <p class="sp-cta__eyebrow reveal">CALACATTA HOTEL &amp; RESORT</p>
+      <h2 class="sp-cta__heading reveal">여수 바다와 함께하는<br>특별한 하루</h2>
+      <div class="sp-cta__btns reveal">
+        <a href="https://hub.hotelstory.com/aG90ZWxzdG9yeQ/rooms?v_Use=MTAwMjQ0OQ" target="_blank" class="sp-cta__btn sp-cta__btn--primary">객실 예약</a>
+        <a href="http://laterrace-resort.com/offer.html" target="_blank" class="sp-cta__btn sp-cta__btn--outline">패키지 보기</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="contact">
+    <div class="footer__inner container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo">
+            <span class="footer__logo-main">laterrace</span>
+            <span class="footer__logo-sub">Resort Group</span>
+          </a>
+          <p class="footer__tagline">Yeosu's Premier Oceanfront Resort Collection</p>
+        </div>
+        <div class="footer__links">
+          <div class="footer__col">
+            <h4 class="footer__col-title">CALACATTA</h4>
+            <ul class="footer__col-list">
+              <li><a href="calacatta.html">Calacatta Rooms</a></li>
+              <li><a href="calacatta.html#suite1">The Suite</a></li>
+              <li><a href="calacatta.html#suite2">Young Suite</a></li>
+              <li><a href="calacatta.html#suite5">Premier Suite</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4 class="footer__col-title">LATERRACE</h4>
+            <ul class="footer__col-list">
+              <li><a href="rooms_late.html">laterrace Rooms</a></li>
+              <li><a href="pool.html">Swimming Pool</a></li>
+              <li><a href="dining.html">Dining</a></li>
+              <li><a href="facilities.html">Facilities</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4 class="footer__col-title">SUMMERLAND</h4>
+            <ul class="footer__col-list">
+              <li><a href="summerland.html">Summerland 2026</a></li>
+              <li><a href="summerland.html#attractions">Attractions</a></li>
+              <li><a href="summerland.html#ticket">Tickets</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4 class="footer__col-title">INFO</h4>
+            <ul class="footer__col-list">
+              <li><a href="index.html#offers">Offers</a></li>
+              <li><a href="index.html#rewards">Membership</a></li>
+              <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer__address">
+        <p>
+          <strong>laterrace Resort Group</strong><br />
+          전라남도 여수시 돌산읍 진모1길 29-26 (Jinmo 1-gil 29-26, Dolsan-eup, Yeosu-si, Jeollanam-do)<br />
+          CALACATTA Tel. 061-643-5005 &nbsp;|&nbsp; LATERRACE Tel. 061-643-3500 &nbsp;|&nbsp; E-mail. la-terrace@naver.com
+        </p>
+        <p class="footer__biz">
+          주식회사 와이피하우스앤비치클럽 · 대표 박순애 | 사업자등록번호 663-81-02400<br />
+          라 테라스 부티크 리조트 앤 스파 · 대표 이국현 | 사업자등록번호 519-04-00351
+        </p>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copyright">&copy; 2026 laterrace Resort Group. All rights reserved.</p>
+        <div class="footer__legal">
+          <a href="#">Privacy Policy</a><span>|</span><a href="#">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="subpage.js"></script>
+</body>
+</html>

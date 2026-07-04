@@ -1,0 +1,566 @@
+/* ============================================================
+   SUBPAGE COMMON STYLES
+   — Hero, Intro, Room Tabs, Pool List, Dining List, Facilities
+   — Tone: same as main site (beige/cream palette, serif headings)
+   ============================================================ */
+
+/* ── BODY ── */
+.sl-page {
+  background: var(--color-linen);
+}
+
+/* ── NAVBAR: always scrolled on subpages ── */
+.sl-page .navbar {
+  background: var(--color-linen) !important;
+  box-shadow: 0 1px 0 rgba(42,32,24,0.12);
+}
+.sl-page .navbar .navbar__logo,
+.sl-page .navbar .navbar__pill,
+.sl-page .navbar .navbar__lang-btn,
+.sl-page .navbar .navbar__hamburger span {
+  color: var(--color-text) !important;
+}
+.sl-page .navbar .navbar__hamburger span {
+  background: var(--color-text) !important;
+}
+
+/* ── HERO ── */
+.sp-hero {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  min-height: 480px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 80px;
+}
+.sp-hero__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scale(1.04);
+  transition: transform 0.8s ease;
+}
+.sp-hero:hover .sp-hero__bg {
+  transform: scale(1);
+}
+.sp-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.1) 60%, transparent 100%);
+}
+.sp-hero__content {
+  position: relative;
+  z-index: 2;
+  padding: 0 var(--section-px);
+  color: #fff;
+}
+.sp-hero__eyebrow {
+  font-family: 'Satoshi', 'Noto Sans KR', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  margin-bottom: 16px;
+}
+.sp-hero__title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(48px, 7vw, 96px);
+  font-weight: 400;
+  line-height: 1.05;
+  margin: 0 0 20px;
+}
+.sp-hero__subtitle {
+  font-family: 'Satoshi', 'Noto Sans KR', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.7;
+  opacity: 0.9;
+}
+
+/* ── INTRO ── */
+.sp-intro {
+  padding: 80px 0;
+  border-bottom: 1px solid rgba(42,32,24,0.12);
+}
+.sp-intro__inner {
+  text-align: center;
+}
+.sp-intro__label {
+  font-family: 'Satoshi', 'Noto Sans KR', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  opacity: 0.55;
+  margin-bottom: 24px;
+}
+.sp-intro__heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 3.5vw, 48px);
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--color-text);
+  margin: 0 0 40px;
+}
+.sp-intro__inclusions {
+  display: inline-block;
+  border: 1px solid rgba(42,32,24,0.18);
+  padding: 28px 40px;
+  text-align: left;
+}
+.sp-intro__inclusions-title {
+  font-family: 'Satoshi', 'Noto Sans KR', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  opacity: 0.55;
+  margin-bottom: 16px;
+}
+.sp-intro__inclusions-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+}
+.sp-intro__inclusions-list li {
+  font-family: 'Satoshi', 'Noto Sans KR', sans-serif;
+  font-size: 14px;
+  color: var(--color-text);
+  padding-left: 14px;
+  position: relative;
+}
+.sp-intro__inclusions-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  opacity: 0.4;
+}
+
+/* ── ROOM TABS ── */
+.sp-rooms {
+  padding: 0 0 80px;
+}
+.sp-rooms__tabs-wrap {
+  overflow-x: auto;
+  border-bottom: 1px solid rgba(42,32,24,0.12);
+  margin-bottom: 60px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.sp-rooms__tabs-wrap::-webkit-scrollbar { display: none; }
+.sp-rooms__tabs {
+  display: flex;
+  gap: 0;
+  padding: 0 var(--section-px);
+  min-width: max-content;
+}
+.sp-rooms__tab {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 20px 28px;
+  font-family: 'Satoshi', 'Noto Sans KR', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: var(--color-text);
+  opacity: 0.5;
+  cursor: pointer;
+  transition: opacity 0.2s, border-color 0.2s;
+  white-space: nowrap;
+  margin-bottom: -1px;
+}
+.sp-rooms__tab:hover { opacity: 0.8; }
+.sp-rooms__tab.active {
+  opacity: 1;
+  border-bottom-color: var(--color-text);
+}
+
+/* ── ROOM DETAIL ── */
+.sp-room {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  padding: 0 var(--section-px);
+  align-items: start;
+}
+.sp-room.hidden { display: none; }
+
+/* Slider */
+.sp-room__slider {
+  position: relative;
+  overflow: hidden;
+  background: #e8e0d5;
+}
+.sp-room__slides {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+.sp-room__slide {
+  min-width: 100%;
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  display: block;
+}
+.sp-room__prev,
+.sp-room__next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.7);
+  border: none;
+  width: 44px;
+  height: 44px;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  z-index: 2;
+}
+.sp-room__prev:hover,
+.sp-room__next:hover { background: rgba(255,255,255,0.95); }
+.sp-room__prev { left: 12px; }
+.sp-room__next { right: 12px; }
+.sp-room__counter {
+  position: absolute;
+  bottom: 14px;
+  right: 16px;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 12px;
+  color: #fff;
+  background: rgba(0,0,0,0.35);
+  padding: 4px 10px;
+  letter-spacing: 0.05em;
+}
+
+/* Room Info */
+.sp-room__info {
+  padding-top: 8px;
+}
+.sp-room__name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 400;
+  color: var(--color-text);
+  margin: 0 0 4px;
+}
+.sp-room__name-ko {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 13px;
+  color: var(--color-text);
+  opacity: 0.5;
+  margin: 0 0 28px;
+}
+.sp-room__meta {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding: 20px 0;
+  border-top: 1px solid rgba(42,32,24,0.12);
+  border-bottom: 1px solid rgba(42,32,24,0.12);
+  margin-bottom: 24px;
+}
+.sp-room__meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.sp-room__meta-label {
+  font-family: 'Satoshi', 'Noto Sans KR', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.45;
+}
+.sp-room__meta-val {
+  font-family: 'Satoshi', 'Noto Sans KR', sans-serif;
+  font-size: 14px;
+  color: var(--color-text);
+}
+.sp-room__details {
+  margin-bottom: 20px;
+}
+.sp-room__detail-row {
+  display: flex;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(42,32,24,0.08);
+  font-family: 'Satoshi', 'Noto Sans KR', sans-serif;
+  font-size: 14px;
+  color: var(--color-text);
+}
+.sp-room__detail-label {
+  min-width: 80px;
+  opacity: 0.5;
+}
+.sp-room__desc {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--color-text);
+  opacity: 0.75;
+  margin-bottom: 24px;
+}
+.sp-room__amenities {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.sp-room__amenities li {
+  font-family: 'Satoshi', 'Noto Sans KR', sans-serif;
+  font-size: 12px;
+  padding: 6px 14px;
+  border: 1px solid rgba(42,32,24,0.2);
+  color: var(--color-text);
+  opacity: 0.7;
+}
+.sp-room__book-btn {
+  display: inline-block;
+  padding: 14px 40px;
+  border: 1.5px solid var(--color-text);
+  font-family: 'Satoshi', 'Noto Sans KR', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+.sp-room__book-btn:hover {
+  background: var(--color-text);
+  color: var(--color-linen);
+}
+
+/* ── POOL / DINING / FACILITY LIST ── */
+.sp-pool-list,
+.sp-dining-list,
+.sp-fac-list {
+  padding: 0 0 80px;
+}
+.sp-pool-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-top: 1px solid rgba(42,32,24,0.12);
+}
+.sp-pool-item--reverse {
+  direction: rtl;
+}
+.sp-pool-item--reverse > * {
+  direction: ltr;
+}
+.sp-pool-item__gallery {
+  overflow: hidden;
+}
+.sp-pool-item__gallery .sp-room__slide {
+  aspect-ratio: 4/3;
+}
+.sp-pool-item__info {
+  padding: 60px var(--section-px) 60px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.sp-pool-item--reverse .sp-pool-item__info {
+  padding: 60px 60px 60px var(--section-px);
+}
+.sp-pool-item__tag {
+  font-family: 'Satoshi', 'Noto Sans KR', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  opacity: 0.45;
+  margin-bottom: 16px;
+}
+.sp-pool-item__name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(26px, 2.8vw, 40px);
+  font-weight: 400;
+  color: var(--color-text);
+  margin: 0 0 6px;
+}
+.sp-pool-item__name-ko {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 13px;
+  color: var(--color-text);
+  opacity: 0.45;
+  margin: 0 0 20px;
+}
+.sp-pool-item__desc {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 14px;
+  line-height: 1.85;
+  color: var(--color-text);
+  opacity: 0.7;
+  margin-bottom: 24px;
+}
+
+/* Dining meta */
+.sp-dining-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-top: 1px solid rgba(42,32,24,0.12);
+  padding-top: 20px;
+  margin-top: 8px;
+}
+.sp-dining-meta__item {
+  display: flex;
+  gap: 16px;
+  font-family: 'Satoshi', 'Noto Sans KR', sans-serif;
+  font-size: 13px;
+  color: var(--color-text);
+}
+.sp-dining-meta__item span:first-child {
+  min-width: 60px;
+  opacity: 0.45;
+}
+
+/* ── QUOTE ── */
+.sp-quote {
+  padding: 80px 0;
+  background: var(--color-text);
+}
+.sp-quote__inner {
+  text-align: center;
+}
+.sp-quote__text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(22px, 3vw, 36px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--color-linen);
+  line-height: 1.6;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* ── CTA SECTION ── */
+.sp-cta {
+  padding: 120px var(--section-px);
+  text-align: center;
+  background: var(--color-linen);
+  border-top: 1px solid rgba(42,32,24,0.12);
+}
+.sp-cta__eyebrow {
+  font-family: 'Satoshi', 'Noto Sans KR', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  opacity: 0.45;
+  margin-bottom: 20px;
+}
+.sp-cta__heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 4vw, 56px);
+  font-weight: 400;
+  color: var(--color-text);
+  margin: 0 0 40px;
+  line-height: 1.2;
+}
+.sp-cta__btns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.sp-cta__btn {
+  display: inline-block;
+  padding: 16px 48px;
+  font-family: 'Satoshi', 'Noto Sans KR', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+.sp-cta__btn--primary {
+  background: var(--color-text);
+  color: var(--color-linen);
+  border: 1.5px solid var(--color-text);
+}
+.sp-cta__btn--primary:hover {
+  background: transparent;
+  color: var(--color-text);
+}
+.sp-cta__btn--outline {
+  background: transparent;
+  color: var(--color-text);
+  border: 1.5px solid var(--color-text);
+}
+.sp-cta__btn--outline:hover {
+  background: var(--color-text);
+  color: var(--color-linen);
+}
+
+/* ── REVEAL ANIMATION ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  .sp-hero {
+    height: 60vh;
+    min-height: 360px;
+    padding-bottom: 48px;
+  }
+  .sp-hero__title {
+    font-size: clamp(36px, 10vw, 56px);
+  }
+  .sp-intro {
+    padding: 48px 0;
+  }
+  .sp-intro__inclusions {
+    padding: 20px 24px;
+  }
+  .sp-rooms__tab {
+    padding: 16px 18px;
+    font-size: 12px;
+  }
+  .sp-room {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 0 var(--section-px);
+  }
+  .sp-pool-item {
+    grid-template-columns: 1fr;
+    direction: ltr;
+  }
+  .sp-pool-item--reverse {
+    direction: ltr;
+  }
+  .sp-pool-item__info,
+  .sp-pool-item--reverse .sp-pool-item__info {
+    padding: 32px var(--section-px);
+  }
+  .sp-cta {
+    padding: 72px var(--section-px);
+  }
+  .sp-quote {
+    padding: 56px var(--section-px);
+  }
+  .sp-quote__text {
+    font-size: clamp(18px, 5vw, 26px);
+  }
+}
