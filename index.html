@@ -245,7 +245,122 @@
   </section>
 
   <!-- ============================================================
-       SECTION 5: MEMBERSHIP / REWARDS TEASER
+       SECTION 5: DUAL BRAND SHOWCASE (brands) — rewards 바로 위
+  ============================================================ -->
+  <section class="brands" id="brands">
+
+    <!-- 상단 소개 텍스트 영역 -->
+    <div class="brands__intro reveal">
+      <h2 class="brands__heading">Two Brands.<br />One Extraordinary<br />Location.</h2>
+      <p class="brands__desc">laterrace Resort Group is home to two distinct resort experiences &mdash; Calacatta and laterrace &mdash; each offering a unique way to discover the beauty of Yeosu&rsquo;s coastline. Differentiating and simplifying our diverse portfolio means guests can better determine which extraordinary resort experience best suits their needs.</p>
+    </div>
+
+    <!-- 탭 메뉴 (모바일: 가로 스크롤 / PC: 좌측 세로) -->
+    <div class="brands__main">
+      <nav class="brands__tabs" aria-label="Brand collections">
+        <button class="brands__tab brands__tab--active" data-collection="all">
+          <span class="brands__tab-text">All Collections</span>
+        </button>
+        <button class="brands__tab" data-collection="calacatta">
+          <span class="brands__tab-text">Calacatta Collection</span>
+        </button>
+        <button class="brands__tab" data-collection="laterrace">
+          <span class="brands__tab-text">laterrace Collection</span>
+        </button>
+        <button class="brands__tab" data-collection="summerland">
+          <span class="brands__tab-text">Summerland Collection</span>
+        </button>
+      </nav>
+
+      <!-- 카드 슬라이더 -->
+      <div class="brands__slider-wrap">
+        <div class="brands__slider" id="brandsSlider">
+
+          <div class="brand-slide" data-collection="calacatta">
+            <div class="brand-slide__img" style="background-image:url('http://gonylab11.speedgabia.com/calacatta/main/facility/1.jpg');"></div>
+            <div class="brand-slide__overlay"></div>
+            <div class="brand-slide__content">
+              <p class="brand-slide__brand">CALACATTA</p>
+              <h3 class="brand-slide__name">THE SUITE</h3>
+              <p class="brand-slide__sub">&mdash; ADULT-ONLY &middot; INFINITY POOL &mdash;</p>
+            </div>
+            <div class="brand-slide__actions">
+              <a href="#" class="brand-slide__btn brand-slide__btn--outline">VIEW RESORT</a>
+              <a href="#booking" class="brand-slide__btn brand-slide__btn--fill">BOOK NOW</a>
+            </div>
+          </div>
+
+          <div class="brand-slide" data-collection="calacatta">
+            <div class="brand-slide__img" style="background-image:url('http://gonylab11.speedgabia.com/calacatta/main/2.jpg');"></div>
+            <div class="brand-slide__overlay"></div>
+            <div class="brand-slide__content">
+              <p class="brand-slide__brand">CALACATTA</p>
+              <h3 class="brand-slide__name">PREMIER SUITE</h3>
+              <p class="brand-slide__sub">&mdash; OCEAN VIEW &middot; PRIVATE TERRACE &mdash;</p>
+            </div>
+            <div class="brand-slide__actions">
+              <a href="#" class="brand-slide__btn brand-slide__btn--outline">VIEW RESORT</a>
+              <a href="#booking" class="brand-slide__btn brand-slide__btn--fill">BOOK NOW</a>
+            </div>
+          </div>
+
+          <div class="brand-slide" data-collection="laterrace">
+            <div class="brand-slide__img" style="background-image:url('http://gonylab4.speedgabia.com/laterrace/room/1/5/1.jpg');"></div>
+            <div class="brand-slide__overlay"></div>
+            <div class="brand-slide__content">
+              <p class="brand-slide__brand">LATERRACE</p>
+              <h3 class="brand-slide__name">BOUTIQUE RESORT</h3>
+              <p class="brand-slide__sub">&mdash; FAMILY &middot; OCEANFRONT &mdash;</p>
+            </div>
+            <div class="brand-slide__actions">
+              <a href="#" class="brand-slide__btn brand-slide__btn--outline">VIEW RESORT</a>
+              <a href="#booking" class="brand-slide__btn brand-slide__btn--fill">BOOK NOW</a>
+            </div>
+          </div>
+
+          <div class="brand-slide" data-collection="laterrace">
+            <div class="brand-slide__img" style="background-image:url('http://gonylab4.speedgabia.com/laterrace/facility/2/1.jpg');"></div>
+            <div class="brand-slide__overlay"></div>
+            <div class="brand-slide__content">
+              <p class="brand-slide__brand">LATERRACE</p>
+              <h3 class="brand-slide__name">SPA &amp; WELLNESS</h3>
+              <p class="brand-slide__sub">&mdash; HEALING &middot; OCEAN VIEWS &mdash;</p>
+            </div>
+            <div class="brand-slide__actions">
+              <a href="#" class="brand-slide__btn brand-slide__btn--outline">VIEW RESORT</a>
+              <a href="#booking" class="brand-slide__btn brand-slide__btn--fill">BOOK NOW</a>
+            </div>
+          </div>
+
+          <div class="brand-slide" data-collection="summerland">
+            <div class="brand-slide__img" style="background-image:url('http://gonylab4.speedgabia.com/laterrace/facility/1/1.jpg');"></div>
+            <div class="brand-slide__overlay"></div>
+            <div class="brand-slide__content">
+              <p class="brand-slide__brand">SUMMERLAND</p>
+              <h3 class="brand-slide__name">WATER PARK 2026</h3>
+              <p class="brand-slide__sub">&mdash; FAMILY &middot; SLIDES &middot; JACUZZI &mdash;</p>
+            </div>
+            <div class="brand-slide__actions">
+              <a href="#summerland" class="brand-slide__btn brand-slide__btn--outline">VIEW RESORT</a>
+              <a href="#booking" class="brand-slide__btn brand-slide__btn--fill">BOOK NOW</a>
+            </div>
+          </div>
+
+        </div><!-- /.brands__slider -->
+
+        <button class="brands__arrow brands__arrow--prev" id="brandsPrev" aria-label="Previous">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="brands__arrow brands__arrow--next" id="brandsNext" aria-label="Next">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+
+      </div><!-- /.brands__slider-wrap -->
+    </div><!-- /.brands__main -->
+  </section>
+
+  <!-- ============================================================
+       SECTION 5b: MEMBERSHIP / REWARDS TEASER
   ============================================================ -->
   <section class="rewards" id="rewards">
     <div class="rewards__body">
@@ -382,133 +497,6 @@
         <a href="#" class="offers__more-link">VIEW ALL OFFERS &rarr;</a>
       </div>
     </div>
-  </section>
-
-  <!-- ============================================================
-       SECTION 8: DUAL BRAND SHOWCASE
-  ============================================================ -->
-  <section class="brands" id="brands">
-
-    <!-- 상단 소개 텍스트 영역 (Sun Siyam 스타일: 좌측 제목 + 우측 본문) -->
-    <div class="brands__intro-row reveal">
-      <div class="brands__intro-left">
-        <h2 class="brands__heading">Two Brands.<br />One Extraordinary<br />Location.</h2>
-      </div>
-      <div class="brands__intro-right">
-        <p class="brands__desc">laterrace Resort Group is home to two distinct resort experiences &mdash; Calacatta and laterrace &mdash; each offering a unique way to discover the beauty of Yeosu&rsquo;s coastline. Differentiating and simplifying our diverse portfolio means guests can better determine which extraordinary resort experience best suits their needs.</p>
-      </div>
-    </div>
-
-    <!-- 메인 콘텐츠: 좌측 탭 네비게이션 + 우측 카드 슬라이더 -->
-    <div class="brands__main">
-
-      <!-- 좌측 세로 탭 메뉴 -->
-      <nav class="brands__tabs" aria-label="Brand collections">
-        <button class="brands__tab brands__tab--active" data-collection="all">
-          <span class="brands__tab-text">All Collections</span>
-        </button>
-        <button class="brands__tab" data-collection="calacatta">
-          <span class="brands__tab-text">Calacatta Collection</span>
-        </button>
-        <button class="brands__tab" data-collection="laterrace">
-          <span class="brands__tab-text">laterrace Collection</span>
-        </button>
-        <button class="brands__tab" data-collection="summerland">
-          <span class="brands__tab-text">Summerland Collection</span>
-        </button>
-      </nav>
-
-      <!-- 우측 카드 슬라이더 -->
-      <div class="brands__slider-wrap">
-        <div class="brands__slider" id="brandsSlider">
-
-          <!-- 카드 1: Calacatta The Suite -->
-          <div class="brand-slide" data-collection="calacatta">
-            <div class="brand-slide__img" style="background-image:url('http://gonylab11.speedgabia.com/calacatta/main/facility/1.jpg');"></div>
-            <div class="brand-slide__overlay"></div>
-            <div class="brand-slide__content">
-              <p class="brand-slide__brand">CALACATTA</p>
-              <h3 class="brand-slide__name">THE SUITE</h3>
-              <p class="brand-slide__sub">ADULT-ONLY &middot; INFINITY POOL</p>
-            </div>
-            <div class="brand-slide__actions">
-              <a href="#" class="brand-slide__btn brand-slide__btn--outline">VIEW RESORT</a>
-              <a href="#booking" class="brand-slide__btn brand-slide__btn--fill">BOOK NOW</a>
-            </div>
-          </div>
-
-          <!-- 카드 2: Calacatta Premier Suite -->
-          <div class="brand-slide" data-collection="calacatta">
-            <div class="brand-slide__img" style="background-image:url('http://gonylab11.speedgabia.com/calacatta/main/2.jpg');"></div>
-            <div class="brand-slide__overlay"></div>
-            <div class="brand-slide__content">
-              <p class="brand-slide__brand">CALACATTA</p>
-              <h3 class="brand-slide__name">PREMIER SUITE</h3>
-              <p class="brand-slide__sub">OCEAN VIEW &middot; PRIVATE TERRACE</p>
-            </div>
-            <div class="brand-slide__actions">
-              <a href="#" class="brand-slide__btn brand-slide__btn--outline">VIEW RESORT</a>
-              <a href="#booking" class="brand-slide__btn brand-slide__btn--fill">BOOK NOW</a>
-            </div>
-          </div>
-
-          <!-- 카드 3: laterrace Boutique -->
-          <div class="brand-slide" data-collection="laterrace">
-            <div class="brand-slide__img" style="background-image:url('http://gonylab4.speedgabia.com/laterrace/room/1/5/1.jpg');"></div>
-            <div class="brand-slide__overlay"></div>
-            <div class="brand-slide__content">
-              <p class="brand-slide__brand">LATERRACE</p>
-              <h3 class="brand-slide__name">BOUTIQUE RESORT</h3>
-              <p class="brand-slide__sub">FAMILY &middot; OCEANFRONT</p>
-            </div>
-            <div class="brand-slide__actions">
-              <a href="#" class="brand-slide__btn brand-slide__btn--outline">VIEW RESORT</a>
-              <a href="#booking" class="brand-slide__btn brand-slide__btn--fill">BOOK NOW</a>
-            </div>
-          </div>
-
-          <!-- 카드 4: laterrace Spa -->
-          <div class="brand-slide" data-collection="laterrace">
-            <div class="brand-slide__img" style="background-image:url('http://gonylab4.speedgabia.com/laterrace/facility/2/1.jpg');"></div>
-            <div class="brand-slide__overlay"></div>
-            <div class="brand-slide__content">
-              <p class="brand-slide__brand">LATERRACE</p>
-              <h3 class="brand-slide__name">SPA &amp; WELLNESS</h3>
-              <p class="brand-slide__sub">HEALING &middot; OCEAN VIEWS</p>
-            </div>
-            <div class="brand-slide__actions">
-              <a href="#" class="brand-slide__btn brand-slide__btn--outline">VIEW RESORT</a>
-              <a href="#booking" class="brand-slide__btn brand-slide__btn--fill">BOOK NOW</a>
-            </div>
-          </div>
-
-          <!-- 카드 5: Summerland -->
-          <div class="brand-slide" data-collection="summerland">
-            <div class="brand-slide__img" style="background-image:url('http://gonylab4.speedgabia.com/laterrace/facility/1/1.jpg');"></div>
-            <div class="brand-slide__overlay"></div>
-            <div class="brand-slide__content">
-              <p class="brand-slide__brand">SUMMERLAND</p>
-              <h3 class="brand-slide__name">WATER PARK 2026</h3>
-              <p class="brand-slide__sub">FAMILY &middot; SLIDES &middot; JACUZZI</p>
-            </div>
-            <div class="brand-slide__actions">
-              <a href="#summerland" class="brand-slide__btn brand-slide__btn--outline">VIEW RESORT</a>
-              <a href="#booking" class="brand-slide__btn brand-slide__btn--fill">BOOK NOW</a>
-            </div>
-          </div>
-
-        </div><!-- /.brands__slider -->
-
-        <!-- 좌우 화살표 -->
-        <button class="brands__arrow brands__arrow--prev" id="brandsPrev" aria-label="Previous">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="15 18 9 12 15 6"/></svg>
-        </button>
-        <button class="brands__arrow brands__arrow--next" id="brandsNext" aria-label="Next">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 6 15 12 9 18"/></svg>
-        </button>
-
-      </div><!-- /.brands__slider-wrap -->
-    </div><!-- /.brands__main -->
   </section>
 
   <!-- ============================================================
