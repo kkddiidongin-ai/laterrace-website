@@ -109,7 +109,7 @@
 
 .sl-subnav {
   position: sticky;
-  top: 80px; /* PC: navbar 높이 80px */
+  top: 80px; /* JS가 동적으로 업데이트, 초기값 */
   z-index: 90;
   background: var(--color-linen);
   border-bottom: 1px solid rgba(42,32,24,0.18);
@@ -118,7 +118,7 @@
   -webkit-overflow-scrolling: touch;
 }
 @media (max-width: 767px) {
-  .sl-subnav { top: 60px; } /* 모바일: navbar 높이 60px */
+  .sl-subnav { top: 60px; } /* 모바일 초기값, JS가 실시간 업데이트 */
 }
 .sl-subnav::-webkit-scrollbar { display: none; }
 .sl-subnav__inner {

@@ -84,7 +84,7 @@
     });
   });
 
-  /* ── 5. 서브네비 top 위치 = 네비바 높이 ── */
+  /* ── 5. 서브네비 top 위치 = 네비바 높이 (스크롤/리사이즈 시 실시간 업데이트) ── */
   function setSubnavTop() {
     const navbar = document.getElementById('sl-navbar');
     const subnav = document.getElementById('sl-subnav');
@@ -94,6 +94,8 @@
   }
   setSubnavTop();
   window.addEventListener('resize', setSubnavTop);
+  // 스크롤 시 navbar 높이가 변하므로 (80px→64px) 실시간 반영
+  window.addEventListener('scroll', setSubnavTop, { passive: true });
 
   /* ── 6. 모바일 메뉴 ── */
   const hamburger = document.getElementById('sl-hamburgerBtn');
