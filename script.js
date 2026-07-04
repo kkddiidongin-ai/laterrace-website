@@ -446,7 +446,7 @@ function showBookingAlert(msg) {
       transform: translateX(-50%) translateY(20px);
       background: #2a2018;
       color: #f0ebe3;
-      font-family: 'Jost', sans-serif;
+      font-family: 'Satoshi', 'Noto Sans KR', sans-serif;
       font-size: 0.82rem;
       letter-spacing: 0.04em;
       padding: 16px 28px;
@@ -510,7 +510,7 @@ document.addEventListener('DOMContentLoaded', () => {
     right: 0;
     background: #2a2018;
     color: #f0ebe3;
-    font-family: 'Jost', sans-serif;
+    font-family: 'Satoshi', 'Noto Sans KR', sans-serif;
     font-size: 0.78rem;
     font-weight: 600;
     letter-spacing: 0.2em;
