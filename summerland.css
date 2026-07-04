@@ -1,0 +1,816 @@
+/* ============================================================
+   SUMMERLAND PAGE CSS
+   현재 사이트(laterrace) 톤앤매너 완전 유지
+   style.css 변수 및 폰트 공유
+============================================================ */
+
+/* ── Page Base ── */
+.sl-page {
+  background: var(--color-linen);
+}
+
+/* ── Inner Container ── */
+.sl-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--section-px);
+}
+
+/* ── Reveal Animation ── */
+.sl-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
+}
+.sl-reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ============================================================
+   NAVBAR — 현재 사이트 navbar 위에 sl-page 전용 추가 스타일
+============================================================ */
+.sl-navbar .navbar__inner {
+  /* 현재 사이트 navbar와 동일 */
+}
+.sl-nav-book-btn {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  border: 1px solid rgba(42,32,24,0.35);
+  border-radius: 100px;
+  padding: 7px 18px;
+  transition: background var(--transition), color var(--transition);
+  text-decoration: none;
+  display: none;
+}
+@media (min-width: 768px) {
+  .sl-nav-book-btn { display: inline-block; }
+}
+.sl-nav-book-btn:hover {
+  background: var(--color-text);
+  color: var(--color-linen);
+}
+
+/* ============================================================
+   SUB NAVIGATION — 소노 oceanWorld 스타일 스티키 탭
+============================================================ */
+.sl-subnav {
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  background: var(--color-linen);
+  border-bottom: 1px solid rgba(42,32,24,0.18);
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.sl-subnav::-webkit-scrollbar { display: none; }
+
+.sl-subnav__inner {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 0 var(--section-px);
+  white-space: nowrap;
+  min-height: 48px;
+}
+@media (min-width: 768px) {
+  .sl-subnav__inner { min-height: 56px; }
+}
+
+.sl-subnav__item {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  padding: 0 20px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid transparent;
+  transition: color var(--transition), border-color var(--transition);
+  flex-shrink: 0;
+}
+@media (min-width: 768px) {
+  .sl-subnav__item { height: 56px; padding: 0 28px; font-size: 0.75rem; }
+}
+.sl-subnav__item:hover,
+.sl-subnav__item--active {
+  color: var(--color-text);
+  border-bottom-color: var(--color-text);
+}
+
+/* ============================================================
+   HERO
+============================================================ */
+.sl-hero {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  min-height: 560px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+.sl-hero__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.04);
+  transition: transform 8s ease-out;
+}
+.sl-hero.loaded .sl-hero__bg { transform: scale(1); }
+.sl-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(20,15,10,0.72) 0%, rgba(20,15,10,0.2) 50%, transparent 100%);
+}
+.sl-hero__content {
+  position: relative;
+  z-index: 2;
+  padding: 0 var(--section-px) 80px;
+  color: #fff;
+  max-width: 800px;
+}
+@media (min-width: 768px) {
+  .sl-hero__content { padding-bottom: 100px; }
+}
+.sl-hero__eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 16px;
+}
+.sl-hero__heading {
+  font-family: var(--font-serif);
+  font-size: clamp(2.8rem, 8vw, 5.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: #fff;
+  margin-bottom: 20px;
+}
+.sl-hero__heading em {
+  font-style: italic;
+  font-size: 0.65em;
+  display: block;
+  font-weight: 400;
+  color: rgba(255,255,255,0.85);
+}
+.sl-hero__desc {
+  font-family: var(--font-sans);
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  font-weight: 300;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+.sl-hero__btn {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.6);
+  border-radius: 100px;
+  padding: 13px 32px;
+  text-decoration: none;
+  transition: background var(--transition), border-color var(--transition);
+}
+.sl-hero__btn:hover {
+  background: rgba(255,255,255,0.15);
+  border-color: #fff;
+}
+.sl-hero__scroll {
+  position: absolute;
+  bottom: 32px;
+  right: var(--section-px);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.6);
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.sl-hero__scroll-line {
+  width: 1px;
+  height: 40px;
+  background: rgba(255,255,255,0.4);
+  animation: sl-scroll-line 1.8s ease-in-out infinite;
+}
+@keyframes sl-scroll-line {
+  0%, 100% { transform: scaleY(1); opacity: 0.4; }
+  50% { transform: scaleY(0.5); opacity: 0.8; }
+}
+
+/* ============================================================
+   INTRO — Why Summerland
+============================================================ */
+.sl-intro {
+  padding: var(--section-pad) 0;
+  background: var(--color-linen);
+  border-top: 1px solid rgba(42,32,24,0.18);
+}
+.sl-intro__header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.sl-intro__heading {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  font-style: italic;
+  color: var(--color-text);
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+.sl-intro__desc {
+  font-family: var(--font-sans);
+  font-size: clamp(0.9rem, 1.3vw, 1rem);
+  font-weight: 300;
+  color: var(--color-text-mid);
+  line-height: 1.8;
+}
+
+/* 4가지 특징 카드 그리드 */
+.sl-feat-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+@media (min-width: 600px) {
+  .sl-feat-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+}
+@media (min-width: 1024px) {
+  .sl-feat-grid { grid-template-columns: repeat(4, 1fr); gap: 28px; }
+}
+
+.sl-feat-card {
+  background: var(--color-cream);
+  overflow: hidden;
+}
+.sl-feat-card__img-wrap {
+  overflow: hidden;
+  aspect-ratio: 4/3;
+}
+.sl-feat-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+.sl-feat-card:hover .sl-feat-card__img { transform: scale(1.05); }
+.sl-feat-card__body {
+  padding: 24px 20px 28px;
+}
+.sl-feat-card__num {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  color: var(--color-text-muted);
+  display: block;
+  margin-bottom: 12px;
+}
+.sl-feat-card__title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+  font-weight: 700;
+  font-style: italic;
+  color: var(--color-text);
+  line-height: 1.3;
+  margin-bottom: 10px;
+}
+.sl-feat-card__sub {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--color-text);
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+.sl-feat-card__desc {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: var(--color-text-mid);
+  line-height: 1.7;
+}
+
+/* ============================================================
+   MAP — 전체 안내도
+============================================================ */
+.sl-map {
+  padding: var(--section-pad) 0;
+  background: var(--color-sand);
+  border-top: 1px solid rgba(42,32,24,0.18);
+}
+.sl-map__header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.sl-map__heading {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  font-style: italic;
+  color: var(--color-text);
+}
+.sl-map__img-wrap {
+  overflow: hidden;
+  border: 1px solid rgba(42,32,24,0.12);
+}
+.sl-map__img {
+  width: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+/* ============================================================
+   GALLERY
+============================================================ */
+.sl-gallery {
+  padding: var(--section-pad) 0;
+  background: var(--color-linen);
+  border-top: 1px solid rgba(42,32,24,0.18);
+}
+.sl-gallery__header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.sl-gallery__heading {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  font-style: italic;
+  color: var(--color-text);
+  line-height: 1.2;
+}
+
+/* 갤러리 그리드 — 2열 기본, 넓은 화면 3열 */
+.sl-gallery__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  padding: 0 var(--section-px);
+  max-width: var(--max-w);
+  margin: 0 auto 40px;
+}
+@media (min-width: 768px) {
+  .sl-gallery__grid { grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+}
+@media (min-width: 1024px) {
+  .sl-gallery__grid { gap: 8px; }
+}
+
+.sl-gallery__item {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  background: var(--color-sand);
+}
+.sl-gallery__item--wide {
+  grid-column: span 2;
+  aspect-ratio: 16/7;
+}
+@media (min-width: 768px) {
+  .sl-gallery__item--wide { grid-column: span 3; aspect-ratio: 16/6; }
+}
+.sl-gallery__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+.sl-gallery__item:hover img { transform: scale(1.04); }
+.sl-gallery__caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 16px 14px;
+  background: linear-gradient(to top, rgba(20,15,10,0.6) 0%, transparent 100%);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.9);
+  letter-spacing: 0.05em;
+}
+.sl-gallery__cta {
+  text-align: center;
+}
+
+/* ============================================================
+   CTA LINK (공통)
+============================================================ */
+.sl-cta-link {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-text);
+  padding-bottom: 3px;
+  transition: opacity var(--transition);
+}
+.sl-cta-link:hover { opacity: 0.6; }
+
+/* ============================================================
+   DINING
+============================================================ */
+.sl-dining {
+  padding: var(--section-pad) 0;
+  background: var(--color-cream);
+  border-top: 1px solid rgba(42,32,24,0.18);
+}
+.sl-dining__header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.sl-dining__heading {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  font-style: italic;
+  color: var(--color-text);
+  margin-bottom: 16px;
+}
+.sl-dining__desc {
+  font-family: var(--font-sans);
+  font-size: clamp(0.88rem, 1.2vw, 0.95rem);
+  font-weight: 300;
+  color: var(--color-text-mid);
+  line-height: 1.8;
+}
+
+/* 다이닝 카드 — 가로 스크롤 */
+.sl-dining__cards {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 var(--section-px) 8px;
+  margin: 0 calc(-1 * var(--section-px));
+  cursor: grab;
+}
+.sl-dining__cards::-webkit-scrollbar { display: none; }
+.sl-dining__cards:active { cursor: grabbing; }
+@media (min-width: 768px) {
+  .sl-dining__cards { gap: 20px; }
+}
+
+.sl-dcard {
+  flex-shrink: 0;
+  width: 220px;
+  background: var(--color-linen);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+@media (min-width: 768px) {
+  .sl-dcard { width: 260px; }
+}
+.sl-dcard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(42,32,24,0.1);
+}
+.sl-dcard__img-wrap {
+  overflow: hidden;
+  height: 160px;
+}
+@media (min-width: 768px) {
+  .sl-dcard__img-wrap { height: 200px; }
+}
+.sl-dcard__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.sl-dcard:hover .sl-dcard__img { transform: scale(1.05); }
+.sl-dcard__body {
+  padding: 16px 16px 20px;
+}
+.sl-dcard__tag {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 8px;
+}
+.sl-dcard__title {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--color-text);
+  line-height: 1.4;
+}
+
+.sl-dining__cta {
+  text-align: center;
+  margin-top: 40px;
+}
+
+/* ============================================================
+   TICKET & GUIDE
+============================================================ */
+.sl-ticket {
+  padding: var(--section-pad) 0;
+  background: var(--color-linen);
+  border-top: 1px solid rgba(42,32,24,0.18);
+}
+.sl-ticket__header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.sl-ticket__heading {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  font-style: italic;
+  color: var(--color-text);
+}
+
+/* 3단계 스텝 */
+.sl-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 48px;
+}
+@media (min-width: 768px) {
+  .sl-steps { flex-direction: row; gap: 0; }
+}
+.sl-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(42,32,24,0.15);
+  flex: 1;
+}
+@media (min-width: 768px) {
+  .sl-step {
+    flex-direction: column;
+    gap: 16px;
+    padding: 0 40px 0 0;
+    border-bottom: none;
+    border-right: 1px solid rgba(42,32,24,0.15);
+  }
+  .sl-step:last-child { border-right: none; padding-right: 0; }
+  .sl-step:first-child { padding-left: 0; }
+}
+.sl-step:first-child { border-top: 1px solid rgba(42,32,24,0.15); }
+@media (min-width: 768px) {
+  .sl-step:first-child { border-top: none; }
+}
+.sl-step__num {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+  line-height: 1;
+}
+.sl-step__title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+  font-weight: 700;
+  font-style: italic;
+  color: var(--color-text);
+  margin-bottom: 8px;
+}
+.sl-step__desc {
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: var(--color-text-mid);
+  line-height: 1.7;
+}
+
+/* 유의사항 박스 */
+.sl-notice-box {
+  background: var(--color-sand);
+  border-left: 3px solid var(--color-text-muted);
+  padding: 20px 24px;
+  margin-bottom: 48px;
+}
+.sl-notice-box__text {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--color-text);
+  line-height: 1.7;
+}
+
+/* 티켓 CTA */
+.sl-ticket__cta {
+  text-align: center;
+}
+.sl-ticket__btn {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  border: 1px solid var(--color-text);
+  border-radius: 100px;
+  padding: 14px 40px;
+  text-decoration: none;
+  transition: background var(--transition), color var(--transition);
+  margin-bottom: 16px;
+}
+.sl-ticket__btn:hover {
+  background: var(--color-text);
+  color: var(--color-linen);
+}
+.sl-ticket__cta-desc {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: var(--color-text-muted);
+}
+
+/* ============================================================
+   NOTICE — 유의사항
+============================================================ */
+.sl-notice {
+  padding: var(--section-pad) 0;
+  background: var(--color-sand);
+  border-top: 1px solid rgba(42,32,24,0.18);
+}
+.sl-notice__header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.sl-notice__heading {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  font-style: italic;
+  color: var(--color-text);
+}
+
+/* 4열 정보 그리드 */
+.sl-info-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+@media (min-width: 600px) {
+  .sl-info-grid { grid-template-columns: 1fr 1fr; gap: 24px 40px; }
+}
+@media (min-width: 1024px) {
+  .sl-info-grid { grid-template-columns: repeat(4, 1fr); gap: 24px 48px; }
+}
+
+.sl-info-block {
+  border-top: 1px solid rgba(42,32,24,0.25);
+  padding-top: 24px;
+}
+.sl-info-block__title {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--color-text);
+  margin-bottom: 16px;
+}
+.sl-info-block__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.sl-info-block__list li {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--color-text-mid);
+  line-height: 1.7;
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(42,32,24,0.1);
+}
+.sl-info-block__list li:last-child { border-bottom: none; }
+
+/* ============================================================
+   BOOKING CTA
+============================================================ */
+.sl-booking-cta {
+  position: relative;
+  padding: 100px 0;
+  overflow: hidden;
+  border-top: 1px solid rgba(42,32,24,0.18);
+}
+@media (min-width: 768px) {
+  .sl-booking-cta { padding: 140px 0; }
+}
+.sl-booking-cta__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+}
+.sl-booking-cta__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(20,15,10,0.55);
+}
+.sl-booking-cta__inner {
+  position: relative;
+  z-index: 2;
+}
+.sl-booking-cta__content {
+  text-align: center;
+  color: #fff;
+}
+.sl-booking-cta__eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 16px;
+}
+.sl-booking-cta__heading {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 700;
+  font-style: italic;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+.sl-booking-cta__desc {
+  font-family: var(--font-sans);
+  font-size: clamp(0.88rem, 1.2vw, 1rem);
+  font-weight: 300;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 36px;
+}
+.sl-booking-cta__btns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+@media (min-width: 480px) {
+  .sl-booking-cta__btns { flex-direction: row; justify-content: center; }
+}
+.sl-booking-cta__btn {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 100px;
+  padding: 14px 36px;
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+}
+.sl-booking-cta__btn--primary {
+  background: #fff;
+  color: var(--color-text);
+  border: 1px solid #fff;
+}
+.sl-booking-cta__btn--primary:hover {
+  background: transparent;
+  color: #fff;
+}
+.sl-booking-cta__btn--outline {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.6);
+}
+.sl-booking-cta__btn--outline:hover {
+  background: rgba(255,255,255,0.15);
+  border-color: #fff;
+}
