@@ -71,15 +71,54 @@
 /* ============================================================
    SUB NAVIGATION — 소노 oceanWorld 스타일
 ============================================================ */
+/* summerland 페이지: 모바일에서도 navbar 표시 + scrolled 상태로 고정 */
+.sl-page .navbar {
+  display: block;
+  background: var(--color-linen);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.08);
+  border-bottom: 1px solid rgba(42,32,24,0.08);
+}
+/* navbar 내 요소들을 scrolled 상태와 동일하게 dark 색상으로 */
+.sl-page .navbar .navbar__pill {
+  color: var(--color-text);
+  border-color: rgba(42,32,24,0.35);
+}
+.sl-page .navbar .navbar__pill:hover { background: rgba(42,32,24,0.06); }
+.sl-page .navbar .navbar__logo-main,
+.sl-page .navbar .navbar__logo-sub { color: var(--color-text); }
+.sl-page .navbar .navbar__lang-btn { color: var(--color-text-muted); }
+.sl-page .navbar .navbar__lang-btn.active,
+.sl-page .navbar .navbar__lang-btn:hover { color: var(--color-text); }
+.sl-page .navbar .navbar__lang-sep { color: var(--color-text-muted); }
+.sl-page .navbar .navbar__hamburger span { background: var(--color-text); }
+/* summerland 페이지: hero 모바일바 숨김 (네비바가 대신함) */
+.sl-page .hero__mobile-bar {
+  display: none !important;
+}
+/* summerland 페이지: 모바일 navbar 패딩 조정 */
+.sl-page .navbar__inner {
+  padding: 0 20px;
+  height: 60px;
+}
+@media (min-width: 768px) {
+  .sl-page .navbar__inner {
+    padding: 0 48px;
+    height: 80px;
+  }
+}
+
 .sl-subnav {
   position: sticky;
-  top: 80px; /* navbar 높이 = 80px (scrolled: 64px) */
+  top: 80px; /* PC: navbar 높이 80px */
   z-index: 90;
   background: var(--color-linen);
   border-bottom: 1px solid rgba(42,32,24,0.18);
   overflow-x: auto;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
+}
+@media (max-width: 767px) {
+  .sl-subnav { top: 60px; } /* 모바일: navbar 높이 60px */
 }
 .sl-subnav::-webkit-scrollbar { display: none; }
 .sl-subnav__inner {
