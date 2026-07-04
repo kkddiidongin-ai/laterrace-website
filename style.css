@@ -1080,6 +1080,151 @@ input, select { font-family: inherit; }
 .intro__motif svg { width: 100%; height: auto; }
 
 /* ============================================================
+   SECTION 5b: BE REWARDED / MEMBERSHIP (레퍼런스 모바일 Sun Siyam 100% 동일)
+============================================================ */
+.be-rewarded {
+  background: var(--color-sand);
+  padding: 48px 24px 56px;
+}
+.be-rewarded__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+/* eyebrow */
+.be-rewarded__eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  margin-bottom: 12px;
+}
+/* 헤딩 */
+.be-rewarded__heading {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  font-style: italic;
+  color: var(--color-text);
+  line-height: 1.15;
+  margin-bottom: 32px;
+}
+/* 본문 — 이미지 + 혜택 리스트 */
+.be-rewarded__body {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+@media (min-width: 768px) {
+  .be-rewarded__body {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 48px;
+  }
+}
+/* 이미지 래퍼 */
+.be-rewarded__photo-wrap {
+  position: relative;
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 340px;
+}
+@media (min-width: 768px) {
+  .be-rewarded__photo-wrap {
+    width: 320px;
+  }
+}
+.be-rewarded__photo {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  display: block;
+}
+/* FREE 배지 */
+.be-rewarded__badge {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #c47a4a;
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+}
+/* 혜택 리스트 영역 */
+.be-rewarded__benefits {
+  flex: 1;
+}
+.be-rewarded__benefits-title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--color-text);
+  margin-bottom: 16px;
+}
+.be-rewarded__list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px;
+}
+.be-rewarded__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--color-text);
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(42,32,24,0.15);
+}
+.be-rewarded__item:first-child {
+  border-top: 1px solid rgba(42,32,24,0.15);
+}
+.be-rewarded__arrow {
+  font-size: 0.55rem;
+  color: var(--color-text);
+  flex-shrink: 0;
+}
+.be-rewarded__note {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  color: rgba(42,32,24,0.5);
+  margin-bottom: 20px;
+}
+/* SIGN UP / LOGIN 버튼 */
+.be-rewarded__btns {
+  display: flex;
+  gap: 12px;
+}
+.be-rewarded__btn {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-text);
+  border: 1px solid var(--color-text);
+  border-radius: 100px;
+  padding: 9px 22px;
+  transition: background var(--transition), color var(--transition);
+}
+.be-rewarded__btn:hover {
+  background: var(--color-text);
+  color: var(--color-sand);
+}
+
+/* ============================================================
    SECTION 5: REWARDS / MEMBERSHIP
 ============================================================ */
 .rewards {
