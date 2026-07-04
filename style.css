@@ -2169,7 +2169,10 @@ input, select { font-family: inherit; }
   overflow: hidden;
 }
 
-.dining__header { text-align: center; margin-bottom: 40px; }
+.dining__header {
+  text-align: center;
+  margin-bottom: 40px;
+}
 @media (min-width: 768px) {
   .dining__header { margin-bottom: 60px; }
 }
@@ -2187,7 +2190,7 @@ input, select { font-family: inherit; }
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-  padding: 0 var(--section-px);
+  padding: 0;
   margin: 0 calc(-1 * var(--section-px));
   cursor: grab;
 }
@@ -2199,6 +2202,7 @@ input, select { font-family: inherit; }
   gap: 16px;
   padding: 0 var(--section-px);
   width: max-content;
+  /* 첫 번째 카드가 섹션 왼쪽 여백에서 시작하도록 */
 }
 @media (min-width: 768px) {
   .dining__cards { gap: 24px; }
