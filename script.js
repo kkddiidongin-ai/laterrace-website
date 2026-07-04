@@ -100,7 +100,7 @@ function initHeroSlideshow() {
   const heroSlideshow = document.getElementById('heroSlideshow');
   const slides        = document.querySelectorAll('.hero__slide');
   // 깔라까따 full 영상 (3840×2160 가로) — 라테라스 공식 홈페이지 메인 영상
-  const HLS_SRC       = 'https://hls.midibus.kinxcdn.com/hls/ch_18f57400/197c018addb0ff99/v/playlist.m3u8';
+  const HLS_SRC       = 'https://hls.midibus.kinxcdn.com/hls/ch_18f57400/19f1aa25a5fa82a3/v/playlist.m3u8';
 
   function startSlideshow() {
     if (!slides.length) return;
