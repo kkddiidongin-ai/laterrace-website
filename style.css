@@ -1084,26 +1084,65 @@ input, select { font-family: inherit; }
 ============================================================ */
 .rewards {
   background: var(--color-navy);
-  padding: var(--section-pad) 0;
+  display: flex;
+  flex-direction: column;
+  /* 하단 BOOK NOW 바 포함 전체 구조 */
 }
 
-.rewards__inner {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 40px;
-  align-items: center;
+/* 텍스트+이미지 세로 스택 */
+.rewards__body {
+  display: flex;
+  flex-direction: column;
+  padding: 60px 24px 0;
 }
 @media (min-width: 768px) {
-  .rewards__inner { grid-template-columns: 1fr 1fr; gap: 80px; }
+  .rewards__body {
+    flex-direction: row;
+    align-items: center;
+    gap: 80px;
+    padding: 80px 60px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
+/* 텍스트 영역 */
+.rewards__content {
+  flex: 1;
+  margin-bottom: 40px;
+}
+@media (min-width: 768px) {
+  .rewards__content { margin-bottom: 0; }
+}
+
+/* eyebrow 라벨 — 짧은 선 + 텍스트 */
+.rewards__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 20px;
+}
+.rewards__eyebrow-line {
+  display: block;
+  width: 28px;
+  height: 1px;
+  background: var(--color-gold);
+  flex-shrink: 0;
 }
 
 .rewards__heading {
   font-family: var(--font-serif);
-  font-size: clamp(2rem, 8vw, 2.8rem);
+  font-size: clamp(2rem, 9vw, 2.8rem);
   font-weight: 700;
   color: var(--color-white);
   margin-bottom: 32px;
-  line-height: 1.2;
+  line-height: 1.15;
 }
 @media (min-width: 768px) {
   .rewards__heading { font-size: clamp(2.2rem, 4vw, 3.5rem); margin-bottom: 40px; }
@@ -1114,6 +1153,8 @@ input, select { font-family: inherit; }
   flex-direction: column;
   gap: 0;
   margin-bottom: 36px;
+  list-style: none;
+  padding: 0;
 }
 @media (min-width: 768px) {
   .rewards__list { margin-bottom: 40px; }
@@ -1122,33 +1163,77 @@ input, select { font-family: inherit; }
 .rewards__item {
   display: flex;
   align-items: center;
-  gap: 14px;
-  font-size: 0.88rem;
+  gap: 16px;
+  font-size: 0.9rem;
   font-weight: 300;
   color: rgba(255,255,255,0.8);
-  padding: 13px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  letter-spacing: 0.02em;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  letter-spacing: 0.01em;
 }
-@media (min-width: 768px) {
-  .rewards__item { font-size: 0.9rem; padding: 14px 0; }
+.rewards__item:first-child { border-top: 1px solid rgba(255,255,255,0.1); }
+.rewards__check {
+  color: var(--color-gold);
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  width: 16px;
+  text-align: center;
 }
-.rewards__item:first-child { border-top: 1px solid rgba(255,255,255,0.08); }
-.rewards__check { color: var(--color-gold); font-size: 1rem; flex-shrink: 0; }
 
+/* JOIN NOW 버튼 — 아웃라인 직사각형 */
+.rewards__join-btn {
+  display: inline-block;
+  border: 1px solid rgba(255,255,255,0.6);
+  color: var(--color-white);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 16px 32px;
+  text-decoration: none;
+  transition: background var(--transition), color var(--transition);
+  margin-top: 8px;
+}
+.rewards__join-btn:hover {
+  background: var(--color-white);
+  color: var(--color-navy);
+}
+
+/* 이미지 영역 */
 .rewards__visual {
-  height: 300px;
+  flex: 1;
+  padding: 0 0 0 0;
+}
+
+.rewards__photo {
+  width: 100%;
+  display: block;
+  height: auto;
+  aspect-ratio: 4/3;
+  object-fit: cover;
   border-radius: 2px;
-  overflow: hidden;
-  position: relative;
 }
 @media (min-width: 768px) {
-  .rewards__visual { height: 520px; }
+  .rewards__photo { aspect-ratio: 3/4; }
 }
-.rewards__visual .photo-placeholder { width: 100%; height: 100%; min-height: 300px; }
-@media (min-width: 768px) {
-  .rewards__visual .photo-placeholder { min-height: 520px; }
+
+/* 하단 BOOK NOW 고정 바 */
+.rewards__book-bar {
+  background: #1a1a14;
+  text-align: center;
+  padding: 22px 24px;
+  margin-top: 0;
 }
+.rewards__book-link {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+.rewards__book-link:hover { color: var(--color-gold); }
 
 /* ============================================================
    SECTION 6: SUMMERLAND
@@ -1380,97 +1465,174 @@ input, select { font-family: inherit; }
 .offers__more-link:hover { color: var(--color-text-mid); border-color: var(--color-text-mid); }
 
 /* ============================================================
-   SECTION 8: DUAL BRAND SHOWCASE
+   SECTION 8: DUAL BRAND SHOWCASE — Collection Menu Style
 ============================================================ */
 .brands {
-  padding: var(--section-pad) 0;
   background: var(--color-sand);
+  padding: 0;
 }
 
-.brands__header { text-align: center; margin-bottom: 40px; }
+/* ---- 장식 엠블럼 행 ---- */
+.brands__emblem-row {
+  display: flex;
+  align-items: center;
+  padding: 48px 24px 40px;
+  gap: 0;
+}
 @media (min-width: 768px) {
-  .brands__header { margin-bottom: 60px; }
+  .brands__emblem-row { padding: 64px 60px 48px; }
+}
+.brands__emblem-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(42,32,24,0.2);
+  display: block;
+}
+.brands__emblem {
+  flex-shrink: 0;
+  width: 100px;
+  height: 100px;
+  margin: 0 16px;
+}
+@media (min-width: 768px) {
+  .brands__emblem { width: 120px; height: 120px; }
+}
+.brands__emblem-svg {
+  width: 100%;
+  height: 100%;
 }
 
+/* ---- 텍스트 소개 ---- */
+.brands__intro {
+  padding: 0 24px 32px;
+}
+@media (min-width: 768px) {
+  .brands__intro { padding: 0 60px 40px; max-width: 680px; }
+}
 .brands__heading {
   font-family: var(--font-serif);
-  font-size: clamp(1.8rem, 7vw, 2.8rem);
-  font-weight: 700; color: var(--color-text); line-height: 1.2;
+  font-size: clamp(1.8rem, 8vw, 2.6rem);
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.15;
+  margin-bottom: 16px;
 }
 @media (min-width: 768px) {
   .brands__heading { font-size: clamp(2rem, 3.5vw, 3rem); }
 }
+.brands__desc {
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--color-text-muted);
+}
 
-.brands__grid {
+/* ---- 구분선 ---- */
+.brands__divider {
+  height: 1px;
+  background: rgba(42,32,24,0.25);
+  margin: 0 24px;
+}
+@media (min-width: 768px) {
+  .brands__divider { margin: 0 60px; }
+}
+
+/* ---- 컬렉션 메뉴 리스트 ---- */
+.brands__collections {
+  padding: 0 24px;
+}
+@media (min-width: 768px) {
+  .brands__collections { padding: 0 60px; }
+}
+
+.brands__collections-header {
+  padding: 24px 0 0;
+  border-top: 3px solid var(--color-summer);
+  margin-bottom: 0;
+}
+.brands__collections-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 6vw, 2rem);
+  font-weight: 700;
+  color: var(--color-summer);
+  line-height: 1.2;
+  padding-bottom: 16px;
+}
+
+.brands__collection-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.brands__collection-item {
+  border-bottom: 1px solid rgba(42,32,24,0.15);
+}
+.brands__collection-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 0;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+.brands__collection-name {
+  font-family: var(--font-serif);
+  font-size: clamp(1.3rem, 5vw, 1.7rem);
+  font-weight: 400;
+  font-style: italic;
+  color: rgba(42,32,24,0.45);
+  transition: color var(--transition);
+}
+.brands__collection-link:hover .brands__collection-name {
+  color: var(--color-text);
+}
+.brands__collection-arrow {
+  font-size: 1.4rem;
+  color: rgba(42,32,24,0.3);
+  transition: color var(--transition), transform var(--transition);
+}
+.brands__collection-link:hover .brands__collection-arrow {
+  color: var(--color-text);
+  transform: translateX(4px);
+}
+
+/* ---- 하단 브랜드 이미지 프리뷰 (2분할) ---- */
+.brands__preview {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
-}
-@media (min-width: 600px) {
-  .brands__grid { grid-template-columns: 1fr 1fr; gap: 32px; }
-}
-
-.brand-card {
+  grid-template-columns: 1fr 1fr;
+  margin-top: 40px;
+  height: 220px;
   overflow: hidden;
-  transition: transform var(--transition), box-shadow var(--transition);
 }
-.brand-card:hover { transform: translateY(-4px); box-shadow: 0 24px 64px rgba(26,37,53,0.15); }
-.brand-card--calacatta { background: var(--color-navy); }
-.brand-card--laterrace { background: var(--color-cream); }
-
-.brand-card__image {
-  height: 240px;
+@media (min-width: 768px) {
+  .brands__preview { height: 320px; }
+}
+.brands__preview-item {
+  position: relative;
   overflow: hidden;
+}
+.brands__preview-img {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
   transition: transform var(--transition-slow);
 }
-@media (min-width: 768px) {
-  .brand-card__image { height: 300px; }
+.brands__preview-item:hover .brands__preview-img {
+  transform: scale(1.05);
 }
-.brand-card:hover .brand-card__image { transform: scale(1.04); }
-
-.brand-card__content { padding: 24px; }
-@media (min-width: 768px) {
-  .brand-card__content { padding: 36px; }
-}
-
-.brand-card__tag {
-  font-size: 0.65rem; font-weight: 500;
-  letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--color-calacatta); margin-bottom: 14px;
-}
-.brand-card__tag--warm { color: var(--color-summer); }
-
-.brand-card__name {
-  font-family: var(--font-serif);
-  font-size: 1.6rem; font-weight: 700;
-  color: var(--color-white); line-height: 1.15; margin-bottom: 14px;
-}
-@media (min-width: 768px) {
-  .brand-card__name { font-size: 1.8rem; margin-bottom: 16px; }
-}
-.brand-card__name--warm { color: var(--color-navy); }
-
-.brand-card__desc {
-  font-size: 0.86rem; font-weight: 300;
-  line-height: 1.75; color: rgba(255,255,255,0.65); margin-bottom: 20px;
-}
-@media (min-width: 768px) {
-  .brand-card__desc { font-size: 0.88rem; margin-bottom: 24px; }
-}
-.brand-card--laterrace .brand-card__desc { color: var(--color-text-muted); }
-
-.brand-card__rooms {
-  display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; padding: 0;
-}
-@media (min-width: 768px) {
-  .brand-card__rooms { margin-bottom: 28px; }
-}
-.brand-card__rooms li {
-  font-size: 0.65rem; font-weight: 500;
-  letter-spacing: 0.12em; text-transform: uppercase;
-  color: rgba(255,255,255,0.5);
-  border: 1px solid rgba(255,255,255,0.15);
-  padding: 4px 12px;
+.brands__preview-label {
+  position: absolute;
+  bottom: 14px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  text-shadow: 0 1px 8px rgba(0,0,0,0.5);
 }
 
 /* ============================================================
